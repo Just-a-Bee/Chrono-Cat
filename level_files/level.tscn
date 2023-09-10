@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmsp07rhk1mif"]
+
+[ext_resource type="Script" path="res://level_files/level.gd" id="1_i2mh4"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/player.tscn" id="2_sgqyc"]
+[ext_resource type="PackedScene" uid="uid://bif7fbgreowou" path="res://actors/door.tscn" id="3_3mxhn"]
+[ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/box.tscn" id="3_dtxn5"]
+[ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/key.tscn" id="4_053y0"]
+
+[sub_resource type="TileSet" id="TileSet_e0d1f"]
+tile_size = Vector2i(128, 128)
+
+[node name="Level" type="TileMap"]
+position = Vector2(-64, -64)
+tile_set = SubResource("TileSet_e0d1f")
+format = 2
+script = ExtResource("1_i2mh4")
+
+[node name="Player" parent="." instance=ExtResource("2_sgqyc")]
+position = Vector2(64, 64)
+
+[node name="Door" parent="." instance=ExtResource("3_3mxhn")]
+position = Vector2(448, 320)
+
+[node name="Key" parent="." instance=ExtResource("4_053y0")]
+position = Vector2(704, 192)
+
+[node name="Box" parent="." instance=ExtResource("3_dtxn5")]
+position = Vector2(192, 448)
