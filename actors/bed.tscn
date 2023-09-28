@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbvynqy0clri2"]
+
+[ext_resource type="Script" path="res://actor_files/actor.gd" id="1_0asp1"]
+[ext_resource type="Texture2D" uid="uid://cmdgsavqe2bcb" path="res://assets/Bed.png" id="1_pudc7"]
+
+[node name="Bed" type="Sprite2D"]
+texture = ExtResource("1_pudc7")
+centered = false
+script = ExtResource("1_0asp1")
+is_objective = true

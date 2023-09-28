@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmsp07rhk1mif"]
+[gd_scene load_steps=8 format=3 uid="uid://cmsp07rhk1mif"]
 
 [ext_resource type="Script" path="res://level_files/level.gd" id="1_i2mh4"]
 [ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/player.tscn" id="2_sgqyc"]
 [ext_resource type="PackedScene" uid="uid://bif7fbgreowou" path="res://actors/door.tscn" id="3_3mxhn"]
 [ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/box.tscn" id="3_dtxn5"]
 [ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/key.tscn" id="4_053y0"]
+[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/bed.tscn" id="6_b0yku"]
 
 [sub_resource type="TileSet" id="TileSet_e0d1f"]
 tile_size = Vector2i(128, 128)
@@ -26,3 +27,6 @@ position = Vector2(704, 192)
 
 [node name="Box" parent="." instance=ExtResource("3_dtxn5")]
 position = Vector2(192, 448)
+
+[node name="Bed" parent="." instance=ExtResource("6_b0yku")]
+position = Vector2(704, 448)

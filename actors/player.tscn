@@ -8,6 +8,7 @@
 texture = ExtResource("1_nwwy1")
 centered = false
 script = ExtResource("2_f2sv8")
+is_player = true
 
 [node name="ControlComponent" type="Node2D" parent="."]
 script = ExtResource("3_4ejvv")

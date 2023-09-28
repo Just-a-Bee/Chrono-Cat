@@ -4,6 +4,9 @@ class_name Actor
 @export var is_wall:bool
 @export var is_key:bool
 @export var is_lock:bool
+@export var is_objective:bool
+@export var is_player:bool
+@export var is_clock:bool
 
 @onready var level:Level = get_parent()
 
@@ -21,13 +24,15 @@ func move(new_position):
 		position = tween_position
 	tween = get_tree().create_tween()
 	tween_position = new_position
-	tween.tween_property(self, "position", tween_position, .075)
+	tween.tween_property(self, "position", tween_position, .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	
-
+# function to return behavior that should happen when self collides with actor
 func collide(actor:Actor)->int:
+	if is_player and actor.is_objective:
+		return level.COLLISION_BEHAVIORS.COLLECT
 	if is_key and actor.is_lock:
-		return level.COLISSION_BEHAVIORS.DESTROY
+		return level.COLLISION_BEHAVIORS.DESTROY
 	if actor.is_wall:
-		return level.COLISSION_BEHAVIORS.STOP
-	return level.COLISSION_BEHAVIORS.PUSH
+		return level.COLLISION_BEHAVIORS.STOP
+	return level.COLLISION_BEHAVIORS.PUSH
 	
