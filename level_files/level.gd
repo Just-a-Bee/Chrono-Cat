@@ -15,6 +15,11 @@ var rewinding
 # keys = actor, values = array of rewind positions
 var rewind_dictionary:Dictionary
 
+# stores a copy of game state every turn that can be reverted to
+# state is composed of [actor_dictionary, rewind_dictionary]
+var undo_array:Array[Array]
+var current_state:Array[Dictionary] = [actor_dictionary, rewind_dictionary]
+
 enum COLLISION_BEHAVIORS
 {
 	PUSH = 0,
@@ -54,14 +59,16 @@ func get_direction(event)->Vector2i:
 # function to handle move direction
 func move_input(direction):
 	if not rewinding:
-		try_move(player, direction)
+		make_move(player, direction)
 	else:
 		move_cursor(direction)
 # actor and movement functions
 #function to try to move an actor, returns true if successfully moved
-func try_move(actor:Actor, direction:Vector2i)->void:
-	var from_position = actor_dictionary.find_key(actor)
-	var to_position = from_position + direction
+func make_move(actor:Actor, direction:Vector2i)->void:
+	var state:Array[Dictionary] = current_state.duplicate(true) # make a copy of the current state to save to undo arr
+	var actor_moved:bool = false # store if an actor has been moved
+	var from_position:Vector2i = actor_dictionary.find_key(actor)
+	var to_position:Vector2i = from_position + direction
 	
 	# if to_position is occupied, try to push
 	if actor_dictionary.has(to_position):
@@ -75,8 +82,12 @@ func try_move(actor:Actor, direction:Vector2i)->void:
 		push_array.reverse()
 		for push_actor in push_array:
 			move_actor(push_actor, direction)
+			actor_moved = true
 	else:
 		move_actor(actor, direction)
+		actor_moved = true
+	if actor_moved:
+		undo_array.append(state) # if a move was made, append the previous state to the undo array
 # function to handle when player collides with another actor
 func handle_collision(target_position, push_array, direction):
 	# iterate through positions until one is unoccupied, or we hit a wall and cant move
@@ -139,7 +150,7 @@ func activate_rewind():
 		var rewind_actor = actor_dictionary[local_to_map(rewind_cursor.position)]
 		if rewind_dictionary[rewind_actor].size() > 0:
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
-			try_move(rewind_actor, rewind_direction)
+			make_move(rewind_actor, rewind_direction)
 			rewind_dictionary[rewind_actor].pop_back()
 			rewind_dictionary[rewind_actor].pop_back()
 	end_rewind()
@@ -153,4 +164,21 @@ func end_rewind():
 # other functions
 # function to undo the most recent move
 func undo():
-	pass
+	if undo_array.size() > 0:
+		restore_state(undo_array[-1])
+		undo_array.pop_back()
+# function to revert to a previous state
+func restore_state(state:Array[Dictionary]):
+	var restore_positions = state[0] # first entry of state is the position of every actor
+	var actor_rewinds = state[1] # second entry is each actor's rewind array
+	
+	actor_dictionary.clear()
+	for restore_position in restore_positions:
+		var restore_actor = restore_positions[restore_position]
+		if not restore_actor.is_inside_tree():
+			add_child(restore_actor)
+		actor_dictionary[restore_position] = restore_actor
+		restore_actor.move(map_to_local(restore_position))
+	
+	rewind_dictionary.clear()
+	rewind_dictionary = actor_rewinds.duplicate(true)
