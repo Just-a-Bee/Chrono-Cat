@@ -87,6 +87,7 @@ func make_move(actor:Actor, direction:Vector2i)->void:
 		move_actor(actor, direction)
 		actor_moved = true
 	if actor_moved:
+		print(state[1])
 		undo_array.append(state) # if a move was made, append the previous state to the undo array
 # function to handle when player collides with another actor
 func handle_collision(target_position, push_array, direction):
@@ -170,7 +171,7 @@ func undo():
 # function to revert to a previous state
 func restore_state(state:Array[Dictionary]):
 	var restore_positions = state[0] # first entry of state is the position of every actor
-	var actor_rewinds = state[1] # second entry is each actor's rewind array
+	var restore_rewinds = state[1] # second entry is each actor's rewind array
 	
 	actor_dictionary.clear()
 	for restore_position in restore_positions:
@@ -181,4 +182,5 @@ func restore_state(state:Array[Dictionary]):
 		restore_actor.move(map_to_local(restore_position))
 	
 	rewind_dictionary.clear()
-	rewind_dictionary = actor_rewinds.duplicate(true)
+	for actor in restore_rewinds:
+		rewind_dictionary[actor] = restore_rewinds[actor].duplicate()
