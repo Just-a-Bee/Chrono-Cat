@@ -3,13 +3,17 @@ class_name Level
 
 signal win
 
-#dictionary that contains all actors and their level positions
+# dictionary that contains all actors and their level positions
+# keys = positions, values = actor at position
 var actor_dictionary:Dictionary
 @export var player:Node2D
 
 var cursor_packed = preload("res://rewind_cursor.tscn")
 var rewind_cursor
 var rewinding
+# dictionary that stores each actor and a list of its rewind positions
+# keys = actor, values = array of rewind positions
+var rewind_dictionary:Dictionary
 
 enum COLLISION_BEHAVIORS
 {
@@ -23,9 +27,10 @@ func _ready():
 	#index all actors
 	for actor in get_children():
 		actor_dictionary[local_to_map(actor.position)] = actor
+		rewind_dictionary[actor] = []
 	win.connect(GameState.win_level)
 
-#function to handle all gameplay input
+# function to handle all gameplay input
 func _input(event):
 	var direction:Vector2i = get_direction(event)
 	if direction != Vector2i.ZERO:
@@ -35,7 +40,7 @@ func _input(event):
 	elif event.is_action_pressed("rewind"):
 		rewind_input()
 
-#function to return input direction of move event, if there isnt one it returns Vector2i.ZERO
+# function to return input direction of move event, if there isnt one it returns Vector2i.ZERO
 func get_direction(event)->Vector2i:
 	if event.is_action_pressed("up"):
 		return Vector2i.UP
@@ -98,40 +103,45 @@ func collect_actor(actor:Actor):
 #	if actor.is_clock:
 #		print("clock collected")
 	destroy_actor(actor)
-#function to move an actor, pass in actor to move and direction to move it
+# function to move an actor, pass in actor to move and direction to move it
 func move_actor(actor:Actor, direction:Vector2i):
 	var from_position = actor_dictionary.find_key(actor) # gets position actor is going from
 	var to_position = from_position + direction # gets position actor is going to
 	actor_dictionary[to_position] = actor_dictionary[from_position] # put actor in new position
 	actor_dictionary.erase(from_position) # remove actor from old position
 	actor_dictionary[to_position].move(map_to_local(to_position)) # visually move the actor's scene
-#function to destroy an actor
+	rewind_dictionary[actor].append(-direction) # append move direction to actor's rewind array
+# function to destroy an actor
 func destroy_actor(actor:Actor):
 	var actor_key = actor_dictionary.find_key(actor)
 	actor_dictionary.erase(actor_key)
 	remove_child(actor)
 
 
-#function to handle rewind input
+# function to handle rewind input
 func rewind_input():
 	if not rewinding:
 		start_rewind()
 	else:
 		activate_rewind()
-#function to initiate a rewind, spawns cursor
+# function to initiate a rewind, spawns cursor
 func start_rewind():
 	rewinding = true
 	rewind_cursor = cursor_packed.instantiate()
 	rewind_cursor.position = map_to_local(actor_dictionary.find_key(player))
 	add_child(rewind_cursor)
-#function to move the rewind cursor (NEEDS CHANGING)
+# function to move the rewind cursor (NEEDS CHANGING)
 func move_cursor(direction:Vector2i):
 	rewind_cursor.position += Vector2(direction*tile_set.tile_size)
 # function to rewind current target of rewind cursor
 func activate_rewind():
 	if actor_dictionary.has(local_to_map(rewind_cursor.position)):
 		var rewind_actor = actor_dictionary[local_to_map(rewind_cursor.position)]
-		print(rewind_actor)
+		if rewind_dictionary[rewind_actor].size() > 0:
+			var rewind_direction = rewind_dictionary[rewind_actor][-1]
+			try_move(rewind_actor, rewind_direction)
+			rewind_dictionary[rewind_actor].pop_back()
+			rewind_dictionary[rewind_actor].pop_back()
 	end_rewind()
 # function to remove rewind cursor, sets rewinding to false
 func end_rewind():
