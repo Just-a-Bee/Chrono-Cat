@@ -1,14 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqt6w8pjasqik"]
+[gd_scene load_steps=3 format=3 uid="uid://dqt6w8pjasqik"]
 
 [ext_resource type="Texture2D" uid="uid://cvd6rg13hiex7" path="res://assets/icon.svg" id="1_nwwy1"]
 [ext_resource type="Script" path="res://actor_files/actor.gd" id="2_f2sv8"]
-[ext_resource type="Script" path="res://actor_files/actor_components/control_component.gd" id="3_4ejvv"]
 
 [node name="Player" type="Sprite2D"]
 texture = ExtResource("1_nwwy1")
 centered = false
 script = ExtResource("2_f2sv8")
 is_player = true
-
-[node name="ControlComponent" type="Node2D" parent="."]
-script = ExtResource("3_4ejvv")

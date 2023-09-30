@@ -10,11 +10,12 @@
 [sub_resource type="TileSet" id="TileSet_e0d1f"]
 tile_size = Vector2i(128, 128)
 
-[node name="Level" type="TileMap"]
+[node name="Level" type="TileMap" node_paths=PackedStringArray("player")]
 position = Vector2(-64, -64)
 tile_set = SubResource("TileSet_e0d1f")
 format = 2
 script = ExtResource("1_i2mh4")
+player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_sgqyc")]
 position = Vector2(64, 64)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdouobihrvqsg"]
+
+[ext_resource type="Texture2D" uid="uid://bxnx73kyxodju" path="res://assets/Cursor.png" id="1_xiapj"]
+
+[node name="RewindCursor" type="Sprite2D"]
+scale = Vector2(7.11111, 7.11111)
+texture = ExtResource("1_xiapj")
+centered = false
