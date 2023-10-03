@@ -93,8 +93,9 @@ func make_move(actor:Actor, direction:Vector2i)->bool:
 	else:
 		move_actor(actor, direction)
 		actor_moved = true
+	# if a move was made, append the previous state to the undo array
 	if actor_moved:
-		undo_array.append(state) # if a move was made, append the previous state to the undo array
+		undo_array.append(state) 
 		return true
 	return false
 # function to handle when player collides with another actor
@@ -122,9 +123,9 @@ func handle_collision(target_position, push_array, direction):
 			push_array.pop_back()
 			return
 func collect_actor(actor:Actor):
-	if actor.is_objective:
+	if actor is Bed:
 		win.emit()
-	if actor.is_clock:
+	if actor is Clock:
 		rewind_uses += CLOCK_REWINDS
 	destroy_actor(actor)
 # function to move an actor, pass in actor to move and direction to move it

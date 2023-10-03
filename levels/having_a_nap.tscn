@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://level_files/level.gd" id="1_7yps3"]
 [ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_sdmuw"]
-[ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/wall.tscn" id="1_v5871"]
-[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/player.tscn" id="2_kxgch"]
-[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/bed.tscn" id="3_3dfr0"]
+[ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="1_v5871"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="2_kxgch"]
+[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="3_3dfr0"]
 
 [node name="Having a Nap" type="TileMap"]
 tile_set = ExtResource("1_sdmuw")

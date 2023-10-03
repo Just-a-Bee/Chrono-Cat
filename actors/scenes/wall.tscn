@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3gfm82yv611i"]
 
 [ext_resource type="Texture2D" uid="uid://cm3pu1crwctce" path="res://assets/Wall.png" id="1_phtjf"]
-[ext_resource type="Script" path="res://actor_files/actor.gd" id="2_g8866"]
+[ext_resource type="Script" path="res://actors/scripts/wall.gd" id="2_nyid0"]
 
 [node name="Wall" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_phtjf")
-script = ExtResource("2_g8866")
-is_wall = true
+script = ExtResource("2_nyid0")

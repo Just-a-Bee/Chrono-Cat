@@ -2,11 +2,11 @@
 
 [ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_72uaw"]
 [ext_resource type="Script" path="res://level_files/level.gd" id="2_vpe4l"]
-[ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/wall.tscn" id="3_fss30"]
-[ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/box.tscn" id="4_8ud5y"]
-[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/player.tscn" id="5_m4wmq"]
-[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/bed.tscn" id="6_1ahsa"]
-[ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/clock.tscn" id="7_hg0u3"]
+[ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="3_fss30"]
+[ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/scenes/box.tscn" id="4_8ud5y"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="5_m4wmq"]
+[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="6_1ahsa"]
+[ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/scenes/clock.tscn" id="7_hg0u3"]
 
 [node name="Chronology" type="TileMap"]
 tile_set = ExtResource("1_72uaw")

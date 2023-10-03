@@ -1,11 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bif7fbgreowou"]
 
 [ext_resource type="Texture2D" uid="uid://c20268hhfnrhf" path="res://assets/Door.png" id="1_eqxxq"]
-[ext_resource type="Script" path="res://actor_files/actor.gd" id="2_30an1"]
+[ext_resource type="Script" path="res://actors/scripts/door.gd" id="2_4wdjy"]
 
 [node name="Door" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_eqxxq")
-script = ExtResource("2_30an1")
-is_wall = true
-is_lock = true
+script = ExtResource("2_4wdjy")

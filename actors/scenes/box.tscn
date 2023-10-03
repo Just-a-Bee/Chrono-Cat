@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpvl0veqbs2re"]
 
 [ext_resource type="Texture2D" uid="uid://iu142alrwj3q" path="res://assets/Box.png" id="1_bqsu3"]
-[ext_resource type="Script" path="res://actor_files/actor.gd" id="2_ihbcb"]
+[ext_resource type="Script" path="res://actors/scripts/box.gd" id="2_5b02o"]
 
 [node name="Box" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_bqsu3")
-script = ExtResource("2_ihbcb")
+script = ExtResource("2_5b02o")

@@ -1,14 +1,6 @@
 extends Sprite2D
 class_name Actor
 
-@export var is_wall:bool
-@export var is_key:bool
-@export var is_lock:bool
-@export var is_collectable:bool
-@export var is_objective:bool
-@export var is_player:bool
-@export var is_clock:bool
-
 @onready var level:Level = get_parent()
 
 var tween:Tween = null
@@ -29,13 +21,7 @@ func move(new_position):
 	
 # function to return behavior that should happen when self collides with actor
 func collide(actor:Actor)->int:
-	if is_player and actor.is_collectable:
-		return level.COLLISION_BEHAVIORS.COLLECT
-	if is_collectable and actor.is_player:
-		return level.COLLISION_BEHAVIORS.GET_COLLECTED
-	if is_key and actor.is_lock:
-		return level.COLLISION_BEHAVIORS.DESTROY
-	if actor.is_wall:
+	if actor is Wall:
 		return level.COLLISION_BEHAVIORS.STOP
 	return level.COLLISION_BEHAVIORS.PUSH
 	
