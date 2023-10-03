@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djb7nyf3eguui"]
+
+[ext_resource type="Texture2D" uid="uid://cebi0ggqauen8" path="res://assets/Clock.png" id="1_4o68n"]
+[ext_resource type="Script" path="res://actor_files/actor.gd" id="2_clwmw"]
+
+[node name="Clock" type="Sprite2D"]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(8, 8)
+texture = ExtResource("1_4o68n")
+script = ExtResource("2_clwmw")
+is_collectable = true
+is_clock = true

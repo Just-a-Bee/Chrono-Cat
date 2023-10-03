@@ -1,0 +1,19 @@
+Individual actor scripts?
+Add more levels
+Level completion
+Saving
+Main menu
+Pause menu
+Make it so you cant move during tweens
+Many more animations, including smoother collects and destroys, win animation, player animation, etc
+
+
+Player animation idea:
+	Cat jumps from tile to tile
+		Jump up, down, left
+	Cat also has cute idle animations
+		Look around
+		Sit
+		Yawn
+		Lay down
+		Nap

@@ -6,7 +6,7 @@ signal win
 # dictionary that contains all actors and their level positions
 # keys = positions, values = actor at position
 var actor_dictionary:Dictionary
-@export var player:Node2D
+@onready var player:Actor = get_node("Player")
 
 var cursor_packed = preload("res://rewind_cursor.tscn")
 var rewind_cursor
@@ -14,25 +14,29 @@ var rewinding
 # dictionary that stores each actor and a list of its rewind positions
 # keys = actor, values = array of rewind positions
 var rewind_dictionary:Dictionary
+var rewind_uses:int = 0 # the number of times the player can use rewind
+const CLOCK_REWINDS = 3
 
 # stores a copy of game state every turn that can be reverted to
 # state is composed of [actor_dictionary, rewind_dictionary]
 var undo_array:Array[Array]
-var current_state:Array[Dictionary] = [actor_dictionary, rewind_dictionary]
+var current_state:Array = [actor_dictionary, rewind_dictionary]
 
 enum COLLISION_BEHAVIORS
 {
 	PUSH = 0,
 	STOP = 1,
 	DESTROY = 2,
-	COLLECT = 3
+	COLLECT = 3,
+	GET_COLLECTED = 4
 }
 
 func _ready():
 	#index all actors
-	for actor in get_children():
-		actor_dictionary[local_to_map(actor.position)] = actor
-		rewind_dictionary[actor] = []
+	for node in get_children():
+		if node is Actor:
+			actor_dictionary[local_to_map(node.position)] = node
+			rewind_dictionary[node] = []
 	win.connect(GameState.win_level)
 
 # function to handle all gameplay input
@@ -44,6 +48,8 @@ func _input(event):
 		undo()
 	elif event.is_action_pressed("rewind"):
 		rewind_input()
+	elif event.is_action_pressed("restart"):
+		restart()
 
 # function to return input direction of move event, if there isnt one it returns Vector2i.ZERO
 func get_direction(event)->Vector2i:
@@ -64,8 +70,9 @@ func move_input(direction):
 		move_cursor(direction)
 # actor and movement functions
 #function to try to move an actor, returns true if successfully moved
-func make_move(actor:Actor, direction:Vector2i)->void:
-	var state:Array[Dictionary] = current_state.duplicate(true) # make a copy of the current state to save to undo arr
+func make_move(actor:Actor, direction:Vector2i)->bool:
+	# make a copy of the current state to save to undo arr
+	var state:Array = [actor_dictionary.duplicate(true), rewind_dictionary.duplicate(true), rewind_uses]
 	var actor_moved:bool = false # store if an actor has been moved
 	var from_position:Vector2i = actor_dictionary.find_key(actor)
 	var to_position:Vector2i = from_position + direction
@@ -87,8 +94,9 @@ func make_move(actor:Actor, direction:Vector2i)->void:
 		move_actor(actor, direction)
 		actor_moved = true
 	if actor_moved:
-		print(state[1])
 		undo_array.append(state) # if a move was made, append the previous state to the undo array
+		return true
+	return false
 # function to handle when player collides with another actor
 func handle_collision(target_position, push_array, direction):
 	# iterate through positions until one is unoccupied, or we hit a wall and cant move
@@ -109,11 +117,15 @@ func handle_collision(target_position, push_array, direction):
 			push_array.pop_at(-1)
 		elif collision_behavior == COLLISION_BEHAVIORS.COLLECT: # actor is destroyed, a behavior happens based on actor
 			collect_actor(to_actor)
+		elif collision_behavior == COLLISION_BEHAVIORS.GET_COLLECTED: # moving actor gets collected
+			collect_actor(push_array[-1])
+			push_array.pop_back()
+			return
 func collect_actor(actor:Actor):
 	if actor.is_objective:
 		win.emit()
-#	if actor.is_clock:
-#		print("clock collected")
+	if actor.is_clock:
+		rewind_uses += CLOCK_REWINDS
 	destroy_actor(actor)
 # function to move an actor, pass in actor to move and direction to move it
 func move_actor(actor:Actor, direction:Vector2i):
@@ -132,10 +144,11 @@ func destroy_actor(actor:Actor):
 
 # function to handle rewind input
 func rewind_input():
-	if not rewinding:
-		start_rewind()
-	else:
-		activate_rewind()
+	if rewind_uses > 0:
+		if not rewinding:
+			start_rewind()
+		else:
+			activate_rewind()
 # function to initiate a rewind, spawns cursor
 func start_rewind():
 	rewinding = true
@@ -151,9 +164,11 @@ func activate_rewind():
 		var rewind_actor = actor_dictionary[local_to_map(rewind_cursor.position)]
 		if rewind_dictionary[rewind_actor].size() > 0:
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
-			make_move(rewind_actor, rewind_direction)
-			rewind_dictionary[rewind_actor].pop_back()
-			rewind_dictionary[rewind_actor].pop_back()
+			var move_made:bool = make_move(rewind_actor, rewind_direction)
+			if move_made:
+				rewind_dictionary[rewind_actor].pop_back()
+				rewind_dictionary[rewind_actor].pop_back()
+				rewind_uses -= 1
 	end_rewind()
 # function to remove rewind cursor, sets rewinding to false
 func end_rewind():
@@ -168,11 +183,16 @@ func undo():
 	if undo_array.size() > 0:
 		restore_state(undo_array[-1])
 		undo_array.pop_back()
+#function to restart the level
+func restart():
+	restore_state(undo_array[0])
 # function to revert to a previous state
-func restore_state(state:Array[Dictionary]):
+func restore_state(state:Array):
 	var restore_positions = state[0] # first entry of state is the position of every actor
 	var restore_rewinds = state[1] # second entry is each actor's rewind array
+	var restore_rewind_uses = state[2] # third entry is number of rewind uses
 	
+	# move every actor to its previous position
 	actor_dictionary.clear()
 	for restore_position in restore_positions:
 		var restore_actor = restore_positions[restore_position]
@@ -181,6 +201,10 @@ func restore_state(state:Array[Dictionary]):
 		actor_dictionary[restore_position] = restore_actor
 		restore_actor.move(map_to_local(restore_position))
 	
+	# set the rewind array for every actor to the previous one
 	rewind_dictionary.clear()
 	for actor in restore_rewinds:
 		rewind_dictionary[actor] = restore_rewinds[actor].duplicate()
+	
+	# set the number of rewind uses to previous amount
+	rewind_uses = restore_rewind_uses

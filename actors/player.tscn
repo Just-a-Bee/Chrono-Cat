@@ -5,6 +5,5 @@
 
 [node name="Player" type="Sprite2D"]
 texture = ExtResource("1_nwwy1")
-centered = false
 script = ExtResource("2_f2sv8")
 is_player = true

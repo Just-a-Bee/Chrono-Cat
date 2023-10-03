@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmsp07rhk1mif"]
+[gd_scene load_steps=8 format=3 uid="uid://bmc8qdsf1pxyt"]
 
+[ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_4dpxg"]
 [ext_resource type="Script" path="res://level_files/level.gd" id="1_i2mh4"]
 [ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/player.tscn" id="2_sgqyc"]
 [ext_resource type="PackedScene" uid="uid://bif7fbgreowou" path="res://actors/door.tscn" id="3_3mxhn"]
@@ -7,15 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/key.tscn" id="4_053y0"]
 [ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/bed.tscn" id="6_b0yku"]
 
-[sub_resource type="TileSet" id="TileSet_e0d1f"]
-tile_size = Vector2i(128, 128)
-
-[node name="Level" type="TileMap" node_paths=PackedStringArray("player")]
-position = Vector2(-64, -64)
-tile_set = SubResource("TileSet_e0d1f")
+[node name="Level" type="TileMap"]
+tile_set = ExtResource("1_4dpxg")
 format = 2
 script = ExtResource("1_i2mh4")
-player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_sgqyc")]
 position = Vector2(64, 64)

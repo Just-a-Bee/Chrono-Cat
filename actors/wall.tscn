@@ -6,6 +6,5 @@
 [node name="Wall" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_phtjf")
-centered = false
 script = ExtResource("2_g8866")
 is_wall = true

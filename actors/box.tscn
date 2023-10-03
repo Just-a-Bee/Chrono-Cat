@@ -6,5 +6,4 @@
 [node name="Box" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_bqsu3")
-centered = false
 script = ExtResource("2_ihbcb")

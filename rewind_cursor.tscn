@@ -5,4 +5,3 @@
 [node name="RewindCursor" type="Sprite2D"]
 scale = Vector2(7.11111, 7.11111)
 texture = ExtResource("1_xiapj")
-centered = false

@@ -6,6 +6,5 @@
 [node name="Key" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_hn3jn")
-centered = false
 script = ExtResource("2_qoww0")
 is_key = true

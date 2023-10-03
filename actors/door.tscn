@@ -6,7 +6,6 @@
 [node name="Door" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_eqxxq")
-centered = false
 script = ExtResource("2_30an1")
 is_wall = true
 is_lock = true

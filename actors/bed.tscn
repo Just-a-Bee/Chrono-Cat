@@ -5,6 +5,6 @@
 
 [node name="Bed" type="Sprite2D"]
 texture = ExtResource("1_pudc7")
-centered = false
 script = ExtResource("1_0asp1")
+is_collectable = true
 is_objective = true
