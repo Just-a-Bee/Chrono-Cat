@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ujejc8syiu43"]
+[gd_scene load_steps=9 format=3 uid="uid://ujejc8syiu43"]
 
 [ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="1_55y0u"]
+[ext_resource type="Script" path="res://level_files/level.gd" id="1_xolx7"]
 [ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="2_xqayr"]
 [ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/scenes/key.tscn" id="3_cu723"]
 [ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/scenes/clock.tscn" id="4_8do0e"]
@@ -10,6 +11,7 @@
 
 [node name="Locks and Keys" type="TileMap"]
 format = 2
+script = ExtResource("1_xolx7")
 
 [node name="Wall" parent="." instance=ExtResource("1_55y0u")]
 position = Vector2(320, 832)

@@ -8,7 +8,7 @@ signal win
 var actor_dictionary:Dictionary
 @onready var player:Actor = get_node("Player")
 
-var cursor_packed = preload("res://rewind_cursor.tscn")
+var cursor_packed = preload("res://level_files/rewind_cursor.tscn")
 var rewind_cursor
 var rewinding
 # dictionary that stores each actor and a list of its rewind positions
@@ -18,9 +18,8 @@ var rewind_uses:int = 0 # the number of times the player can use rewind
 const CLOCK_REWINDS = 3
 
 # stores a copy of game state every turn that can be reverted to
-# state is composed of [actor_dictionary, rewind_dictionary]
+# state is composed of [actor_dictionary, rewind_dictionary, rewind_uses]
 var undo_array:Array[Array]
-var current_state:Array = [actor_dictionary, rewind_dictionary]
 
 enum COLLISION_BEHAVIORS
 {
@@ -33,11 +32,14 @@ enum COLLISION_BEHAVIORS
 
 func _ready():
 	#index all actors
+	index_actors()
+	win.connect(GameState.win_level)
+# function to index every actor into actor dictionary
+func index_actors():
 	for node in get_children():
 		if node is Actor:
 			actor_dictionary[local_to_map(node.position)] = node
 			rewind_dictionary[node] = []
-	win.connect(GameState.win_level)
 
 # function to handle all gameplay input
 func _input(event):
@@ -62,12 +64,13 @@ func get_direction(event)->Vector2i:
 	if event.is_action_pressed("down"):
 		return Vector2i.DOWN
 	return Vector2i.ZERO
-# function to handle move direction
+# function to handle move input
 func move_input(direction):
 	if not rewinding:
 		make_move(player, direction)
 	else:
 		move_cursor(direction)
+
 # actor and movement functions
 #function to try to move an actor, returns true if successfully moved
 func make_move(actor:Actor, direction:Vector2i)->bool:
