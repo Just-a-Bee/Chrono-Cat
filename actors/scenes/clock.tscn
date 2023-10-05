@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://djb7nyf3eguui"]
 
-[ext_resource type="Texture2D" uid="uid://cebi0ggqauen8" path="res://assets/Clock.png" id="1_4o68n"]
+[ext_resource type="Texture2D" uid="uid://cebi0ggqauen8" path="res://assets/actors/Clock.png" id="1_4o68n"]
 [ext_resource type="Script" path="res://actors/scripts/clock.gd" id="2_byqf4"]
 
 [node name="Clock" type="Sprite2D"]

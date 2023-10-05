@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bif7fbgreowou"]
 
-[ext_resource type="Texture2D" uid="uid://c20268hhfnrhf" path="res://assets/Door.png" id="1_eqxxq"]
+[ext_resource type="Texture2D" uid="uid://c20268hhfnrhf" path="res://assets/actors/Door.png" id="1_eqxxq"]
 [ext_resource type="Script" path="res://actors/scripts/door.gd" id="2_4wdjy"]
 
 [node name="Door" type="Sprite2D"]

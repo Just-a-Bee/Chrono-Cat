@@ -11,13 +11,9 @@ config_version=5
 [application]
 
 config/name="Chrono Cat"
-run/main_scene="res://ui/level_select/level_select.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://assets/icon.svg"
-
-[autoload]
-
-GameState="*res://autoloads/game_state.gd"
+config/icon="res://assets/actors/icon.svg"
 
 [display]
 

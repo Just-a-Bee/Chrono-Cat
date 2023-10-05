@@ -2,7 +2,9 @@ extends Actor
 class_name Collectable
 
 #collide function for collectable class
-func collide(actor:Actor)->int:
+func collide(actor:Actor, _floor:Floor)->int:
+	if actor == null:
+		return level.COLLISION_BEHAVIORS.NONE
 	if actor is Player:
 		return level.COLLISION_BEHAVIORS.GET_COLLECTED
 	if actor is Wall:

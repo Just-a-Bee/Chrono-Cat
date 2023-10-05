@@ -1,15 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://ujejc8syiu43"]
+[gd_scene load_steps=10 format=3 uid="uid://ujejc8syiu43"]
 
 [ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="1_55y0u"]
+[ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_h611f"]
 [ext_resource type="Script" path="res://level_files/level.gd" id="1_xolx7"]
 [ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="2_xqayr"]
 [ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/scenes/key.tscn" id="3_cu723"]
 [ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/scenes/clock.tscn" id="4_8do0e"]
 [ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="5_32bky"]
 [ext_resource type="PackedScene" uid="uid://bif7fbgreowou" path="res://actors/scenes/door.tscn" id="6_0ahrl"]
-[ext_resource type="PackedScene" uid="uid://bpujfv8b66i2i" path="res://level_files/water.tscn" id="7_lvwmt"]
+[ext_resource type="PackedScene" uid="uid://bpujfv8b66i2i" path="res://floors/scenes/water.tscn" id="7_lvwmt"]
 
 [node name="Locks and Keys" type="TileMap"]
+tile_set = ExtResource("1_h611f")
 format = 2
 script = ExtResource("1_xolx7")
 
@@ -28,14 +30,26 @@ position = Vector2(1344, 448)
 [node name="Wall26" parent="." instance=ExtResource("1_55y0u")]
 position = Vector2(1472, 448)
 
-[node name="Wall27" parent="." instance=ExtResource("1_55y0u")]
-position = Vector2(1472, 576)
+[node name="Wall30" parent="." instance=ExtResource("1_55y0u")]
+position = Vector2(1600, 448)
 
-[node name="Wall28" parent="." instance=ExtResource("1_55y0u")]
+[node name="Wall31" parent="." instance=ExtResource("1_55y0u")]
+position = Vector2(1728, 448)
+
+[node name="Wall32" parent="." instance=ExtResource("1_55y0u")]
+position = Vector2(1344, 704)
+
+[node name="Wall33" parent="." instance=ExtResource("1_55y0u")]
 position = Vector2(1472, 704)
 
+[node name="Wall27" parent="." instance=ExtResource("1_55y0u")]
+position = Vector2(1728, 576)
+
+[node name="Wall28" parent="." instance=ExtResource("1_55y0u")]
+position = Vector2(1728, 704)
+
 [node name="Wall29" parent="." instance=ExtResource("1_55y0u")]
-position = Vector2(1344, 704)
+position = Vector2(1600, 704)
 
 [node name="Wall11" parent="." instance=ExtResource("1_55y0u")]
 position = Vector2(320, 576)
@@ -110,13 +124,16 @@ position = Vector2(832, 448)
 position = Vector2(960, 576)
 
 [node name="Clock" parent="." instance=ExtResource("4_8do0e")]
-position = Vector2(704, 320)
+position = Vector2(704, 704)
 
 [node name="Bed" parent="." instance=ExtResource("5_32bky")]
-position = Vector2(1344, 576)
+position = Vector2(1600, 576)
 
 [node name="Door" parent="." instance=ExtResource("6_0ahrl")]
 position = Vector2(1216, 576)
+
+[node name="Door2" parent="." instance=ExtResource("6_0ahrl")]
+position = Vector2(1472, 576)
 
 [node name="Water" parent="." instance=ExtResource("7_lvwmt")]
 position = Vector2(640, 256)

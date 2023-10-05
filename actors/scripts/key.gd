@@ -1,7 +1,9 @@
 extends Actor
 class_name Key
 
-func collide(actor:Actor)->int:
+func collide(actor:Actor, _floor:Floor)->int:
+	if actor == null:
+		return level.COLLISION_BEHAVIORS.NONE
 	if actor is Door:
 		return level.COLLISION_BEHAVIORS.DESTROY
 	if actor is Wall:

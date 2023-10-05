@@ -6,7 +6,10 @@ signal win
 # dictionary that contains all actors and their level positions
 # keys = positions, values = actor at position
 var actor_dictionary:Dictionary
+var floor_dictionary:Dictionary
 @onready var player:Actor = get_node("Player")
+
+var do_input = true
 
 var cursor_packed = preload("res://level_files/rewind_cursor.tscn")
 var rewind_cursor
@@ -23,26 +26,35 @@ var undo_array:Array[Array]
 
 enum COLLISION_BEHAVIORS
 {
-	PUSH = 0,
-	STOP = 1,
-	DESTROY = 2,
-	COLLECT = 3,
-	GET_COLLECTED = 4
+	NONE = 0,
+	PUSH = 1,
+	STOP = 2,
+	DESTROY = 3,
+	COLLECT = 4,
+	GET_COLLECTED = 5
 }
 
 func _ready():
 	#index all actors
 	index_actors()
-	win.connect(GameState.win_level)
+	index_floor()
+	win.connect(get_parent()._on_level_win)
 # function to index every actor into actor dictionary
 func index_actors():
 	for node in get_children():
 		if node is Actor:
 			actor_dictionary[local_to_map(node.position)] = node
 			rewind_dictionary[node] = []
+func index_floor():
+	for node in get_children():
+		if node is Floor:
+			floor_dictionary[local_to_map(node.position)] = node
 
 # function to handle all gameplay input
 func _input(event):
+	if not do_input:
+		return
+	
 	var direction:Vector2i = get_direction(event)
 	if direction != Vector2i.ZERO:
 		move_input(direction)
@@ -81,7 +93,7 @@ func make_move(actor:Actor, direction:Vector2i)->bool:
 	var to_position:Vector2i = from_position + direction
 	
 	# if to_position is occupied, try to push
-	if actor_dictionary.has(to_position):
+	if actor_dictionary.has(to_position) or floor_dictionary.has(to_position):
 		
 		var target_position:Vector2i = to_position # position we are checking for actors
 		var push_array:Array[Actor] = [actor]
@@ -104,12 +116,19 @@ func make_move(actor:Actor, direction:Vector2i)->bool:
 # function to handle when player collides with another actor
 func handle_collision(target_position, push_array, direction):
 	# iterate through positions until one is unoccupied, or we hit a wall and cant move
-	while(actor_dictionary.has(target_position)):
-		var to_actor = actor_dictionary[target_position]
+	while(actor_dictionary.has(target_position) or floor_dictionary.has(target_position)):
+		var to_actor:Actor = null
+		var to_floor:Floor = null
+		if actor_dictionary.has(target_position):
+			to_actor = actor_dictionary[target_position]
+		if floor_dictionary.has(target_position):
+			to_floor = floor_dictionary[target_position]
 		
-		var collision_behavior:int = push_array[-1].collide(to_actor)
+		var collision_behavior:int = push_array[-1].collide(to_actor, to_floor)
 		
-		if collision_behavior == COLLISION_BEHAVIORS.PUSH: # adds that actor to push array
+		if collision_behavior == COLLISION_BEHAVIORS.NONE:
+			return
+		elif collision_behavior == COLLISION_BEHAVIORS.PUSH: # adds that actor to push array
 			push_array.append(to_actor)
 			target_position += direction
 		elif collision_behavior == COLLISION_BEHAVIORS.STOP: # returns because move cannot go through
@@ -127,7 +146,7 @@ func handle_collision(target_position, push_array, direction):
 			return
 func collect_actor(actor:Actor):
 	if actor is Bed:
-		win.emit()
+		win_level()
 	if actor is Clock:
 		rewind_uses += CLOCK_REWINDS
 	destroy_actor(actor)
@@ -212,3 +231,7 @@ func restore_state(state:Array):
 	
 	# set the number of rewind uses to previous amount
 	rewind_uses = restore_rewind_uses
+
+func win_level():
+	win.emit()
+	do_input = false
