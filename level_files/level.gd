@@ -3,17 +3,20 @@ class_name Level
 
 signal win
 
+var do_input = true # if false, ignore all input. used during win animation
+
+# level item vars
 # dictionary that contains all actors and their level positions
+# floor dictionary contains all floor tiles and their level positions
 # keys = positions, values = actor at position
 var actor_dictionary:Dictionary
 var floor_dictionary:Dictionary
 @onready var player:Actor = get_node("Player")
 
-var do_input = true
-
-var cursor_packed = preload("res://level_files/rewind_cursor.tscn")
-var rewind_cursor
-var rewinding
+# rewind vars
+# instance of rewind cursor, added as child when rewinding
+var rewind_cursor:Node2D = preload("res://level_files/rewind_cursor.tscn").instantiate()
+var rewinding:bool = false
 # dictionary that stores each actor and a list of its rewind positions
 # keys = actor, values = array of rewind positions
 var rewind_dictionary:Dictionary
@@ -24,6 +27,7 @@ const CLOCK_REWINDS = 3
 # state is composed of [actor_dictionary, rewind_dictionary, rewind_uses]
 var undo_array:Array[Array]
 
+# list of behaviors that can happen when actors collide
 enum COLLISION_BEHAVIORS
 {
 	NONE = 0,
@@ -34,6 +38,7 @@ enum COLLISION_BEHAVIORS
 	GET_COLLECTED = 5
 }
 
+# fill vars with level information, connect signals
 func _ready():
 	#index all actors
 	index_actors()
@@ -45,6 +50,7 @@ func index_actors():
 		if node is Actor:
 			actor_dictionary[local_to_map(node.position)] = node
 			rewind_dictionary[node] = []
+# function to index every floor into floor dictionary
 func index_floor():
 	for node in get_children():
 		if node is Floor:
@@ -58,10 +64,12 @@ func _input(event):
 	var direction:Vector2i = get_direction(event)
 	if direction != Vector2i.ZERO:
 		move_input(direction)
-	elif event.is_action_pressed("undo"):
-		undo()
 	elif event.is_action_pressed("rewind"):
 		rewind_input()
+	elif event.is_action_pressed("cancel"):
+		cancel_rewind()
+	elif event.is_action_pressed("undo"):
+		undo()
 	elif event.is_action_pressed("restart"):
 		restart()
 
@@ -175,7 +183,6 @@ func rewind_input():
 # function to initiate a rewind, spawns cursor
 func start_rewind():
 	rewinding = true
-	rewind_cursor = cursor_packed.instantiate()
 	rewind_cursor.position = map_to_local(actor_dictionary.find_key(player))
 	add_child(rewind_cursor)
 # function to move the rewind cursor (NEEDS CHANGING)
@@ -193,10 +200,13 @@ func activate_rewind():
 				rewind_dictionary[rewind_actor].pop_back()
 				rewind_uses -= 1
 	end_rewind()
+# function to stop rewinding without activating it
+func cancel_rewind():
+	if rewinding:
+		end_rewind()
 # function to remove rewind cursor, sets rewinding to false
 func end_rewind():
 	remove_child(rewind_cursor)
-	rewind_cursor.queue_free()
 	rewinding = false
 
 

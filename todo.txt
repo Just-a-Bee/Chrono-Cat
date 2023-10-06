@@ -1,6 +1,4 @@
-Individual actor scripts?
 Add more levels
-Level completion
 Saving
 Main menu
 Pause menu
@@ -17,3 +15,8 @@ Player animation idea:
 		Yawn
 		Lay down
 		Nap
+
+Level script cleanups:
+	Rework cursor to not use built-in position, and to have animation
+	Clean up collision and floor functions
+	
