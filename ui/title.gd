@@ -4,6 +4,9 @@ extends Node2D
 
 const MAIN_PATH = "res://main.tscn"
 
+func _ready():
+	$Transitioner.fade_from_black()
+
 func _on_play_button_up():
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished

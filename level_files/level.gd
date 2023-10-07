@@ -2,8 +2,7 @@ extends TileMap
 class_name Level
 
 signal win
-
-var do_input = false # if false, ignore all input. used during win animation
+@onready var main = get_parent()
 
 # level item vars
 # dictionary that contains all actors and their level positions
@@ -58,7 +57,7 @@ func index_floor():
 
 # function to handle all gameplay input
 func _input(event):
-	if not do_input:
+	if not main.do_input:
 		return
 	
 	var direction:Vector2i = get_direction(event)
@@ -244,4 +243,3 @@ func restore_state(state:Array):
 
 func win_level():
 	win.emit()
-	do_input = false

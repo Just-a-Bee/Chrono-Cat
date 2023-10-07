@@ -25,5 +25,8 @@ Cleanup:
 		Clean up collision and floor functions
 		Collectables use their own script
 		Make it so you cant move during tweens
+	Main:
+		Clear level signal doesnt make sense, clear should just be called by main
+		
 
 

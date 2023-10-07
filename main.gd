@@ -3,6 +3,7 @@ extends Node2D
 #Script for state autoload, changes game state, passing data like level completions between states
 
 @onready var level_select = get_node("LevelSelect")
+const TITLE_PATH = "res://ui/title.tscn"
 
 # var to hold the current state
 var state:int = STATES.SELECT
@@ -12,22 +13,23 @@ enum STATES
 	LEVEL = 1
 }
 
-
-
 # pause vars
 var is_paused:bool = false
-
+var do_input:bool = false
 
 # vars for level state
 var current_level_name:String = ""
 var level_node
-signal clear_level
 
+# fade from black onready
 func _ready():
-	clear_level.connect(level_select._on_game_state_clear_level) # connect clear level function to level select
 	$Transitioner.fade_from_black()
-
+	await $Transitioner.animation_finished
+	do_input = true
+# function to handle main input like pausing
 func _input(event):
+	if not do_input:
+		return
 	if event.is_action_pressed("pause"):
 		pause_input()
 
@@ -40,22 +42,26 @@ func pause_input():
 
 # function to pause the game
 func pause():
-	if state == STATES.LEVEL:
-		level_node.do_input = false
 	$PauseMenu.show()
+	do_input = false
 	is_paused = true
 # function to unpause the game
 func unpause():
-	if state == STATES.LEVEL:
-		level_node.do_input = true
 	$PauseMenu.hide()
+	do_input = true
 	is_paused = false
-	
+# function to return to title screen
+func return_to_title():
+	do_input = false
+	$Transitioner.fade_to_black()
+	await $Transitioner.animation_finished
+	get_tree().change_scene_to_file(TITLE_PATH)
 
 
 # when a level is selected, open it
 func _on_level_select_open_level(level:PackedScene, level_name)->void:
 	# fade to black
+	do_input = false
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
 	#change the state
@@ -67,18 +73,20 @@ func _on_level_select_open_level(level:PackedScene, level_name)->void:
 	# fade from black
 	$Transitioner.fade_from_black()
 	await $Transitioner.animation_finished
-	level_node.do_input = true
+	do_input = true
 
 # when a level is won, show win anim, then free it and go back to level select
 func _on_level_win():
 	# do animations
+	do_input = false
 	$WinAnim.show()
 	$WinAnim.play()
 	await $WinAnim.animation_finished
-	clear_level.emit(current_level_name)
+	level_select.clear_level(current_level_name)
 	exit_level()
 # function to exit the level and return to level select
 func exit_level():
+	do_input = false
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
 	# change the state
@@ -91,3 +99,5 @@ func exit_level():
 	state = STATES.SELECT
 	# fade from black
 	$Transitioner.fade_from_black()
+	await $Transitioner.animation_finished
+	do_input = true

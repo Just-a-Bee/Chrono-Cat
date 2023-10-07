@@ -63,7 +63,6 @@ sprite_frames = SubResource("SpriteFrames_vs8j1")
 animation = &"WinAnim"
 
 [node name="Transitioner" parent="." instance=ExtResource("4_nb2yq")]
-start_showing = true
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
