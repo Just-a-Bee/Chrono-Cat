@@ -3,7 +3,7 @@ class_name Level
 
 signal win
 
-var do_input = true # if false, ignore all input. used during win animation
+var do_input = false # if false, ignore all input. used during win animation
 
 # level item vars
 # dictionary that contains all actors and their level positions

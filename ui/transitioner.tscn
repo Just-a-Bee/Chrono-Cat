@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b18s0kfnnp2ch"]
+
+[ext_resource type="Script" path="res://ui/transitioner.gd" id="1_84s1q"]
+
+[node name="Transitioner" type="Node2D"]
+z_index = 2
+script = ExtResource("1_84s1q")
+
+[node name="Fade" type="Polygon2D" parent="."]
+position = Vector2(-2688, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(2688, 0, 2304, 1088, 0, 1088, 384, 0)

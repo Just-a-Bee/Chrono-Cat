@@ -1,22 +1,29 @@
-Add more levels
-Saving
-Main menu
-Pause menu
-Make it so you cant move during tweens
-Many more animations, including smoother collects and destroys, win animation, player animation, etc
+UI:
+	Settings menu
+	Pause menu
+
+Content:
+	Saving
+	Add more levels
+	Nicer level select (mario world style?)
+
+Making the game pretty:
+	Many more animations, including smoother collects and destroys, win animation, player animation, etc
+	Player animation idea:
+		Cat jumps from tile to tile
+			Jump up, down, left
+		Cat also has cute idle animations
+			Look around
+			Sit
+			Yawn
+			Lay down
+			Nap
+
+Cleanup:
+	Level script cleanups:
+		Rework cursor to not use built-in position, and to have animation
+		Clean up collision and floor functions
+		Collectables use their own script
+		Make it so you cant move during tweens
 
 
-Player animation idea:
-	Cat jumps from tile to tile
-		Jump up, down, left
-	Cat also has cute idle animations
-		Look around
-		Sit
-		Yawn
-		Lay down
-		Nap
-
-Level script cleanups:
-	Rework cursor to not use built-in position, and to have animation
-	Clean up collision and floor functions
-	
