@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnhhm08pd2037"]
+
+[ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_kdxa5"]
+[ext_resource type="Script" path="res://level_files/level.gd" id="2_umjox"]
+[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="3_ao4al"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="4_y3y0n"]
+[ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/scenes/clock.tscn" id="5_iyuhi"]
+[ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/scenes/box.tscn" id="6_ipke1"]
+[ext_resource type="PackedScene" uid="uid://bpujfv8b66i2i" path="res://floors/scenes/water.tscn" id="7_8a4oq"]
+[ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="8_sg8f6"]
+
+[node name="In The Way" type="TileMap"]
+tile_set = ExtResource("1_kdxa5")
+format = 2
+script = ExtResource("2_umjox")
+
+[node name="Bed" parent="." instance=ExtResource("3_ao4al")]
+position = Vector2(1344, 576)
+
+[node name="Player" parent="." instance=ExtResource("4_y3y0n")]
+position = Vector2(576, 576)
+
+[node name="Clock" parent="." instance=ExtResource("5_iyuhi")]
+position = Vector2(1088, 576)
+
+[node name="Box" parent="." instance=ExtResource("6_ipke1")]
+position = Vector2(960, 704)
+
+[node name="Box2" parent="." instance=ExtResource("6_ipke1")]
+position = Vector2(960, 448)
+
+[node name="Box3" parent="." instance=ExtResource("6_ipke1")]
+position = Vector2(960, 576)
+
+[node name="Water" parent="." instance=ExtResource("7_8a4oq")]
+position = Vector2(896, 768)
+
+[node name="Wall" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(576, 320)
+
+[node name="Wall7" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(576, 192)
+
+[node name="Wall8" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(704, 192)
+
+[node name="Wall12" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(832, 192)
+
+[node name="Wall13" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(960, 192)
+
+[node name="Wall14" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1088, 192)
+
+[node name="Wall15" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1088, 320)
+
+[node name="Wall16" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(832, 960)
+
+[node name="Wall17" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(960, 960)
+
+[node name="Wall18" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1088, 960)
+
+[node name="Wall19" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1088, 832)
+
+[node name="Wall20" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1088, 704)
+
+[node name="Wall21" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1088, 448)
+
+[node name="Wall22" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1216, 448)
+
+[node name="Wall23" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1216, 704)
+
+[node name="Wall24" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1344, 704)
+
+[node name="Wall25" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1472, 448)
+
+[node name="Wall27" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1472, 576)
+
+[node name="Wall28" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1472, 704)
+
+[node name="Wall26" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(1344, 448)
+
+[node name="Wall2" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(576, 448)
+
+[node name="Wall3" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(448, 448)
+
+[node name="Wall4" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(448, 576)
+
+[node name="Wall5" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(448, 704)
+
+[node name="Wall6" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(576, 704)
+
+[node name="Wall9" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(576, 832)
+
+[node name="Wall10" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(576, 960)
+
+[node name="Wall11" parent="." instance=ExtResource("8_sg8f6")]
+position = Vector2(704, 960)

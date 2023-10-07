@@ -28,10 +28,9 @@ func _ready():
 	do_input = true
 # function to handle main input like pausing
 func _input(event):
-	if not do_input:
-		return
 	if event.is_action_pressed("pause"):
-		pause_input()
+		if do_input or is_paused:
+			pause_input()
 
 # function to handle pause button input
 func pause_input():

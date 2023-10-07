@@ -1,0 +1,160 @@
+[gd_scene load_steps=10 format=3 uid="uid://dp5opa0eowbv1"]
+
+[ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/scenes/box.tscn" id="1_3taor"]
+[ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_7i8wu"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="2_21fgy"]
+[ext_resource type="Script" path="res://level_files/level.gd" id="2_p35jx"]
+[ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="3_oex4k"]
+[ext_resource type="PackedScene" uid="uid://bif7fbgreowou" path="res://actors/scenes/door.tscn" id="4_x72pj"]
+[ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/scenes/key.tscn" id="5_77687"]
+[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="6_exvka"]
+[ext_resource type="PackedScene" uid="uid://bpujfv8b66i2i" path="res://floors/scenes/water.tscn" id="7_ygmot"]
+
+[node name="Water Wall" type="TileMap"]
+tile_set = ExtResource("1_7i8wu")
+format = 2
+script = ExtResource("2_p35jx")
+
+[node name="Box" parent="." instance=ExtResource("1_3taor")]
+position = Vector2(576, 448)
+
+[node name="Player" parent="." instance=ExtResource("2_21fgy")]
+position = Vector2(448, 832)
+
+[node name="Wall" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1600, 64)
+
+[node name="Wall2" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1472, 64)
+
+[node name="Wall3" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1344, 64)
+
+[node name="Wall4" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1216, 64)
+
+[node name="Wall5" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1088, 64)
+
+[node name="Wall6" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(960, 64)
+
+[node name="Wall15" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(832, 64)
+
+[node name="Wall16" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(704, 64)
+
+[node name="Wall17" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(576, 64)
+
+[node name="Wall18" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(448, 64)
+
+[node name="Wall19" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 64)
+
+[node name="Wall26" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1088, 960)
+
+[node name="Wall27" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(960, 960)
+
+[node name="Wall28" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(832, 960)
+
+[node name="Wall29" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(704, 960)
+
+[node name="Wall20" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1344, 960)
+
+[node name="Wall21" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1216, 960)
+
+[node name="Wall22" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1344, 832)
+
+[node name="Wall23" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1344, 704)
+
+[node name="Wall30" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 320)
+
+[node name="Wall31" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 192)
+
+[node name="Wall32" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 576)
+
+[node name="Wall33" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 448)
+
+[node name="Wall34" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 704)
+
+[node name="Wall35" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 832)
+
+[node name="Wall36" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(320, 960)
+
+[node name="Wall37" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(448, 960)
+
+[node name="Wall38" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(576, 960)
+
+[node name="Wall24" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1344, 576)
+
+[node name="Wall25" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1344, 448)
+
+[node name="Wall7" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1600, 320)
+
+[node name="Wall8" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1472, 320)
+
+[node name="Wall9" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1344, 320)
+
+[node name="Wall10" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(960, 320)
+
+[node name="Wall13" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1216, 320)
+
+[node name="Wall11" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1728, 64)
+
+[node name="Wall12" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1728, 192)
+
+[node name="Wall14" parent="." instance=ExtResource("3_oex4k")]
+position = Vector2(1728, 320)
+
+[node name="Door" parent="." instance=ExtResource("4_x72pj")]
+position = Vector2(1344, 192)
+
+[node name="Door2" parent="." instance=ExtResource("4_x72pj")]
+position = Vector2(1088, 192)
+
+[node name="Key" parent="." instance=ExtResource("5_77687")]
+position = Vector2(1088, 320)
+
+[node name="Key2" parent="." instance=ExtResource("5_77687")]
+position = Vector2(1088, 576)
+
+[node name="Bed" parent="." instance=ExtResource("6_exvka")]
+position = Vector2(1600, 192)
+
+[node name="Water" parent="." instance=ExtResource("7_ygmot")]
+position = Vector2(896, 384)
+
+[node name="Water2" parent="." instance=ExtResource("7_ygmot")]
+position = Vector2(1024, 384)
+
+[node name="Water3" parent="." instance=ExtResource("7_ygmot")]
+position = Vector2(1152, 384)

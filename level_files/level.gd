@@ -42,7 +42,7 @@ func _ready():
 	#index all actors
 	index_actors()
 	index_floor()
-	win.connect(get_parent()._on_level_win)
+	win.connect(main._on_level_win)
 # function to index every actor into actor dictionary
 func index_actors():
 	for node in get_children():
@@ -218,6 +218,7 @@ func undo():
 #function to restart the level
 func restart():
 	restore_state(undo_array[0])
+	undo_array.clear()
 # function to revert to a previous state
 func restore_state(state:Array):
 	var restore_positions = state[0] # first entry of state is the position of every actor
