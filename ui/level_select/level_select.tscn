@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dseb7xqjms3u6"]
+[gd_scene load_steps=7 format=3 uid="uid://dseb7xqjms3u6"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_ppnx8"]
-[ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_button.tscn" id="2_6b2g3"]
+[ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_select/level_button.tscn" id="2_6b2g3"]
 [ext_resource type="PackedScene" uid="uid://dtb1o8ogbu8dx" path="res://levels/chronology.tscn" id="3_5fvae"]
 [ext_resource type="PackedScene" uid="uid://lfyr65vh2gv1" path="res://levels/lock_and_key.tscn" id="4_5d44g"]
 [ext_resource type="PackedScene" uid="uid://ujejc8syiu43" path="res://levels/locks_and_keys.tscn" id="5_b8vvg"]
+[ext_resource type="PackedScene" uid="uid://dp5opa0eowbv1" path="res://levels/water_wall.tscn" id="6_egfgn"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_ppnx8")
@@ -37,3 +38,10 @@ offset_top = 128.0
 offset_right = 1024.0
 offset_bottom = 256.0
 level = ExtResource("5_b8vvg")
+
+[node name="Water wall" parent="." instance=ExtResource("2_6b2g3")]
+offset_left = 1152.0
+offset_top = 128.0
+offset_right = 1280.0
+offset_bottom = 256.0
+level = ExtResource("6_egfgn")

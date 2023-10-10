@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://main.gd" id="1_ntcjf"]
 [ext_resource type="PackedScene" uid="uid://dseb7xqjms3u6" path="res://ui/level_select/level_select.tscn" id="2_p70cs"]
 [ext_resource type="Texture2D" uid="uid://gr22k5ibboj7" path="res://assets/level_stuff/WinAnim.png" id="3_o22mr"]
-[ext_resource type="PackedScene" uid="uid://b18s0kfnnp2ch" path="res://ui/transitioner.tscn" id="4_nb2yq"]
-[ext_resource type="Script" path="res://pause_menu.gd" id="5_67t08"]
+[ext_resource type="PackedScene" uid="uid://b18s0kfnnp2ch" path="res://ui/transition/transitioner.tscn" id="4_nb2yq"]
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="5_6dq5v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4cos"]
 atlas = ExtResource("3_o22mr")
@@ -71,7 +71,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_67t08")
+script = ExtResource("5_6dq5v")
 
 [node name="Polygon2D" type="Polygon2D" parent="PauseMenu"]
 color = Color(0.203922, 0.203922, 0.203922, 1)
