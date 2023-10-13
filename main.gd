@@ -1,4 +1,5 @@
 extends Node2D
+class_name Main
 
 #Script for state autoload, changes game state, passing data like level completions between states
 
@@ -41,6 +42,7 @@ func pause_input():
 
 # function to pause the game
 func pause():
+	$PauseMenu.update_buttons()
 	$PauseMenu.show()
 	do_input = false
 	is_paused = true

@@ -50,6 +50,7 @@ animations = [{
 }]
 
 [node name="Main" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_ntcjf")
 
 [node name="LevelSelect" parent="." instance=ExtResource("2_p70cs")]

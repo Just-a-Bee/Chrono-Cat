@@ -1,11 +1,12 @@
 UI:
 	Settings menu
-	Pause menu
 
 Content:
 	Saving
 	Add more levels
 	Nicer level select (mario world style?)
+	Story intro:
+			Chrono cat wants to sleep in every bed in the world
 
 Making the game pretty:
 	Many more animations, including smoother collects and destroys, win animation, player animation, etc
@@ -25,8 +26,5 @@ Cleanup:
 		Clean up collision and floor functions
 		Collectables use their own script
 		Make it so you cant move during tweens
-	Main:
-		Clear level signal doesnt make sense, clear should just be called by main
-		
 
 

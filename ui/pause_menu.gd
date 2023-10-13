@@ -1,6 +1,12 @@
 extends Control
 
-@onready var main = get_parent()
+@onready var main:Main = get_parent()
+
+func update_buttons():
+	if main.state != main.STATES.LEVEL:
+		$VBoxContainer/ReturnToMap.hide()
+	else:
+		$VBoxContainer/ReturnToMap.show()
 
 func _on_resume_button_up():
 	main.unpause()
