@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dseb7xqjms3u6"]
+[gd_scene load_steps=8 format=3 uid="uid://dseb7xqjms3u6"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_ppnx8"]
 [ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_select/level_button.tscn" id="2_6b2g3"]
@@ -6,42 +6,58 @@
 [ext_resource type="PackedScene" uid="uid://lfyr65vh2gv1" path="res://levels/lock_and_key.tscn" id="4_5d44g"]
 [ext_resource type="PackedScene" uid="uid://ujejc8syiu43" path="res://levels/locks_and_keys.tscn" id="5_b8vvg"]
 [ext_resource type="PackedScene" uid="uid://dp5opa0eowbv1" path="res://levels/water_wall.tscn" id="6_egfgn"]
+[ext_resource type="Texture2D" uid="uid://cvd6rg13hiex7" path="res://assets/actors/icon.svg" id="7_fgmna"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_ppnx8")
 
-[node name="Having a Nap" parent="." instance=ExtResource("2_6b2g3")]
-offset_left = 128.0
-offset_top = 128.0
-offset_right = 256.0
-offset_bottom = 256.0
-text = "Having a Nap"
-
-[node name="Chronology" parent="." instance=ExtResource("2_6b2g3")]
-offset_left = 384.0
-offset_top = 128.0
-offset_right = 512.0
-offset_bottom = 256.0
-text = "Chronology"
-level = ExtResource("3_5fvae")
-
-[node name="Lock and Key" parent="." instance=ExtResource("2_6b2g3")]
-offset_left = 640.0
-offset_top = 128.0
-offset_right = 768.0
-offset_bottom = 256.0
-level = ExtResource("4_5d44g")
-
-[node name="Locks and Keys" parent="." instance=ExtResource("2_6b2g3")]
+[node name="Having a Nap" parent="." node_paths=PackedStringArray("up_button") instance=ExtResource("2_6b2g3")]
 offset_left = 896.0
-offset_top = 128.0
+offset_top = 912.0
 offset_right = 1024.0
-offset_bottom = 256.0
-level = ExtResource("5_b8vvg")
+offset_bottom = 1040.0
+up_button = NodePath("../Chronology")
 
-[node name="Water wall" parent="." instance=ExtResource("2_6b2g3")]
-offset_left = 1152.0
-offset_top = 128.0
-offset_right = 1280.0
-offset_bottom = 256.0
+[node name="Chronology" parent="." node_paths=PackedStringArray("up_button", "left_button", "down_button", "right_button") instance=ExtResource("2_6b2g3")]
+offset_left = 896.0
+offset_top = 640.0
+offset_right = 1024.0
+offset_bottom = 768.0
+level = ExtResource("3_5fvae")
+up_button = NodePath("../Water wall")
+left_button = NodePath("../Lock and Key")
+down_button = NodePath("../Having a Nap")
+right_button = NodePath("../Locks and Keys")
+
+[node name="Lock and Key" parent="." node_paths=PackedStringArray("right_button") instance=ExtResource("2_6b2g3")]
+offset_left = 560.0
+offset_top = 640.0
+offset_right = 688.0
+offset_bottom = 768.0
+level = ExtResource("4_5d44g")
+right_button = NodePath("../Chronology")
+
+[node name="Locks and Keys" parent="." node_paths=PackedStringArray("left_button") instance=ExtResource("2_6b2g3")]
+offset_left = 1216.0
+offset_top = 640.0
+offset_right = 1344.0
+offset_bottom = 768.0
+level = ExtResource("5_b8vvg")
+left_button = NodePath("../Chronology")
+
+[node name="Water wall" parent="." node_paths=PackedStringArray("down_button") instance=ExtResource("2_6b2g3")]
+offset_left = 896.0
+offset_top = 368.0
+offset_right = 1024.0
+offset_bottom = 496.0
 level = ExtResource("6_egfgn")
+down_button = NodePath("../Chronology")
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("7_fgmna")
+
+[node name="LevelTitle" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 80
+text = "Title"

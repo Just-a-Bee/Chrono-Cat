@@ -2,6 +2,7 @@ extends TileMap
 class_name Level
 
 signal win
+signal rewind_uses_changed
 @onready var main = get_parent()
 
 # level item vars
@@ -19,7 +20,7 @@ var rewinding:bool = false
 # dictionary that stores each actor and a list of its rewind positions
 # keys = actor, values = array of rewind positions
 var rewind_dictionary:Dictionary
-var rewind_uses:int = 0 # the number of times the player can use rewind
+var rewind_uses:int = 0 : set = set_rewind_uses # the number of times the player can use rewind
 const CLOCK_REWINDS = 3
 
 # stores a copy of game state every turn that can be reverted to
@@ -43,6 +44,7 @@ func _ready():
 	index_actors()
 	index_floor()
 	win.connect(main._on_level_win)
+	rewind_uses_changed.connect(main._on_rewind_uses_changed)
 # function to index every actor into actor dictionary
 func index_actors():
 	for node in get_children():
@@ -244,3 +246,9 @@ func restore_state(state:Array):
 
 func win_level():
 	win.emit()
+
+# set functions
+# function to set rewind_uses, emits a signal
+func set_rewind_uses(new_rewinds):
+	rewind_uses = new_rewinds
+	rewind_uses_changed.emit(new_rewinds)

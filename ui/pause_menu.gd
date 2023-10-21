@@ -3,6 +3,7 @@ extends Control
 @onready var main:Main = get_parent()
 
 func update_buttons():
+	$VBoxContainer/Resume.grab_focus()
 	if main.state != main.STATES.LEVEL:
 		$VBoxContainer/ReturnToMap.hide()
 	else:

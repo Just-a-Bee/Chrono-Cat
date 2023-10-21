@@ -19,7 +19,6 @@ var is_paused:bool = false
 var do_input:bool = false
 
 # vars for level state
-var current_level_name:String = ""
 var level_node
 
 # fade from black onready
@@ -60,13 +59,13 @@ func return_to_title():
 
 
 # when a level is selected, open it
-func _on_level_select_open_level(level:PackedScene, level_name)->void:
+func open_level(level:PackedScene, level_name)->void:
 	# fade to black
 	do_input = false
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
 	#change the state
-	current_level_name = level_name
+	$RewindBar.show()
 	remove_child(level_select)
 	level_node = level.instantiate()
 	add_child(level_node)
@@ -83,7 +82,7 @@ func _on_level_win():
 	$WinAnim.show()
 	$WinAnim.play()
 	await $WinAnim.animation_finished
-	level_select.clear_level(current_level_name)
+	level_select.clear_level()
 	exit_level()
 # function to exit the level and return to level select
 func exit_level():
@@ -91,14 +90,17 @@ func exit_level():
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
 	# change the state
+	$RewindBar.hide()
 	$WinAnim.hide()
 	remove_child(level_node)
 	level_node.queue_free()
 	add_child(level_select)
 	
-	current_level_name = ""
 	state = STATES.SELECT
 	# fade from black
 	$Transitioner.fade_from_black()
 	await $Transitioner.animation_finished
 	do_input = true
+
+func _on_rewind_uses_changed(new_rewinds):
+	$RewindBar.value = new_rewinds
