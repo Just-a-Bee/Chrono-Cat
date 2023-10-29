@@ -26,4 +26,7 @@ func collide(actor:Actor, _floor:Floor)->int:
 	if actor is Wall:
 		return level.COLLISION_BEHAVIORS.STOP
 	return level.COLLISION_BEHAVIORS.PUSH
-	
+
+# function to show destroying animation
+func destroy():
+	hide()

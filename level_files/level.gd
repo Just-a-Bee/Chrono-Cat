@@ -171,7 +171,7 @@ func move_actor(actor:Actor, direction:Vector2i):
 func destroy_actor(actor:Actor):
 	var actor_key = actor_dictionary.find_key(actor)
 	actor_dictionary.erase(actor_key)
-	remove_child(actor)
+	actor.destroy()
 
 
 # function to handle rewind input
@@ -231,8 +231,7 @@ func restore_state(state:Array):
 	actor_dictionary.clear()
 	for restore_position in restore_positions:
 		var restore_actor = restore_positions[restore_position]
-		if not restore_actor.is_inside_tree():
-			add_child(restore_actor)
+		restore_actor.show()
 		actor_dictionary[restore_position] = restore_actor
 		restore_actor.move(map_to_local(restore_position))
 	
