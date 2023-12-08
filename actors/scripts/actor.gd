@@ -19,6 +19,7 @@ func move(new_position):
 	tween_position = new_position
 	tween.tween_property(self, "position", tween_position, .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	
+	
 # function to return behavior that should happen when self collides with actor
 func collide(actor:Actor, _floor:Floor)->int:
 	if actor == null:

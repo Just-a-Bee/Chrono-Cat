@@ -223,6 +223,8 @@ func restart():
 	undo_array.clear()
 # function to revert to a previous state
 func restore_state(state:Array):
+	if rewinding:
+		cancel_rewind()
 	var restore_positions = state[0] # first entry of state is the position of every actor
 	var restore_rewinds = state[1] # second entry is each actor's rewind array
 	var restore_rewind_uses = state[2] # third entry is number of rewind uses
