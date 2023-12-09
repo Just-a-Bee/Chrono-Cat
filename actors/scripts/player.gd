@@ -15,7 +15,7 @@ func move(new_position):
 		flip_h = true
 	elif move_dir == Vector2.RIGHT:
 		flip_h = false
-	if frame_coords.x < 5:
+	if frame_coords.x < hframes-1:
 		frame_coords.x += 1
 	else:
 		frame_coords.x = 0
