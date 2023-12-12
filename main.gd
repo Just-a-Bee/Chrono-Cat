@@ -66,7 +66,8 @@ func open_level(level:PackedScene, level_name)->void:
 	await $Transitioner.animation_finished
 	#change the state
 	$RewindBar.value = 0
-	$RewindBar.show()
+	if Progress.rewind_unlocked:
+		$RewindBar.show()
 	remove_child(level_select)
 	level_node = level.instantiate()
 	add_child(level_node)
@@ -104,4 +105,11 @@ func exit_level():
 	do_input = true
 
 func _on_rewind_uses_changed(new_rewinds):
+	if not Progress.rewind_unlocked:
+		unlock_rewind()
 	$RewindBar.value = new_rewinds
+
+# function to show unlocking animation for rewind ability
+func unlock_rewind():
+	$RewindBar.show()
+	Progress.rewind_unlocked = true
