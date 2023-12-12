@@ -65,6 +65,7 @@ func open_level(level:PackedScene, level_name)->void:
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
 	#change the state
+	$RewindBar.value = 0
 	$RewindBar.show()
 	remove_child(level_select)
 	level_node = level.instantiate()

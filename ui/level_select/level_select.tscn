@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dseb7xqjms3u6"]
+[gd_scene load_steps=9 format=3 uid="uid://dseb7xqjms3u6"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_ppnx8"]
 [ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_select/level_button.tscn" id="2_6b2g3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ujejc8syiu43" path="res://levels/locks_and_keys.tscn" id="5_b8vvg"]
 [ext_resource type="PackedScene" uid="uid://dp5opa0eowbv1" path="res://levels/water_wall.tscn" id="6_egfgn"]
 [ext_resource type="Texture2D" uid="uid://cvd6rg13hiex7" path="res://assets/actors/icon.svg" id="7_fgmna"]
+[ext_resource type="PackedScene" uid="uid://bj8ps4cnlvo7t" path="res://levels/bulky_boxes.tscn" id="7_nj5eh"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_ppnx8")
@@ -37,21 +38,32 @@ offset_bottom = 768.0
 level = ExtResource("4_5d44g")
 right_button = NodePath("../Chronology")
 
-[node name="Locks and Keys" parent="." node_paths=PackedStringArray("left_button") instance=ExtResource("2_6b2g3")]
+[node name="Locks and Keys" parent="." node_paths=PackedStringArray("up_button", "left_button") instance=ExtResource("2_6b2g3")]
 offset_left = 1216.0
 offset_top = 640.0
 offset_right = 1344.0
 offset_bottom = 768.0
 level = ExtResource("5_b8vvg")
+up_button = NodePath("../Bulky Boxes")
 left_button = NodePath("../Chronology")
 
-[node name="Water wall" parent="." node_paths=PackedStringArray("down_button") instance=ExtResource("2_6b2g3")]
+[node name="Water wall" parent="." node_paths=PackedStringArray("down_button", "right_button") instance=ExtResource("2_6b2g3")]
 offset_left = 896.0
 offset_top = 368.0
 offset_right = 1024.0
 offset_bottom = 496.0
 level = ExtResource("6_egfgn")
 down_button = NodePath("../Chronology")
+right_button = NodePath("../Bulky Boxes")
+
+[node name="Bulky Boxes" parent="." node_paths=PackedStringArray("left_button", "down_button") instance=ExtResource("2_6b2g3")]
+offset_left = 1216.0
+offset_top = 368.0
+offset_right = 1344.0
+offset_bottom = 496.0
+level = ExtResource("7_nj5eh")
+left_button = NodePath("../Water wall")
+down_button = NodePath("../Locks and Keys")
 
 [node name="Player" type="Sprite2D" parent="."]
 texture = ExtResource("7_fgmna")

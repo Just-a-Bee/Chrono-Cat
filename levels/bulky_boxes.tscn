@@ -1,0 +1,173 @@
+[gd_scene load_steps=10 format=3 uid="uid://bj8ps4cnlvo7t"]
+
+[ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_w20tl"]
+[ext_resource type="Script" path="res://level_files/level.gd" id="2_5lrun"]
+[ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="3_fk50k"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="4_ek0qv"]
+[ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="5_fsx15"]
+[ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/scenes/key.tscn" id="5_r6rb3"]
+[ext_resource type="PackedScene" uid="uid://bif7fbgreowou" path="res://actors/scenes/door.tscn" id="6_k3lmq"]
+[ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/scenes/clock.tscn" id="7_qikcj"]
+[ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/scenes/box.tscn" id="8_ojfi6"]
+
+[node name="Bulky Boxes" type="TileMap"]
+tile_set = ExtResource("1_w20tl")
+format = 2
+script = ExtResource("2_5lrun")
+
+[node name="Wall3" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1088, 64)
+
+[node name="Wall23" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(960, 192)
+
+[node name="Wall24" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1088, 448)
+
+[node name="Wall4" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1216, 192)
+
+[node name="Wall25" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1344, 192)
+
+[node name="Wall26" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1344, 448)
+
+[node name="Wall27" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1472, 448)
+
+[node name="Wall28" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1600, 448)
+
+[node name="Wall29" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1728, 448)
+
+[node name="Wall30" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1728, 576)
+
+[node name="Wall31" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1728, 704)
+
+[node name="Wall32" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1728, 832)
+
+[node name="Wall33" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1600, 832)
+
+[node name="Wall34" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1472, 832)
+
+[node name="Wall35" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1344, 832)
+
+[node name="Wall36" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1216, 832)
+
+[node name="Wall37" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1088, 832)
+
+[node name="Wall38" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(960, 832)
+
+[node name="Wall39" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(832, 832)
+
+[node name="Wall40" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(704, 832)
+
+[node name="Wall41" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(320, 960)
+
+[node name="Wall48" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(320, 832)
+
+[node name="Wall49" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(320, 704)
+
+[node name="Wall50" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(320, 576)
+
+[node name="Wall51" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(192, 576)
+
+[node name="Wall52" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(192, 448)
+
+[node name="Wall53" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(192, 320)
+
+[node name="Wall54" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(192, 192)
+
+[node name="Wall55" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(320, 192)
+
+[node name="Wall56" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(448, 192)
+
+[node name="Wall57" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(576, 192)
+
+[node name="Wall58" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(704, 192)
+
+[node name="Wall59" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(832, 192)
+
+[node name="Wall42" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(704, 960)
+
+[node name="Wall43" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(832, 576)
+
+[node name="Wall44" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(704, 576)
+
+[node name="Wall45" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(576, 576)
+
+[node name="Wall46" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(576, 960)
+
+[node name="Wall47" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(448, 960)
+
+[node name="Wall5" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1344, 320)
+
+[node name="Wall6" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1216, 448)
+
+[node name="Wall12" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(960, 448)
+
+[node name="Wall14" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(960, 576)
+
+[node name="Wall13" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(960, 64)
+
+[node name="Wall15" parent="." instance=ExtResource("3_fk50k")]
+position = Vector2(1216, 64)
+
+[node name="Player" parent="." instance=ExtResource("4_ek0qv")]
+position = Vector2(1600, 576)
+flip_h = true
+
+[node name="Key" parent="." instance=ExtResource("5_r6rb3")]
+position = Vector2(1344, 704)
+
+[node name="Door" parent="." instance=ExtResource("6_k3lmq")]
+position = Vector2(960, 320)
+
+[node name="Clock" parent="." instance=ExtResource("7_qikcj")]
+position = Vector2(1472, 576)
+
+[node name="Box2" parent="." instance=ExtResource("8_ojfi6")]
+position = Vector2(1216, 704)
+
+[node name="Box3" parent="." instance=ExtResource("8_ojfi6")]
+position = Vector2(1472, 704)
+
+[node name="Bed" parent="." instance=ExtResource("5_fsx15")]
+position = Vector2(1088, 192)
