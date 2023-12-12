@@ -114,6 +114,7 @@ theme_override_font_sizes/font_size = 50
 text = "Settings"
 
 [node name="RewindBar" type="TextureProgressBar" parent="."]
+visible = false
 offset_left = 1728.0
 offset_top = 896.0
 offset_right = 1744.0
