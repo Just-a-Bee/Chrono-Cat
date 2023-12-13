@@ -18,6 +18,7 @@ config/icon="res://assets/actors/icon.svg"
 [autoload]
 
 Globals="*res://globals.gd"
+InputRepeat="*res://input_repeat.gd"
 
 [display]
 

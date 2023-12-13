@@ -1,8 +1,8 @@
 extends Node
 
 # settings vars
-var ARR
-var DAS
+var ARR = .3
+var DAS = .4
 
 # progress related vars
 var rewind_unlocked:bool = false
