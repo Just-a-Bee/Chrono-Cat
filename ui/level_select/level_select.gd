@@ -35,9 +35,17 @@ func direction_input(event:InputEvent):
 
 # function to select a different level
 func select_level(new_select):
+	main.do_input = false
+	
+	$LevelTitle.text = ""
 	current_level = new_select
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property($Player, "position", current_level.position, .3)
+	await tween.finished
+	
 	$LevelTitle.text = current_level.name
-	$Player.position = current_level.position
+	main.do_input = true
 
 # when main tells us a level was cleared, give that level a checkmark
 func clear_level():

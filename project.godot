@@ -17,7 +17,7 @@ config/icon="res://assets/actors/icon.svg"
 
 [autoload]
 
-Progress="*res://progress.gd"
+Globals="*res://globals.gd"
 
 [display]
 
