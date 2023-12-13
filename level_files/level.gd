@@ -74,10 +74,6 @@ func _input(event):
 	elif event.is_action_pressed("restart"):
 		restart()
 	
-	# handle input repeat
-	if is_repeatable(event):
-		start_repeat(event)
-
 # function to return input direction of move event, if there isnt one it returns Vector2i.ZERO
 func get_direction(event)->Vector2i:
 	if event.is_action_pressed("up"):
@@ -258,35 +254,5 @@ func set_rewind_uses(new_rewinds):
 	rewind_uses = new_rewinds
 	rewind_uses_changed.emit(new_rewinds)
 
-# input repeat functions
-const REPEATABLE_ACTIONS = ["up", "left", "right", "down", "undo"]
 
-var is_repeating:bool = false
-var repeat_event:InputEvent = null
-
-#input repeat functions
-#function to start repeating a repeatable input
-func handle_repeat(event:InputEvent):
-	if is_repeatable(event):
-		is_repeating = true
-		repeat_event = event
-		repeat_timer.start(Globals.DAS)
-#handle releasing of a repeat event
-func handle_repeat_release(event:InputEvent):
-	if isRepeating and not event.is_pressed() and event.is_match(repeatEvent):
-		isRepeating = false
-		repeatEvent = null
-		repeatTimer.stop()
-#function to return if an input is repeatable
-func is_repeatable(event:InputEvent)->bool:
-	if event.is_match(repeatEvent):
-		return false
-	for input in repeatableInputs:
-		if event.is_action_pressed(input):
-			return true
-	return false
-#function to create input events on repeatTimer timeout
-func _on_repeat_timer_timeout():
-	Input.parse_input_event(repeatEvent)
-	repeatTimer.start(Globals.ARR)
 

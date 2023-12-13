@@ -4,7 +4,7 @@ extends Control
 
 func update_buttons():
 	$VBoxContainer/Resume.grab_focus()
-	if main.state != main.STATES.LEVEL:
+	if Globals.state != Globals.STATES.LEVEL:
 		$VBoxContainer/ReturnToMap.hide()
 	else:
 		$VBoxContainer/ReturnToMap.show()

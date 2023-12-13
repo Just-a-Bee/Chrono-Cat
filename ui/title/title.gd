@@ -10,6 +10,7 @@ func _ready():
 func _on_play_button_up():
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
+	Globals.state = Globals.STATES.SELECT
 	get_tree().change_scene_to_file(MAIN_PATH)
 
 

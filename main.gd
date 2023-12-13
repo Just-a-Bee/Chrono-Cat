@@ -4,15 +4,9 @@ class_name Main
 #Script for state autoload, changes game state, passing data like level completions between states
 
 @onready var level_select = get_node("LevelSelect")
-const TITLE_PATH = "res://ui/title.tscn"
+const TITLE_PATH = "res://ui/title/title.tscn"
 
-# var to hold the current state
-var state:int = STATES.SELECT
-enum STATES
-{
-	SELECT = 0,
-	LEVEL = 1
-}
+
 
 # pause vars
 var is_paused:bool = false
@@ -55,6 +49,7 @@ func return_to_title():
 	do_input = false
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
+	Globals.state = Globals.STATES.TITLE
 	get_tree().change_scene_to_file(TITLE_PATH)
 
 
@@ -71,7 +66,7 @@ func open_level(level:PackedScene, level_name)->void:
 	remove_child(level_select)
 	level_node = level.instantiate()
 	add_child(level_node)
-	state = STATES.LEVEL
+	Globals.state = Globals.STATES.LEVEL
 	# fade from black
 	$Transitioner.fade_from_black()
 	await $Transitioner.animation_finished
@@ -98,7 +93,7 @@ func exit_level():
 	level_node.queue_free()
 	add_child(level_select)
 	
-	state = STATES.SELECT
+	Globals.state = Globals.STATES.SELECT
 	# fade from black
 	$Transitioner.fade_from_black()
 	await $Transitioner.animation_finished
@@ -112,4 +107,4 @@ func _on_rewind_uses_changed(new_rewinds):
 # function to show unlocking animation for rewind ability
 func unlock_rewind():
 	$RewindBar.show()
-	Progress.rewind_unlocked = true
+	Globals.rewind_unlocked = true
