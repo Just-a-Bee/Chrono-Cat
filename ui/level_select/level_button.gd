@@ -1,15 +1,13 @@
-extends Control
+extends MapNode
 
-@onready var level_select = get_parent()
 @export var level:PackedScene
+@export var level_number:int = 0
 
-# vars for adjacent elements
-@export var up_button:Node
-@export var left_button:Node
-@export var down_button:Node
-@export var right_button:Node
+func _ready():
+	$LevelNumber.text = str(level_number)
 
 func _on_button_up():
 	get_parent().open_level.emit(level, name)
 func clear():
-	get_node("Check").show()
+	$CompleteSprite.show()
+	unlock_adjacent()

@@ -1,72 +1,130 @@
-[gd_scene load_steps=9 format=3 uid="uid://dseb7xqjms3u6"]
+[gd_scene load_steps=19 format=3 uid="uid://dseb7xqjms3u6"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_ppnx8"]
 [ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_select/level_button.tscn" id="2_6b2g3"]
 [ext_resource type="PackedScene" uid="uid://dtb1o8ogbu8dx" path="res://levels/chronology.tscn" id="3_5fvae"]
+[ext_resource type="PackedScene" uid="uid://bi3qwfkkihawt" path="res://ui/level_select/map_position.tscn" id="3_5otd6"]
+[ext_resource type="PackedScene" uid="uid://unywfgkfgxtk" path="res://levels/having_a_nap.tscn" id="3_mtalg"]
 [ext_resource type="PackedScene" uid="uid://lfyr65vh2gv1" path="res://levels/lock_and_key.tscn" id="4_5d44g"]
 [ext_resource type="PackedScene" uid="uid://ujejc8syiu43" path="res://levels/locks_and_keys.tscn" id="5_b8vvg"]
 [ext_resource type="PackedScene" uid="uid://dp5opa0eowbv1" path="res://levels/water_wall.tscn" id="6_egfgn"]
-[ext_resource type="Texture2D" uid="uid://cvd6rg13hiex7" path="res://assets/actors/icon.svg" id="7_fgmna"]
 [ext_resource type="PackedScene" uid="uid://bj8ps4cnlvo7t" path="res://levels/bulky_boxes.tscn" id="7_nj5eh"]
+[ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Cat.png" id="8_828dk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kal7i"]
+atlas = ExtResource("8_828dk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07xp1"]
+atlas = ExtResource("8_828dk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vojwp"]
+atlas = ExtResource("8_828dk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv7bg"]
+atlas = ExtResource("8_828dk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_els4d"]
+atlas = ExtResource("8_828dk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jwnk"]
+atlas = ExtResource("8_828dk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po1ws"]
+atlas = ExtResource("8_828dk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bwar7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kal7i")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07xp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vojwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv7bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_els4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jwnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po1ws")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_ppnx8")
 
-[node name="Having a Nap" parent="." node_paths=PackedStringArray("up_button") instance=ExtResource("2_6b2g3")]
-offset_left = 896.0
-offset_top = 912.0
-offset_right = 1024.0
-offset_bottom = 1040.0
-up_button = NodePath("../Chronology")
+[node name="Having a Nap" parent="." node_paths=PackedStringArray("up_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(832, 960)
+level = ExtResource("3_mtalg")
+unlocked = true
+up_node = NodePath("../Chronology")
 
-[node name="Chronology" parent="." node_paths=PackedStringArray("up_button", "left_button", "down_button", "right_button") instance=ExtResource("2_6b2g3")]
-offset_left = 896.0
-offset_top = 640.0
-offset_right = 1024.0
-offset_bottom = 768.0
+[node name="Chronology" parent="." node_paths=PackedStringArray("left_node", "down_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(832, 704)
 level = ExtResource("3_5fvae")
-up_button = NodePath("../Water wall")
-left_button = NodePath("../Lock and Key")
-down_button = NodePath("../Having a Nap")
-right_button = NodePath("../Locks and Keys")
+level_number = 1
+left_node = NodePath("../Water wall")
+down_node = NodePath("../Having a Nap")
 
-[node name="Lock and Key" parent="." node_paths=PackedStringArray("right_button") instance=ExtResource("2_6b2g3")]
-offset_left = 560.0
-offset_top = 640.0
-offset_right = 688.0
-offset_bottom = 768.0
+[node name="Lock and Key" parent="." node_paths=PackedStringArray("up_node", "down_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(576, 448)
 level = ExtResource("4_5d44g")
-right_button = NodePath("../Chronology")
+level_number = 3
+up_node = NodePath("../Bulky Boxes")
+down_node = NodePath("../Water wall")
 
-[node name="Locks and Keys" parent="." node_paths=PackedStringArray("up_button", "left_button") instance=ExtResource("2_6b2g3")]
-offset_left = 1216.0
-offset_top = 640.0
-offset_right = 1344.0
-offset_bottom = 768.0
+[node name="Locks and Keys" parent="." node_paths=PackedStringArray("left_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(832, 192)
 level = ExtResource("5_b8vvg")
-up_button = NodePath("../Bulky Boxes")
-left_button = NodePath("../Chronology")
+level_number = 5
+left_node = NodePath("../Bulky Boxes")
 
-[node name="Water wall" parent="." node_paths=PackedStringArray("down_button", "right_button") instance=ExtResource("2_6b2g3")]
-offset_left = 896.0
-offset_top = 368.0
-offset_right = 1024.0
-offset_bottom = 496.0
+[node name="Water wall" parent="." node_paths=PackedStringArray("up_node", "right_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(576, 704)
 level = ExtResource("6_egfgn")
-down_button = NodePath("../Chronology")
-right_button = NodePath("../Bulky Boxes")
+level_number = 2
+up_node = NodePath("../Lock and Key")
+right_node = NodePath("../Chronology")
 
-[node name="Bulky Boxes" parent="." node_paths=PackedStringArray("left_button", "down_button") instance=ExtResource("2_6b2g3")]
-offset_left = 1216.0
-offset_top = 368.0
-offset_right = 1344.0
-offset_bottom = 496.0
+[node name="Bulky Boxes" parent="." node_paths=PackedStringArray("down_node", "right_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(576, 192)
 level = ExtResource("7_nj5eh")
-left_button = NodePath("../Water wall")
-down_button = NodePath("../Locks and Keys")
+level_number = 4
+down_node = NodePath("../Lock and Key")
+right_node = NodePath("../Locks and Keys")
 
-[node name="Player" type="Sprite2D" parent="."]
-texture = ExtResource("7_fgmna")
+[node name="StartPos" parent="." node_paths=PackedStringArray("right_node") instance=ExtResource("3_5otd6")]
+position = Vector2(576, 960)
+unlocked = true
+right_node = NodePath("../Having a Nap")
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_bwar7")
+animation = &"walk"
 
 [node name="LevelTitle" type="Label" parent="."]
 offset_right = 1920.0
