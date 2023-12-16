@@ -24,4 +24,4 @@ func _on_return_to_title_button_up():
 
 
 func _on_settings_button_up():
-	pass
+	main.show_settings()

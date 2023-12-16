@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctd8xi6wdx1h"]
+[gd_scene load_steps=15 format=3 uid="uid://ctd8xi6wdx1h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ntcjf"]
 [ext_resource type="PackedScene" uid="uid://dseb7xqjms3u6" path="res://ui/level_select/level_select.tscn" id="2_p70cs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="5_6dq5v"]
 [ext_resource type="Texture2D" uid="uid://d12eu17xjnlxf" path="res://assets/level_stuff/RewindBarEmpty.png" id="6_mr47i"]
 [ext_resource type="Texture2D" uid="uid://cmkwnxyfnp7xa" path="res://assets/level_stuff/RewindBarFull.png" id="7_8wg3w"]
+[ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4cos"]
 atlas = ExtResource("3_o22mr")
@@ -123,6 +124,10 @@ max_value = 3.0
 fill_mode = 4
 texture_under = ExtResource("6_mr47i")
 texture_progress = ExtResource("7_8wg3w")
+
+[node name="SettingsMenu" parent="." instance=ExtResource("8_or1rc")]
+visible = false
+z_index = 4
 
 [connection signal="button_up" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_button_up"]
 [connection signal="button_up" from="PauseMenu/VBoxContainer/ReturnToMap" to="PauseMenu" method="_on_return_to_map_button_up"]

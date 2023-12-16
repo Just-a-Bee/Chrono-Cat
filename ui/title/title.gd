@@ -15,7 +15,7 @@ func _on_play_button_up():
 
 
 func _on_settings_button_up():
-	pass
+	$SettingsMenu.show()
 
 
 func _on_quit_button_up():

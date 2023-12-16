@@ -10,6 +10,7 @@ const TITLE_PATH = "res://ui/title/title.tscn"
 
 # pause vars
 var is_paused:bool = false
+var is_settings:bool = false
 var do_input:bool = false
 
 # vars for level state
@@ -29,7 +30,10 @@ func _input(event):
 # function to handle pause button input
 func pause_input():
 	if is_paused:
-		unpause()
+		if is_settings:
+			hide_settings()
+		else:
+			unpause()
 	else:
 		pause()
 
@@ -108,3 +112,11 @@ func _on_rewind_uses_changed(new_rewinds):
 func unlock_rewind():
 	$RewindBar.show()
 	Globals.rewind_unlocked = true
+
+
+func show_settings():
+	$SettingsMenu.show()
+	is_settings = true
+func hide_settings():
+	$SettingsMenu.hide()
+	is_settings = false
