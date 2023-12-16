@@ -9,6 +9,7 @@
 script = ExtResource("1_ksjlk")
 
 [node name="Title" type="Sprite2D" parent="."]
+texture_filter = 3
 position = Vector2(960, 245)
 scale = Vector2(7.59322, 7.11111)
 texture = ExtResource("2_g6b56")

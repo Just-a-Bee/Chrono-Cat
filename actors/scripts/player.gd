@@ -3,6 +3,7 @@ class_name Player
 
 const SLEEP_1 = Vector2(0,1)
 
+var tween_to_position:Vector2 = position
 
 func _ready():
 	super._ready()
@@ -18,7 +19,7 @@ func collide(actor:Actor, floor:Floor)->int:
 
 func move(new_position):
 	super.move(new_position)
-	var move_dir:Vector2 = (new_position - position).normalized()
+	var move_dir:Vector2 = (new_position - tween_to_position).normalized()
 	if move_dir == Vector2.LEFT:
 		flip_h = true
 	elif move_dir == Vector2.RIGHT:
@@ -27,6 +28,7 @@ func move(new_position):
 		frame_coords.x += 1
 	else:
 		frame_coords.x = 0
+	tween_to_position = new_position
 
 func _on_level_win():
 	await get_tree().create_timer(.3).timeout

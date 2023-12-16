@@ -15,7 +15,8 @@ var floor_dictionary:Dictionary
 
 # rewind vars
 # instance of rewind cursor, added as child when rewinding
-var rewind_cursor:Node2D = preload("res://level_files/rewind_cursor.tscn").instantiate()
+var rewind_cursor_packed:PackedScene = preload("res://level_files/rewind_cursor.tscn")
+var rewind_cursor:Node2D = null
 var rewinding:bool = false
 var cursor_pos:Vector2i = Vector2i.ZERO
 # dictionary that stores each actor and a list of its rewind positions
@@ -46,7 +47,7 @@ func _ready():
 	index_floor()
 	win.connect(main._on_level_win)
 	rewind_uses_changed.connect(main._on_rewind_uses_changed)
-	add_child(rewind_cursor)
+
 # function to index every actor into actor dictionary
 func index_actors():
 	for node in get_children():
@@ -187,6 +188,8 @@ func rewind_input():
 # function to initiate a rewind, spawns cursor
 func start_rewind():
 	rewinding = true
+	rewind_cursor = rewind_cursor_packed.instantiate()
+	add_child(rewind_cursor)
 	cursor_pos = actor_dictionary.find_key(player)
 	rewind_cursor.position = map_to_local(cursor_pos)
 	rewind_cursor.show()
@@ -214,6 +217,8 @@ func cancel_rewind():
 func end_rewind():
 	rewind_cursor.hide()
 	rewinding = false
+	remove_child(rewind_cursor)
+	rewind_cursor.queue_free()
 
 
 # other functions
