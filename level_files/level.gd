@@ -192,9 +192,7 @@ func start_rewind():
 # function to move the rewind cursor (NEEDS CHANGING)
 func move_cursor(direction:Vector2i):
 	cursor_pos += direction
-	# animate cursor movement
-	var tween = get_tree().create_tween()
-	tween.tween_property(rewind_cursor, "position", map_to_local(cursor_pos), .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	rewind_cursor.move(map_to_local(cursor_pos))
 # function to rewind current target of rewind cursor
 func activate_rewind():
 	if actor_dictionary.has(cursor_pos):
