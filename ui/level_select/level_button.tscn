@@ -6,9 +6,11 @@
 
 [node name="LevelSprite" type="Sprite2D"]
 position = Vector2(8.58307e-06, 8.58307e-06)
-scale = Vector2(10.6667, 10.6667)
+scale = Vector2(8, 8)
 texture = ExtResource("3_nmnny")
 script = ExtResource("1_g5ee8")
+level_number = null
+unlocked = null
 
 [node name="CompleteSprite" type="Sprite2D" parent="."]
 visible = false

@@ -76,11 +76,12 @@ animations = [{
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_ppnx8")
 
-[node name="Having a Nap" parent="." node_paths=PackedStringArray("up_node") instance=ExtResource("2_6b2g3")]
+[node name="Having a Nap" parent="." node_paths=PackedStringArray("up_node", "left_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(832, 960)
 level = ExtResource("3_mtalg")
 unlocked = true
 up_node = NodePath("../Chronology")
+left_node = NodePath("../StartPos")
 
 [node name="Chronology" parent="." node_paths=PackedStringArray("left_node", "down_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(832, 704)

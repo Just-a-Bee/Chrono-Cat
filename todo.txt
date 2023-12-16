@@ -2,6 +2,7 @@ UI:
 	Settings menu
 
 Content:
+	Redesign Chronology to tutorialize better
 	Tutorial
 	Saving
 	Add more levels
@@ -21,7 +22,5 @@ Cleanup:
 		Clean up collision and floor functions
 		Collectables use their own script
 		Make it so you cant move during tweens
-	Level button:
-		rename to something better
 
 
