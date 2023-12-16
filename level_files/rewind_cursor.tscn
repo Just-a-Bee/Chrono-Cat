@@ -5,11 +5,13 @@
 [ext_resource type="Script" path="res://level_files/rewind_cursor.gd" id="2_bni1v"]
 
 [node name="RewindCursor" type="Sprite2D"]
+visible = false
 scale = Vector2(8, 8)
 texture = ExtResource("1_xiapj")
 script = ExtResource("2_bni1v")
 
 [node name="Arrow" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_08ijm")
 offset = Vector2(16, 0)
 flip_h = true
