@@ -17,6 +17,7 @@ var floor_dictionary:Dictionary
 # instance of rewind cursor, added as child when rewinding
 var rewind_cursor:Node2D = preload("res://level_files/rewind_cursor.tscn").instantiate()
 var rewinding:bool = false
+var cursor_pos:Vector2i = Vector2i.ZERO
 # dictionary that stores each actor and a list of its rewind positions
 # keys = actor, values = array of rewind positions
 var rewind_dictionary:Dictionary
@@ -45,6 +46,7 @@ func _ready():
 	index_floor()
 	win.connect(main._on_level_win)
 	rewind_uses_changed.connect(main._on_rewind_uses_changed)
+	add_child(rewind_cursor)
 # function to index every actor into actor dictionary
 func index_actors():
 	for node in get_children():
@@ -184,15 +186,19 @@ func rewind_input():
 # function to initiate a rewind, spawns cursor
 func start_rewind():
 	rewinding = true
-	rewind_cursor.position = map_to_local(actor_dictionary.find_key(player))
-	add_child(rewind_cursor)
+	cursor_pos = actor_dictionary.find_key(player)
+	rewind_cursor.position = map_to_local(cursor_pos)
+	rewind_cursor.show()
 # function to move the rewind cursor (NEEDS CHANGING)
 func move_cursor(direction:Vector2i):
-	rewind_cursor.position += Vector2(direction*tile_set.tile_size)
+	cursor_pos += direction
+	# animate cursor movement
+	var tween = get_tree().create_tween()
+	tween.tween_property(rewind_cursor, "position", map_to_local(cursor_pos), .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 # function to rewind current target of rewind cursor
 func activate_rewind():
-	if actor_dictionary.has(local_to_map(rewind_cursor.position)):
-		var rewind_actor = actor_dictionary[local_to_map(rewind_cursor.position)]
+	if actor_dictionary.has(cursor_pos):
+		var rewind_actor = actor_dictionary[cursor_pos]
 		if rewind_dictionary[rewind_actor].size() > 0:
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
 			var move_made:bool = make_move(rewind_actor, rewind_direction)
@@ -207,7 +213,7 @@ func cancel_rewind():
 		end_rewind()
 # function to remove rewind cursor, sets rewinding to false
 func end_rewind():
-	remove_child(rewind_cursor)
+	rewind_cursor.hide()
 	rewinding = false
 
 
