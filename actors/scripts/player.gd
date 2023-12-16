@@ -1,6 +1,14 @@
 extends Actor
 class_name Player
 
+const SLEEP_1 = Vector2(0,1)
+
+
+func _ready():
+	super._ready()
+	level.win.connect(_on_level_win)
+
+
 func collide(actor:Actor, floor:Floor)->int:
 	if actor is Wall or floor is Water:
 		return level.COLLISION_BEHAVIORS.STOP
@@ -19,3 +27,9 @@ func move(new_position):
 		frame_coords.x += 1
 	else:
 		frame_coords.x = 0
+
+func _on_level_win():
+	await get_tree().create_timer(.3).timeout
+	frame_coords = SLEEP_1
+	await get_tree().create_timer(.5).timeout
+	frame_coords.x += 1

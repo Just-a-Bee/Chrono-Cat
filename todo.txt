@@ -1,5 +1,5 @@
 UI:
-	Settings menu
+	Make settings work
 
 Content:
 	Redesign Chronology to tutorialize better
@@ -18,7 +18,6 @@ Making the game pretty:
 
 Cleanup:
 	Level script cleanups:
-		Rework cursor to not use built-in position, and to have animation
 		Clean up collision and floor functions
 		Collectables use their own script
 		Make it so you cant move during tweens

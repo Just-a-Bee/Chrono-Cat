@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://actors/scripts/bed.gd" id="2_kn4us"]
 
 [node name="Bed" type="Sprite2D"]
+z_index = -1
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(8, 8)
 texture = ExtResource("1_h70p3")

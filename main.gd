@@ -80,7 +80,7 @@ func open_level(level:PackedScene, level_name)->void:
 func _on_level_win():
 	# do animations
 	do_input = false
-	$WinAnim.show()
+	#$WinAnim.show()
 	$WinAnim.play()
 	await $WinAnim.animation_finished
 	level_select.clear_level()

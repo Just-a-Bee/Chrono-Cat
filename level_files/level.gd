@@ -158,6 +158,7 @@ func handle_collision(target_position, push_array, direction):
 func collect_actor(actor:Actor):
 	if actor is Bed:
 		win_level()
+		
 	if actor is Clock:
 		rewind_uses += CLOCK_REWINDS
 	destroy_actor(actor)
