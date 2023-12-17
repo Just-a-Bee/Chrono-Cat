@@ -192,33 +192,32 @@ func start_rewind():
 	add_child(rewind_cursor)
 	cursor_pos = actor_dictionary.find_key(player)
 	rewind_cursor.position = map_to_local(cursor_pos)
-	rewind_cursor.show()
+	rewind_cursor.appear()
 # function to move the rewind cursor (NEEDS CHANGING)
 func move_cursor(direction:Vector2i):
 	cursor_pos += direction
 	rewind_cursor.move(map_to_local(cursor_pos))
 # function to rewind current target of rewind cursor
 func activate_rewind():
+	var move_made:bool
 	if actor_dictionary.has(cursor_pos):
 		var rewind_actor = actor_dictionary[cursor_pos]
 		if rewind_dictionary[rewind_actor].size() > 0:
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
-			var move_made:bool = make_move(rewind_actor, rewind_direction)
+			move_made = make_move(rewind_actor, rewind_direction)
 			if move_made:
 				rewind_dictionary[rewind_actor].pop_back()
 				rewind_dictionary[rewind_actor].pop_back()
 				rewind_uses -= 1
-	end_rewind()
+	end_rewind(move_made)
 # function to stop rewinding without activating it
 func cancel_rewind():
 	if rewinding:
 		end_rewind()
 # function to remove rewind cursor, sets rewinding to false
-func end_rewind():
-	rewind_cursor.hide()
+func end_rewind(did_rewind:bool = false):
+	rewind_cursor.disappear(did_rewind)
 	rewinding = false
-	remove_child(rewind_cursor)
-	rewind_cursor.queue_free()
 
 
 # other functions

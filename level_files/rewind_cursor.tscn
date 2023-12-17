@@ -5,8 +5,7 @@
 [ext_resource type="Script" path="res://level_files/rewind_cursor.gd" id="2_bni1v"]
 
 [node name="RewindCursor" type="Sprite2D"]
-visible = false
-scale = Vector2(8, 8)
+scale = Vector2(8, 1e-05)
 texture = ExtResource("1_xiapj")
 script = ExtResource("2_bni1v")
 

@@ -1,15 +1,36 @@
 extends Sprite2D
 
+const APPEAR_TIME = .1
+const MOVE_TIME = .3
 
 @onready var level:Level = get_parent()
 
-func _ready():
-	pass
+func appear():
+	show()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale:y", scale.x, APPEAR_TIME).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+
+func disappear(did_rewind:bool):
+	if did_rewind:
+		hide()
+		get_parent().remove_child(self)
+		queue_free()
+	else:
+		close()
+
+func close():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale:y", 0, APPEAR_TIME).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	hide()
+	get_parent().remove_child(self)
+	queue_free()
+
 #does not move actor in level's base, just moves the appearance of the actor, called by level
 func move(new_position):
 	$Arrow.hide()
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", new_position, .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", new_position, MOVE_TIME).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	$ArrowTimer.start()
 
 # function to update cursor's arrow indicator
