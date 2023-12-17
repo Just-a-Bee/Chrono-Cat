@@ -17,7 +17,7 @@ offset = Vector2(16, 0)
 flip_h = true
 
 [node name="ArrowTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="ArrowTimer" to="." method="_on_arrow_timer_timeout"]
