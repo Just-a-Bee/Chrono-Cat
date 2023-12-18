@@ -17,7 +17,6 @@ Making the game pretty:
 	Two frame per step tail swoosh?
 
 Bugs:
-	Chrono cat steps every undo
 	Weird double opening of level? (rare)
 
 Cleanup:

@@ -106,7 +106,7 @@ func exit_level():
 
 # function to update the value displayed on the rewind bar, if initial unlock, play animation
 func _on_rewind_uses_changed(new_rewinds):
-	if not Globals.rewind_unlocked:
+	if not Globals.rewind_unlocked and new_rewinds > 0:
 		unlock_rewind()
 	else:
 		var tween = get_tree().create_tween()
