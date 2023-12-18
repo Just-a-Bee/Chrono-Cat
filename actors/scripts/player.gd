@@ -19,6 +19,9 @@ func collide(actor:Actor, floor:Floor)->int:
 
 func move(new_position):
 	super.move(new_position)
+	# if not actually moving, dont do anything
+	if new_position == tween_to_position:
+		return
 	var move_dir:Vector2 = (new_position - tween_to_position).normalized()
 	if move_dir == Vector2.LEFT:
 		flip_h = true

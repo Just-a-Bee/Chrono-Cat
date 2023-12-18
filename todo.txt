@@ -18,6 +18,7 @@ Making the game pretty:
 
 Bugs:
 	Chrono cat steps every undo
+	Weird double opening of level? (rare)
 
 Cleanup:
 	Level script cleanups:
