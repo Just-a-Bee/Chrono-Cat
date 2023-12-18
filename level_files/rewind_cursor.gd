@@ -1,9 +1,10 @@
 extends Node2D
 
-const APPEAR_TIME = .1
 const MOVE_TIME = .3
 
 @onready var level:Level = get_parent()
+var arrow_shown:bool = false
+
 
 func appear():
 	show()
@@ -23,7 +24,9 @@ func disappear(did_rewind:bool):
 
 #does not move actor in level's base, just moves the appearance of the actor, called by level
 func move(new_position):
-	$Arrow.hide()
+	if arrow_shown:
+		$AnimationPlayer.play("hide_arrow")
+		arrow_shown = false
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", new_position, MOVE_TIME).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	$ArrowTimer.start()
@@ -36,6 +39,7 @@ func update_arrow():
 			var rewind_direction = level.rewind_dictionary[hovered_actor][-1]
 			set_arrow_rotation(rewind_direction)
 			$AnimationPlayer.play("show_arrow")
+			arrow_shown = true
 
 func set_arrow_rotation(direction:Vector2i):
 	if direction == Vector2i.RIGHT:
