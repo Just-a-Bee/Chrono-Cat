@@ -12,7 +12,7 @@ func _ready():
 
 # handle level select inputs
 func _input(event):
-	if not main.do_input:
+	if main.do_input == false or Globals.state != Globals.STATES.SELECT:
 		return
 	direction_input(event)
 	if event.is_action_pressed("ui_accept"):

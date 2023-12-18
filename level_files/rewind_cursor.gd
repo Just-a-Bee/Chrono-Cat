@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 const APPEAR_TIME = .1
 const MOVE_TIME = .3
@@ -7,22 +7,17 @@ const MOVE_TIME = .3
 
 func appear():
 	show()
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale:y", scale.x, APPEAR_TIME).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	$AnimationPlayer.play("appear")
+	$ArrowTimer.start()
 
 func disappear(did_rewind:bool):
 	if did_rewind:
-		hide()
-		get_parent().remove_child(self)
-		queue_free()
+		$AnimationPlayer.play("rewind")
+		var particle_time = $GPUParticles2D.lifetime
+		await get_tree().create_timer(particle_time).timeout
 	else:
-		close()
-
-func close():
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale:y", 0, APPEAR_TIME).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-	await tween.finished
-	hide()
+		$AnimationPlayer.play_backwards("appear")
+		await $AnimationPlayer.animation_finished
 	get_parent().remove_child(self)
 	queue_free()
 
@@ -40,7 +35,7 @@ func update_arrow():
 		if level.rewind_dictionary[hovered_actor].size() > 0:
 			var rewind_direction = level.rewind_dictionary[hovered_actor][-1]
 			set_arrow_rotation(rewind_direction)
-			$Arrow.show()
+			$AnimationPlayer.play("show_arrow")
 
 func set_arrow_rotation(direction:Vector2i):
 	if direction == Vector2i.RIGHT:

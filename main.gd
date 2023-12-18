@@ -6,12 +6,10 @@ class_name Main
 @onready var level_select = get_node("LevelSelect")
 const TITLE_PATH = "res://ui/title/title.tscn"
 
-
-
 # pause vars
 var is_paused:bool = false
 var is_settings:bool = false
-var do_input:bool = false
+@export var do_input:bool = false
 
 # vars for level state
 var level_node
@@ -21,6 +19,7 @@ func _ready():
 	$Transitioner.fade_from_black()
 	await $Transitioner.animation_finished
 	do_input = true
+
 # function to handle main input like pausing
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -43,11 +42,13 @@ func pause():
 	$PauseMenu.show()
 	do_input = false
 	is_paused = true
+
 # function to unpause the game
 func unpause():
 	$PauseMenu.hide()
 	do_input = true
 	is_paused = false
+
 # function to return to title screen
 func return_to_title():
 	do_input = false
@@ -67,7 +68,7 @@ func open_level(level:PackedScene, level_name)->void:
 	$RewindBar.value = 0
 	if Globals.rewind_unlocked:
 		$RewindBar.show()
-	remove_child(level_select)
+	level_select.hide()
 	level_node = level.instantiate()
 	add_child(level_node)
 	Globals.state = Globals.STATES.LEVEL
@@ -95,7 +96,7 @@ func exit_level():
 	$WinAnim.hide()
 	remove_child(level_node)
 	level_node.queue_free()
-	add_child(level_select)
+	level_select.show()
 	
 	Globals.state = Globals.STATES.SELECT
 	# fade from black
@@ -103,15 +104,17 @@ func exit_level():
 	await $Transitioner.animation_finished
 	do_input = true
 
+# function to update the value displayed on the rewind bar, if initial unlock, play animation
 func _on_rewind_uses_changed(new_rewinds):
 	if not Globals.rewind_unlocked:
 		unlock_rewind()
-	var tween = get_tree().create_tween()
-	tween.tween_property($RewindBar, "value", new_rewinds, .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	else:
+		var tween = get_tree().create_tween()
+		tween.tween_property($RewindBar, "value", new_rewinds, .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 
 # function to show unlocking animation for rewind ability
 func unlock_rewind():
-	$RewindBar.show()
+	$AnimationPlayer.play("unlock_rewind")
 	Globals.rewind_unlocked = true
 
 
