@@ -1,8 +1,6 @@
 extends Actor
 class_name Player
 
-const SLEEP_1 = Vector2(0,1)
-
 var tween_to_position:Vector2 = position
 
 func _ready():
@@ -17,16 +15,22 @@ func collide(actor:Actor, floor:Floor)->int:
 		return level.COLLISION_BEHAVIORS.COLLECT
 	return level.COLLISION_BEHAVIORS.PUSH
 
-func move(new_position):
+func move(new_position, is_reverse:bool = false):
 	super.move(new_position)
 	# if not actually moving, dont do anything
 	if new_position == tween_to_position:
 		return
+	
+	# calculate direction of movement
 	var move_dir:Vector2 = (new_position - tween_to_position).normalized()
+	if is_reverse:
+		move_dir = move_dir*-1
+	# change facing direction based on direction
 	if move_dir == Vector2.LEFT:
 		flip_h = true
 	elif move_dir == Vector2.RIGHT:
 		flip_h = false
+	# update frame coords
 	if frame_coords.x < hframes-1:
 		frame_coords.x += 1
 	else:
@@ -34,7 +38,4 @@ func move(new_position):
 	tween_to_position = new_position
 
 func _on_level_win():
-	await get_tree().create_timer(.3).timeout
-	frame_coords = SLEEP_1
-	await get_tree().create_timer(.5).timeout
-	frame_coords.x += 1
+	$AnimationPlayer.play("sleep")

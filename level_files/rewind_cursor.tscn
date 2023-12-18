@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bxnx73kyxodju" path="res://assets/level_stuff/Cursor.png" id="1_xiapj"]
 [ext_resource type="Texture2D" uid="uid://bi2sa4slrf6cn" path="res://assets/level_stuff/Arrow.png" id="2_08ijm"]
 [ext_resource type="Script" path="res://level_files/rewind_cursor.gd" id="2_bni1v"]
-[ext_resource type="Texture2D" uid="uid://dvysf1de0w15y" path="res://assets/circle.png" id="4_3g6ot"]
+[ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/sparkle.png" id="4_iixs3"]
 
 [sub_resource type="Animation" id="Animation_s3y3n"]
 resource_name = "appear"
@@ -150,7 +150,7 @@ _data = {
 
 [sub_resource type="Gradient" id="Gradient_ho7e6"]
 offsets = PackedFloat32Array(0, 0.0243056, 1)
-colors = PackedColorArray(1, 0.933333, 0.2, 0, 1, 0.933333, 0.2, 1, 1, 1, 1, 0)
+colors = PackedColorArray(1, 0.933333, 0.2, 0, 0.996078, 0.964706, 0.356863, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_gbc50"]
 gradient = SubResource("Gradient_ho7e6")
@@ -171,6 +171,8 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 damping_min = 40.0
 damping_max = 60.0
+scale_min = 8.0
+scale_max = 8.0
 color_ramp = SubResource("GradientTexture1D_gbc50")
 
 [node name="RewindCursor" type="Node2D"]
@@ -203,8 +205,8 @@ emitting = false
 amount = 12
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_phejl")
-texture = ExtResource("4_3g6ot")
-lifetime = 5.0
+texture = ExtResource("4_iixs3")
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60

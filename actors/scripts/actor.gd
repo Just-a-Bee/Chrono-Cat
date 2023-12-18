@@ -9,7 +9,7 @@ func _ready():
 	pass
 
 #does not move actor in level's base, just moves the appearance of the actor, called by level
-func move(new_position):
+func move(new_position, _is_reverse:bool = false):
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", new_position, .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	

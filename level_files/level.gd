@@ -164,12 +164,12 @@ func collect_actor(actor:Actor):
 		rewind_uses += CLOCK_REWINDS
 	destroy_actor(actor)
 # function to move an actor, pass in actor to move and direction to move it
-func move_actor(actor:Actor, direction:Vector2i):
+func move_actor(actor:Actor, direction:Vector2i, is_reverse:bool = false):
 	var from_position = actor_dictionary.find_key(actor) # gets position actor is going from
 	var to_position = from_position + direction # gets position actor is going to
 	actor_dictionary[to_position] = actor_dictionary[from_position] # put actor in new position
 	actor_dictionary.erase(from_position) # remove actor from old position
-	actor_dictionary[to_position].move(map_to_local(to_position)) # visually move the actor's scene
+	actor_dictionary[to_position].move(map_to_local(to_position),is_reverse) # visually move the actor's scene
 	rewind_dictionary[actor].append(-direction) # append move direction to actor's rewind array
 # function to destroy an actor
 func destroy_actor(actor:Actor):
@@ -244,7 +244,7 @@ func restore_state(state:Array):
 		var restore_actor = restore_positions[restore_position]
 		restore_actor.show()
 		actor_dictionary[restore_position] = restore_actor
-		restore_actor.move(map_to_local(restore_position))
+		restore_actor.move(map_to_local(restore_position), true)
 	
 	# set the rewind array for every actor to the previous one
 	rewind_dictionary.clear()
