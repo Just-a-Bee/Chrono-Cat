@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdouobihrvqsg"]
+[gd_scene load_steps=11 format=3 uid="uid://bdouobihrvqsg"]
 
 [ext_resource type="Texture2D" uid="uid://bxnx73kyxodju" path="res://assets/level_stuff/Cursor.png" id="1_xiapj"]
 [ext_resource type="Texture2D" uid="uid://bi2sa4slrf6cn" path="res://assets/level_stuff/Arrow.png" id="2_08ijm"]
 [ext_resource type="Script" path="res://level_files/rewind_cursor.gd" id="2_bni1v"]
+[ext_resource type="Material" uid="uid://be6m3q0y056cl" path="res://assets/particles/rewind_particle.tres" id="4_8bl71"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="4_qo2ab"]
 
 [sub_resource type="Animation" id="Animation_s3y3n"]
@@ -148,33 +149,6 @@ _data = {
 "show_arrow": SubResource("Animation_pyath")
 }
 
-[sub_resource type="Gradient" id="Gradient_ho7e6"]
-offsets = PackedFloat32Array(0, 0.0243056, 1)
-colors = PackedColorArray(1, 0.933333, 0.2, 0, 0.996078, 0.964706, 0.356863, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_gbc50"]
-gradient = SubResource("Gradient_ho7e6")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_phejl"]
-lifetime_randomness = 0.4
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 15.0
-emission_ring_inner_radius = 10.0
-particle_flag_disable_z = true
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 15.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-damping_min = 40.0
-damping_max = 60.0
-scale_min = 8.0
-scale_max = 8.0
-color_ramp = SubResource("GradientTexture1D_gbc50")
-
 [node name="RewindCursor" type="Node2D"]
 script = ExtResource("2_bni1v")
 
@@ -204,7 +178,7 @@ scale = Vector2(8, 8)
 emitting = false
 amount = 12
 sub_emitter = NodePath(".")
-process_material = SubResource("ParticleProcessMaterial_phejl")
+process_material = ExtResource("4_8bl71")
 texture = ExtResource("4_qo2ab")
 lifetime = 3.0
 one_shot = true

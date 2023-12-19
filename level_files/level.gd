@@ -162,6 +162,7 @@ func collect_actor(actor:Actor):
 		
 	if actor is Clock:
 		rewind_uses += CLOCK_REWINDS
+		player.do_rewind_particles()
 	destroy_actor(actor)
 # function to move an actor, pass in actor to move and direction to move it
 func move_actor(actor:Actor, direction:Vector2i, is_reverse:bool = false):

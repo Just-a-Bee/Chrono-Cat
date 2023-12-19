@@ -183,6 +183,7 @@ script = ExtResource("1_ntcjf")
 [node name="LevelSelect" parent="." instance=ExtResource("2_p70cs")]
 
 [node name="Transitioner" parent="." instance=ExtResource("4_nb2yq")]
+z_index = 4
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false

@@ -39,3 +39,6 @@ func move(new_position, is_reverse:bool = false):
 
 func _on_level_win():
 	$AnimationPlayer.play("sleep")
+
+func do_rewind_particles():
+	$RewindParticles.emitting = true
