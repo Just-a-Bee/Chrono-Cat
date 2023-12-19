@@ -83,7 +83,6 @@ func open_level(level:PackedScene, level_name)->void:
 func _on_level_win():
 	# do animations
 	do_input = false
-	#$WinAnim.show()
 	await get_tree().create_timer(10).timeout
 	level_select.clear_level()
 	exit_level()
@@ -94,7 +93,6 @@ func exit_level():
 	await $Transitioner.animation_finished
 	# change the state
 	$RewindBar.hide()
-	$WinAnim.hide()
 	remove_child(level_node)
 	level_node.queue_free()
 	level_select.show()
@@ -117,6 +115,8 @@ func _on_rewind_uses_changed(new_rewinds):
 func unlock_rewind():
 	$AnimationPlayer.play("unlock_rewind")
 	Globals.rewind_unlocked = true
+	await $RewindTutorial/VBoxContainer/Button.button_up
+	$AnimationPlayer.play("close_rewind_tutorial")
 
 
 func show_settings():
