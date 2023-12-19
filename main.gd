@@ -3,6 +3,7 @@ class_name Main
 
 #Script for state autoload, changes game state, passing data like level completions between states
 
+
 @onready var level_select = get_node("LevelSelect")
 const TITLE_PATH = "res://ui/title/title.tscn"
 
@@ -61,6 +62,7 @@ func return_to_title():
 # when a level is selected, open it
 func open_level(level:PackedScene, level_name)->void:
 	# fade to black
+	print("opening level")
 	do_input = false
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
@@ -82,8 +84,7 @@ func _on_level_win():
 	# do animations
 	do_input = false
 	#$WinAnim.show()
-	$WinAnim.play()
-	await $WinAnim.animation_finished
+	await get_tree().create_timer(10).timeout
 	level_select.clear_level()
 	exit_level()
 # function to exit the level and return to level select

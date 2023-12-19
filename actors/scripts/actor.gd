@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name Actor
 
-@onready var level:Level = get_parent()
+@onready var level = get_parent()
 
 
 

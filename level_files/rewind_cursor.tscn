@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bxnx73kyxodju" path="res://assets/level_stuff/Cursor.png" id="1_xiapj"]
 [ext_resource type="Texture2D" uid="uid://bi2sa4slrf6cn" path="res://assets/level_stuff/Arrow.png" id="2_08ijm"]
 [ext_resource type="Script" path="res://level_files/rewind_cursor.gd" id="2_bni1v"]
-[ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/sparkle.png" id="4_iixs3"]
+[ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="4_qo2ab"]
 
 [sub_resource type="Animation" id="Animation_s3y3n"]
 resource_name = "appear"
@@ -205,7 +205,7 @@ emitting = false
 amount = 12
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_phejl")
-texture = ExtResource("4_iixs3")
+texture = ExtResource("4_qo2ab")
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
