@@ -31,6 +31,33 @@ scale_min = 4.0
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_ilkbd")
 
+[sub_resource type="Animation" id="Animation_cuox6"]
+resource_name = "close_rewind_tutorial"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RewindTutorial:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.37841, 4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:do_input")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_e7qc6"]
 resource_name = "unlock_rewind"
 length = 6.2
@@ -143,33 +170,6 @@ tracks/8/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_cuox6"]
-resource_name = "close_rewind_tutorial"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RewindTutorial:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2.37841, 4),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:do_input")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqw8y"]
 _data = {
 "close_rewind_tutorial": SubResource("Animation_cuox6"),
@@ -186,7 +186,6 @@ script = ExtResource("1_ntcjf")
 z_index = 4
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
@@ -195,40 +194,36 @@ offset_bottom = 40.0
 script = ExtResource("5_6dq5v")
 
 [node name="Polygon2D" type="Polygon2D" parent="PauseMenu"]
-color = Color(0.203922, 0.203922, 0.203922, 1)
-polygon = PackedVector2Array(448, 128, 448, 960, 1472, 960, 1472, 128)
+color = Color(0.203922, 0.203922, 0.203922, 0.862745)
+polygon = PackedVector2Array(0, 0, 0, 1088, 1920, 1088, 1920, 0)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 192.0
-offset_right = 1408.0
-offset_bottom = 1024.0
+offset_right = 811.0
+offset_bottom = 614.0
+scale = Vector2(3, 3)
 
 [node name="Label" type="Label" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "Resume"
 
 [node name="ReturnToMap" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "Return to Map"
 
 [node name="ReturnToTitle" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "Return to Title"
 
 [node name="Settings" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "Settings"
 
 [node name="RewindBar" type="TextureProgressBar" parent="."]

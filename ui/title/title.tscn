@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://devr7s6qosxot"]
+[gd_scene load_steps=6 format=3 uid="uid://devr7s6qosxot"]
 
 [ext_resource type="Script" path="res://ui/title/title.gd" id="1_ksjlk"]
 [ext_resource type="Texture2D" uid="uid://fayvt4rlkfqu" path="res://assets/Title.png" id="2_g6b56"]
 [ext_resource type="PackedScene" uid="uid://b18s0kfnnp2ch" path="res://ui/transition/transitioner.tscn" id="3_k2605"]
+[ext_resource type="Theme" uid="uid://d0mdmnx1jp3v2" path="res://assets/main_theme.tres" id="3_qocws"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="4_lqysx"]
 
 [node name="Title" type="Node2D"]
@@ -14,35 +15,32 @@ position = Vector2(960, 245)
 scale = Vector2(7.59322, 7.11111)
 texture = ExtResource("2_g6b56")
 
-[node name="Play" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 512.0
-offset_right = 1408.0
-offset_bottom = 640.0
-theme_override_font_sizes/font_size = 50
-text = "Play"
-
-[node name="Settings" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 704.0
-offset_right = 1408.0
-offset_bottom = 832.0
-theme_override_font_sizes/font_size = 50
-text = "Settings"
-
-[node name="Quit" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 896.0
-offset_right = 1408.0
-offset_bottom = 1024.0
-theme_override_font_sizes/font_size = 50
-text = "Quit"
-
 [node name="Transitioner" parent="." instance=ExtResource("3_k2605")]
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_lqysx")]
 visible = false
 
-[connection signal="button_up" from="Play" to="." method="_on_play_button_up"]
-[connection signal="button_up" from="Settings" to="." method="_on_settings_button_up"]
-[connection signal="button_up" from="Quit" to="." method="_on_quit_button_up"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 640.0
+offset_top = 552.0
+offset_right = 853.0
+offset_bottom = 1156.0
+scale = Vector2(3, 3)
+theme = ExtResource("3_qocws")
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_qocws")
+text = "Play"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="button_up" from="VBoxContainer/Play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="VBoxContainer/Settings" to="." method="_on_settings_button_up"]
+[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]

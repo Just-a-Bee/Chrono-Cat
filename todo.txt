@@ -2,7 +2,6 @@ UI:
 	Make settings work
 
 Content:
-	Redesign Chronology to tutorialize better
 	Tutorial
 	Saving
 	Add more levels
