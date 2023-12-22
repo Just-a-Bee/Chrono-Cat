@@ -10,5 +10,5 @@ func _ready():
 func _on_button_up():
 	get_parent().open_level.emit(level, name)
 func clear():
-	$CompleteSprite.show()
+	$AnimationPlayer.play("clear")
 	unlock_adjacent()

@@ -1,20 +1,91 @@
-[gd_scene load_steps=4 format=3 uid="uid://doyd0aa2nqgl2"]
+[gd_scene load_steps=6 format=3 uid="uid://doyd0aa2nqgl2"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_button.gd" id="1_g5ee8"]
-[ext_resource type="Texture2D" uid="uid://bbxfqg35otvkb" path="res://assets/cleared_level.png" id="2_nnmwk"]
+[ext_resource type="Texture2D" uid="uid://dajnmwp7bv3dm" path="res://assets/paw.png" id="3_aty71"]
 [ext_resource type="Texture2D" uid="uid://dgp50clvvm3gx" path="res://assets/level_icon.png" id="3_nmnny"]
+
+[sub_resource type="Animation" id="Animation_pk7iu"]
+resource_name = "clear"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CompleteSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CompleteSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CompleteSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.7),
+"transitions": PackedFloat32Array(4, 3.86375),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(0.917, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelNumber:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r68ph"]
+_data = {
+"clear": SubResource("Animation_pk7iu")
+}
 
 [node name="LevelSprite" type="Sprite2D"]
 position = Vector2(8.58307e-06, 8.58307e-06)
 scale = Vector2(8, 8)
 texture = ExtResource("3_nmnny")
+hframes = 2
 script = ExtResource("1_g5ee8")
-level_number = null
-unlocked = null
 
 [node name="CompleteSprite" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_nnmwk")
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(4, 4)
+texture = ExtResource("3_aty71")
 
 [node name="LevelNumber" type="Label" parent="."]
 offset_left = -9.0
@@ -27,3 +98,8 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r68ph")
+}

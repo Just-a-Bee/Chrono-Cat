@@ -21,6 +21,12 @@ Cleanup:
 	Level script cleanups:
 		Clean up collision and floor functions
 		Collectables use their own script
-		Make it so you cant move during tweens
+	Standardize Z indexing
 
-
+Sounds:
+	Music:
+		Title
+		Select
+		Level
+		Level 2
+	

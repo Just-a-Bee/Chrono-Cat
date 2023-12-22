@@ -203,6 +203,8 @@ func activate_rewind():
 	var move_made:bool
 	if actor_dictionary.has(cursor_pos):
 		var rewind_actor = actor_dictionary[cursor_pos]
+		if rewind_actor is Player:
+			return
 		if rewind_dictionary[rewind_actor].size() > 0:
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
 			move_made = make_move(rewind_actor, rewind_direction)

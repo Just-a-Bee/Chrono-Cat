@@ -9,7 +9,6 @@ var arrow_shown:bool = false
 func appear():
 	show()
 	$AnimationPlayer.play("appear")
-	$ArrowTimer.start()
 
 func disappear(did_rewind:bool):
 	if did_rewind:
@@ -35,6 +34,8 @@ func move(new_position):
 func update_arrow():
 	if level.actor_dictionary.has(level.cursor_pos):
 		var hovered_actor = level.actor_dictionary[level.cursor_pos]
+		if hovered_actor is Player:
+			return
 		if level.rewind_dictionary[hovered_actor].size() > 0:
 			var rewind_direction = level.rewind_dictionary[hovered_actor][-1]
 			set_arrow_rotation(rewind_direction)

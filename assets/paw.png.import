@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbxfqg35otvkb"
-path="res://.godot/imported/cleared_level.png-beecfca51aec3a2b9ea1defa130e896d.ctex"
+uid="uid://dajnmwp7bv3dm"
+path="res://.godot/imported/paw.png-8cbd343b786a6d07e451a8a5f93f78cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cleared_level.png"
-dest_files=["res://.godot/imported/cleared_level.png-beecfca51aec3a2b9ea1defa130e896d.ctex"]
+source_file="res://assets/paw.png"
+dest_files=["res://.godot/imported/paw.png-8cbd343b786a6d07e451a8a5f93f78cf.ctex"]
 
 [params]
 
