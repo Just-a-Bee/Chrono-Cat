@@ -17,16 +17,14 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 0.978, 0.56, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_ds136")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nr8cl"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(0, 4.5, 0)
-particle_flag_disable_z = true
 direction = Vector3(-1, 0, 0)
 spread = 10.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 2.0
 initial_velocity_max = 2.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_ilkbd")
