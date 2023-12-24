@@ -29,4 +29,16 @@ Sounds:
 		Select
 		Level
 		Level 2
-	
+	Rewind:
+		Unlock chime song
+		Open Sound
+		Close sound
+		Use sound
+		Collect sound
+	Level:
+		Restart sound
+		Undo sound
+		Win Sounds (sleepy cat)
+	Select:
+		Level cleared sound
+		Level opening sound

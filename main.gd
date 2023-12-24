@@ -17,8 +17,8 @@ var level_node
 
 # fade from black onready
 func _ready():
-	$Transitioner.fade_from_black()
-	await $Transitioner.animation_finished
+	$AnimationPlayer.play("fade_from_black")
+	await $AnimationPlayer.animation_finished
 	do_input = true
 
 # function to handle main input like pausing
@@ -53,19 +53,25 @@ func unpause():
 # function to return to title screen
 func return_to_title():
 	do_input = false
-	$Transitioner.fade_to_black()
-	await $Transitioner.animation_finished
+	$AnimationPlayer.play("fade_to_black")
+	await $AnimationPlayer.animation_finished
 	Globals.state = Globals.STATES.TITLE
 	get_tree().change_scene_to_file(TITLE_PATH)
 
 
 # when a level is selected, open it
-func open_level(level:PackedScene, level_name)->void:
+func open_level(level:PackedScene, level_num, level_name)->void:
 	# fade to black
 	print("opening level")
 	do_input = false
-	$Transitioner.fade_to_black()
-	await $Transitioner.animation_finished
+	$AnimationPlayer.play("fade_to_black")
+	await $AnimationPlayer.animation_finished
+	$AnimationPlayer/LevelNum.text = "Level " + str(level_num)
+	$AnimationPlayer/TitleBar/Label.text = level_name
+	$AnimationPlayer.play("show_title")
+	await $AnimationPlayer.animation_finished
+	
+	
 	#change the state
 	$RewindBar.value = 0
 	if Globals.rewind_unlocked:
@@ -74,9 +80,13 @@ func open_level(level:PackedScene, level_name)->void:
 	level_node = level.instantiate()
 	add_child(level_node)
 	Globals.state = Globals.STATES.LEVEL
+	
+	# show level title
+	$AnimationPlayer.play("show_title")
+	
 	# fade from black
-	$Transitioner.fade_from_black()
-	await $Transitioner.animation_finished
+	$AnimationPlayer.play("fade_from_black")
+	await $AnimationPlayer.animation_finished
 	do_input = true
 
 # when a level is won, show win anim, then free it and go back to level select
@@ -89,8 +99,8 @@ func _on_level_win():
 # function to exit the level and return to level select
 func exit_level():
 	do_input = false
-	$Transitioner.fade_to_black()
-	await $Transitioner.animation_finished
+	$AnimationPlayer.play("fade_to_black")
+	await $AnimationPlayer.animation_finished
 	# change the state
 	$RewindBar.hide()
 	remove_child(level_node)
@@ -99,8 +109,8 @@ func exit_level():
 	
 	Globals.state = Globals.STATES.SELECT
 	# fade from black
-	$Transitioner.fade_from_black()
-	await $Transitioner.animation_finished
+	$AnimationPlayer.play("fade_from_black")
+	await $AnimationPlayer.animation_finished
 	do_input = true
 
 # function to update the value displayed on the rewind bar, if initial unlock, play animation

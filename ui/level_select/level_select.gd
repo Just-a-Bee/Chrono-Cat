@@ -18,7 +18,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		if current_node is MapLevel:
 			print("telling main to open level")
-			main.open_level(current_node.level, current_node.name)
+			main.open_level(current_node.level, current_node.level_number, current_node.name)
 
 # handle directional inputs, move cursor in direction pressed
 func direction_input(event:InputEvent):
