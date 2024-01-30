@@ -11,7 +11,6 @@ Content:
 
 Making the game pretty:
 	Many more animations, including smoother collects and destroys, win animation, player animation, etc
-	Add a theme
 	Two frame per step tail swoosh?
 
 Bugs:

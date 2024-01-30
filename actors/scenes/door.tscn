@@ -1,9 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://bif7fbgreowou"]
+[gd_scene load_steps=7 format=3 uid="uid://bif7fbgreowou"]
 
 [ext_resource type="Texture2D" uid="uid://c20268hhfnrhf" path="res://assets/actors/Door.png" id="1_eqxxq"]
 [ext_resource type="Script" path="res://actors/scripts/door.gd" id="2_4wdjy"]
+[ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="3_028y1"]
+
+[sub_resource type="Gradient" id="Gradient_ukvkl"]
+offsets = PackedFloat32Array(0, 0.522988, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oetye"]
+gradient = SubResource("Gradient_ukvkl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j2jx1"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 5, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_min = 7.0
+scale_max = 8.0
+color = Color(0.733333, 0.407843, 0.937255, 1)
+color_ramp = SubResource("GradientTexture1D_oetye")
 
 [node name="Door" type="Sprite2D"]
 scale = Vector2(8, 8)
 texture = ExtResource("1_eqxxq")
 script = ExtResource("2_4wdjy")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_j2jx1")
+texture = ExtResource("3_028y1")
+one_shot = true
+explosiveness = 0.95
