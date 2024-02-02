@@ -38,6 +38,8 @@ Sounds:
 		Restart sound
 		Undo sound
 		Win Sounds (sleepy cat)
+		Move Sound
+		Open Door Sound
 	Select:
 		Level cleared sound
 		Level opening sound
