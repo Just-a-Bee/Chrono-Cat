@@ -76,7 +76,6 @@ _data = {
 }
 
 [node name="Door" type="Sprite2D"]
-self_modulate = Color(1, 1, 1, 0)
 scale = Vector2(8, 8)
 texture = ExtResource("1_eqxxq")
 script = ExtResource("2_4wdjy")

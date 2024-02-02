@@ -1,6 +1,10 @@
 extends Collectable
 class_name Clock
 
-#get collected function for clock
-func get_collected():
-	pass
+func destroy():
+	$AnimationPlayer.play("destroy")
+	active = false
+
+func restore():
+	$AnimationPlayer.play("restore")
+	active = true

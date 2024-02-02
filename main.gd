@@ -62,7 +62,6 @@ func return_to_title():
 # when a level is selected, open it
 func open_level(level:PackedScene, level_num, level_name)->void:
 	# fade to black
-	print("opening level")
 	do_input = false
 	$AnimationPlayer.play("fade_to_black")
 	await $AnimationPlayer.animation_finished

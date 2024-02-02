@@ -9,3 +9,9 @@ func collide(actor:Actor, _floor:Floor)->int:
 	if actor is Wall:
 		return level.COLLISION_BEHAVIORS.STOP
 	return level.COLLISION_BEHAVIORS.PUSH
+
+func destroy():
+	$AnimationPlayer.play("destroy")
+	active = false
+func restore():
+	$AnimationPlayer.play("restore")

@@ -107,6 +107,7 @@ left_node = NodePath("../Bulky Boxes")
 position = Vector2(576, 704)
 level = ExtResource("6_egfgn")
 level_number = 2
+unlocked = true
 up_node = NodePath("../Lock and Key")
 right_node = NodePath("../Chronology")
 
@@ -117,9 +118,10 @@ level_number = 4
 down_node = NodePath("../Lock and Key")
 right_node = NodePath("../Locks and Keys")
 
-[node name="StartPos" parent="." node_paths=PackedStringArray("right_node") instance=ExtResource("3_5otd6")]
+[node name="StartPos" parent="." node_paths=PackedStringArray("up_node", "right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(576, 960)
 unlocked = true
+up_node = NodePath("../Water wall")
 right_node = NodePath("../Having a Nap")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]

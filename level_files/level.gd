@@ -147,6 +147,7 @@ func handle_collision(target_position, push_array, direction):
 			push_array.clear()
 			return
 		elif collision_behavior == COLLISION_BEHAVIORS.DESTROY: # removes previous actor from push array, both are destroyed
+			move_actor(push_array[-1],direction)
 			destroy_actor(to_actor)
 			destroy_actor(push_array[-1])
 			push_array.pop_at(-1)
