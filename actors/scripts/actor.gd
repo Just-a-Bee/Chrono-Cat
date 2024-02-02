@@ -2,7 +2,7 @@ extends Sprite2D
 class_name Actor
 
 @onready var level = get_parent()
-
+var active:bool = true
 
 
 func _ready():
@@ -25,3 +25,8 @@ func collide(actor:Actor, _floor:Floor)->int:
 # function to show destroying animation
 func destroy():
 	hide()
+	active = false
+# function to restore actor
+func restore():
+	show()
+	active = true

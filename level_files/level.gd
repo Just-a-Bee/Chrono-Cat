@@ -245,7 +245,8 @@ func restore_state(state:Array):
 	actor_dictionary.clear()
 	for restore_position in restore_positions:
 		var restore_actor = restore_positions[restore_position]
-		restore_actor.show()
+		if restore_actor.active == false:
+			restore_actor.restore()
 		actor_dictionary[restore_position] = restore_actor
 		restore_actor.move(map_to_local(restore_position), true)
 	

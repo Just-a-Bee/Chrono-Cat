@@ -2,5 +2,9 @@ extends Wall
 class_name Door
 
 func destroy():
-	hide()
-	$GPUParticles2D.emitting = true
+	$AnimationPlayer.play("destroy")
+	active = false
+
+func restore():
+	$AnimationPlayer.play("restore")
+	active = true
