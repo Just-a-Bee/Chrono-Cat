@@ -21,3 +21,7 @@ func _on_settings_button_up():
 
 func _on_quit_button_up():
 	get_tree().quit()
+
+
+func _on_credits_button_up():
+	pass

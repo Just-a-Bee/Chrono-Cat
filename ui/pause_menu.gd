@@ -5,9 +5,9 @@ extends Control
 func update_buttons():
 	$VBoxContainer/Resume.grab_focus()
 	if Globals.state != Globals.STATES.LEVEL:
-		$VBoxContainer/ReturnToMap.hide()
+		$VBoxContainer/HBoxContainer/ReturnToMap.hide()
 	else:
-		$VBoxContainer/ReturnToMap.show()
+		$VBoxContainer/HBoxContainer/ReturnToMap.show()
 
 func _on_resume_button_up():
 	main.unpause()
