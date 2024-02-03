@@ -1,13 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://devr7s6qosxot"]
+[gd_scene load_steps=9 format=3 uid="uid://devr7s6qosxot"]
 
 [ext_resource type="Script" path="res://ui/title/title.gd" id="1_ksjlk"]
+[ext_resource type="Texture2D" uid="uid://jybi5wxyuluo" path="res://assets/actor_pattern.png" id="2_48j4w"]
 [ext_resource type="Texture2D" uid="uid://fayvt4rlkfqu" path="res://assets/Title.png" id="2_g6b56"]
 [ext_resource type="PackedScene" uid="uid://b18s0kfnnp2ch" path="res://ui/transition/transitioner.tscn" id="3_k2605"]
 [ext_resource type="Theme" uid="uid://d0mdmnx1jp3v2" path="res://assets/main_theme.tres" id="3_qocws"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="4_lqysx"]
 
+[sub_resource type="Animation" id="Animation_arwbk"]
+resource_name = "scroll"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-256, -64), Vector2(-1212.35, 19.67)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ymrk"]
+_data = {
+"scroll": SubResource("Animation_arwbk")
+}
+
 [node name="Title" type="Node2D"]
 script = ExtResource("1_ksjlk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.572549)
+texture_filter = 2
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 423.0
+offset_bottom = 139.998
+rotation = -0.0872665
+scale = Vector2(8, 8)
+texture = ExtResource("2_48j4w")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_8ymrk")
+}
 
 [node name="Title" type="Sprite2D" parent="."]
 texture_filter = 3

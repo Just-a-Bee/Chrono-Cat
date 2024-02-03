@@ -94,27 +94,27 @@ down_node = NodePath("../Node3")
 [node name="Lock and Key" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(1096, 840)
 level = ExtResource("4_5d44g")
-level_number = 3
+level_number = 2
 left_node = NodePath("../Node3")
 right_node = NodePath("../Node5")
 
 [node name="Locks and Keys" parent="." node_paths=PackedStringArray("left_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(1608, 840)
 level = ExtResource("5_b8vvg")
-level_number = 5
+level_number = 4
 left_node = NodePath("../Node5")
 
 [node name="Water wall" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(1096, 328)
 level = ExtResource("6_egfgn")
-level_number = 2
+level_number = 3
 left_node = NodePath("../Node2")
 right_node = NodePath("../Node4")
 
 [node name="Bulky Boxes" parent="." node_paths=PackedStringArray("down_node", "right_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(1608, 328)
 level = ExtResource("7_nj5eh")
-level_number = 4
+level_number = 5
 down_node = NodePath("../Lock and Key")
 right_node = NodePath("../Locks and Keys")
 
