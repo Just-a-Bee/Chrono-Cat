@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://floors/scripts/water.gd" id="1_b36f0"]
 
 [node name="Water" type="Polygon2D"]
-z_index = -1
 color = Color(0.313726, 0.309804, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 128, 128, 128, 128, 0)
 script = ExtResource("1_b36f0")

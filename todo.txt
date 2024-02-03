@@ -21,6 +21,27 @@ Cleanup:
 		Clean up collision and floor functions
 		Collectables use their own script
 	Standardize Z indexing
+		Level: 0-4
+			Water: 0
+			Wall: 0
+			Door: 0
+			Key: 1
+			Box: 1
+			Bed: 1
+			Player: 2
+			Clock: 3
+			Cursor: 4
+		Select: 0-4
+			Bg = 0
+			Level buttons = 1
+			Player = 2
+			Title-Shower = 3
+		GUI: 5-9
+			Rewind Bar = 5
+			Pause = 6
+			Settings = 7
+			Fader = 8
+			Title Bar = 9
 
 Sounds:
 	Music:

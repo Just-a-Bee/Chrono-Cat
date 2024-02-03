@@ -76,6 +76,7 @@ turbulence_influence_min = 0.05
 turbulence_influence_max = 0.05
 
 [node name="Player" type="Sprite2D"]
+z_index = 2
 position = Vector2(-9.53674e-07, -9.53674e-07)
 scale = Vector2(8, 8)
 texture = ExtResource("1_jjmpu")

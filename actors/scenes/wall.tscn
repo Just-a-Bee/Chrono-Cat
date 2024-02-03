@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://actors/scripts/wall.gd" id="2_nyid0"]
 
 [node name="Wall" type="Sprite2D"]
+z_index = 1
 scale = Vector2(8, 8)
 texture = ExtResource("1_phtjf")
 script = ExtResource("2_nyid0")

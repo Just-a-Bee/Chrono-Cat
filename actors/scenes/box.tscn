@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://actors/scripts/box.gd" id="2_5b02o"]
 
 [node name="Box" type="Sprite2D"]
+z_index = 1
 scale = Vector2(8, 8)
 texture = ExtResource("1_bqsu3")
 script = ExtResource("2_5b02o")
