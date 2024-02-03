@@ -164,5 +164,7 @@ position = Vector2(1344, 320)
 left_node = NodePath("../Water wall")
 right_node = NodePath("../Bulky Boxes")
 
-[node name="Node5" parent="." instance=ExtResource("3_5otd6")]
+[node name="Node5" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(1344, 832)
+left_node = NodePath("../Lock and Key")
+right_node = NodePath("../Locks and Keys")
