@@ -138,12 +138,11 @@ level_number = 3
 left_node = NodePath("../Node2")
 right_node = NodePath("../Node4")
 
-[node name="Bulky Boxes" parent="." node_paths=PackedStringArray("down_node", "right_node") instance=ExtResource("2_6b2g3")]
+[node name="Bulky Boxes" parent="." node_paths=PackedStringArray("left_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(1600, 320)
 level = ExtResource("7_nj5eh")
 level_number = 5
-down_node = NodePath("../Lock and Key")
-right_node = NodePath("../Locks and Keys")
+left_node = NodePath("../Node4")
 
 [node name="Node1" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(576, 576)
