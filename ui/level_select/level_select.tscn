@@ -76,55 +76,55 @@ animations = [{
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_ppnx8")
 
-[node name="Having a Nap" parent="." node_paths=PackedStringArray("up_node", "left_node") instance=ExtResource("2_6b2g3")]
-position = Vector2(832, 960)
+[node name="Having a Nap" parent="." node_paths=PackedStringArray("right_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(328, 584)
 level = ExtResource("3_mtalg")
-unlocked = true
-up_node = NodePath("../Chronology")
-left_node = NodePath("../StartPos")
+cleared = true
+right_node = NodePath("../Node1")
 
-[node name="Chronology" parent="." node_paths=PackedStringArray("left_node", "down_node") instance=ExtResource("2_6b2g3")]
-position = Vector2(832, 704)
+[node name="Chronology" parent="." node_paths=PackedStringArray("up_node", "left_node", "down_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(840, 584)
 level = ExtResource("3_5fvae")
 level_number = 1
-left_node = NodePath("../Water wall")
-down_node = NodePath("../Having a Nap")
+cleared = true
+up_node = NodePath("../Node2")
+left_node = NodePath("../Node1")
+down_node = NodePath("../Node3")
 
-[node name="Lock and Key" parent="." node_paths=PackedStringArray("up_node", "down_node") instance=ExtResource("2_6b2g3")]
-position = Vector2(576, 448)
+[node name="Lock and Key" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(1096, 840)
 level = ExtResource("4_5d44g")
 level_number = 3
-up_node = NodePath("../Bulky Boxes")
-down_node = NodePath("../Water wall")
+left_node = NodePath("../Node3")
+right_node = NodePath("../Node5")
 
 [node name="Locks and Keys" parent="." node_paths=PackedStringArray("left_node") instance=ExtResource("2_6b2g3")]
-position = Vector2(832, 192)
+position = Vector2(1608, 840)
 level = ExtResource("5_b8vvg")
 level_number = 5
-left_node = NodePath("../Bulky Boxes")
+left_node = NodePath("../Node5")
 
-[node name="Water wall" parent="." node_paths=PackedStringArray("up_node", "right_node") instance=ExtResource("2_6b2g3")]
-position = Vector2(576, 704)
+[node name="Water wall" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("2_6b2g3")]
+position = Vector2(1096, 328)
 level = ExtResource("6_egfgn")
 level_number = 2
-unlocked = true
-up_node = NodePath("../Lock and Key")
-right_node = NodePath("../Chronology")
+left_node = NodePath("../Node2")
+right_node = NodePath("../Node4")
 
 [node name="Bulky Boxes" parent="." node_paths=PackedStringArray("down_node", "right_node") instance=ExtResource("2_6b2g3")]
-position = Vector2(576, 192)
+position = Vector2(1608, 328)
 level = ExtResource("7_nj5eh")
 level_number = 4
 down_node = NodePath("../Lock and Key")
 right_node = NodePath("../Locks and Keys")
 
-[node name="StartPos" parent="." node_paths=PackedStringArray("up_node", "right_node") instance=ExtResource("3_5otd6")]
-position = Vector2(576, 960)
-unlocked = true
-up_node = NodePath("../Water wall")
-right_node = NodePath("../Having a Nap")
+[node name="Node1" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("3_5otd6")]
+position = Vector2(584, 584)
+left_node = NodePath("../Having a Nap")
+right_node = NodePath("../Chronology")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
+z_index = 1
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_bwar7")
 animation = &"walk"
@@ -134,3 +134,21 @@ offset_right = 1920.0
 offset_bottom = 144.0
 theme_override_font_sizes/font_size = 80
 text = "Title"
+
+[node name="Node2" parent="." node_paths=PackedStringArray("down_node", "right_node") instance=ExtResource("3_5otd6")]
+position = Vector2(840, 328)
+down_node = NodePath("../Chronology")
+right_node = NodePath("../Water wall")
+
+[node name="Node3" parent="." node_paths=PackedStringArray("up_node", "right_node") instance=ExtResource("3_5otd6")]
+position = Vector2(840, 840)
+up_node = NodePath("../Chronology")
+right_node = NodePath("../Lock and Key")
+
+[node name="Node4" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("3_5otd6")]
+position = Vector2(1352, 328)
+left_node = NodePath("../Water wall")
+right_node = NodePath("../Bulky Boxes")
+
+[node name="Node5" parent="." instance=ExtResource("3_5otd6")]
+position = Vector2(1352, 840)

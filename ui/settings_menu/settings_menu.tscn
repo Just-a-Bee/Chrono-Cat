@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://ui/settings_menu/settings_menu.gd" id="1_scrjt"]
 
 [node name="SettingsMenu" type="Control"]
+z_index = 7
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_scrjt")

@@ -8,7 +8,7 @@ var current_node:Node = null
 
 # connect open level signal to main
 func _ready():
-	select_level(get_node("StartPos"), null, true)
+	select_level(get_node("Having a Nap"), null, true)
 
 # handle level select inputs
 func _input(event):
@@ -47,8 +47,9 @@ func direction_input(event:InputEvent):
 func select_level(new_select, move_dir, instant = false):
 	
 	# dont select level if it isnt unlocked
-	if not new_select.unlocked:
-		return
+	if current_node is MapLevel and not current_node.cleared:
+		if move_dir != Vector2.LEFT:
+			return
 
 	main.do_input = false
 	
@@ -78,4 +79,5 @@ func select_level(new_select, move_dir, instant = false):
 
 # when main tells us a level was cleared, give that level a checkmark
 func clear_level():
-	current_node.clear()
+	if not current_node.cleared:
+		current_node.clear()
