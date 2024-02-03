@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dajnmwp7bv3dm"
-path="res://.godot/imported/paw.png-8cbd343b786a6d07e451a8a5f93f78cf.ctex"
+uid="uid://fayvt4rlkfqu"
+path="res://.godot/imported/Title.png-c1dd74c99e6208542d155bc7e56ea67b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/paw.png"
-dest_files=["res://.godot/imported/paw.png-8cbd343b786a6d07e451a8a5f93f78cf.ctex"]
+source_file="res://assets/ui/Title.png"
+dest_files=["res://.godot/imported/Title.png-c1dd74c99e6208542d155bc7e56ea67b.ctex"]
 
 [params]
 

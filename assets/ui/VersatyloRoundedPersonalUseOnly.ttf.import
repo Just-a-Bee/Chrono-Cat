@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dmh1qic7ceojs"
-path="res://.godot/imported/VersatyloRoundedPersonalUseOnly.ttf-9cd6fcc3f74f89321bdedf5b4ad775ab.fontdata"
+path="res://.godot/imported/VersatyloRoundedPersonalUseOnly.ttf-16bdab66f75b020d08da0dcb55aee727.fontdata"
 
 [deps]
 
-source_file="res://assets/VersatyloRoundedPersonalUseOnly.ttf"
-dest_files=["res://.godot/imported/VersatyloRoundedPersonalUseOnly.ttf-9cd6fcc3f74f89321bdedf5b4ad775ab.fontdata"]
+source_file="res://assets/ui/VersatyloRoundedPersonalUseOnly.ttf"
+dest_files=["res://.godot/imported/VersatyloRoundedPersonalUseOnly.ttf-16bdab66f75b020d08da0dcb55aee727.fontdata"]
 
 [params]
 

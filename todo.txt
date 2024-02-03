@@ -4,8 +4,6 @@ UI:
 Content:
 	Tutorial
 	Saving
-	Add more levels
-	Nicer level select (mario world style?)
 	Story intro:
 			Chrono cat wants to sleep in every bed in the world
 
@@ -15,6 +13,7 @@ Making the game pretty:
 
 Bugs:
 	Weird double opening of level? (rare)
+	Scrungly text (just leave it?)
 
 Cleanup:
 	Level script cleanups:

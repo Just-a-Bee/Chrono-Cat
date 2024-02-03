@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bi3qwfkkihawt"]
 
-[ext_resource type="Texture2D" uid="uid://dvysf1de0w15y" path="res://assets/circle.png" id="1_da6oc"]
+[ext_resource type="Texture2D" uid="uid://dvysf1de0w15y" path="res://assets/ui/circle.png" id="1_gfwho"]
 [ext_resource type="Script" path="res://ui/level_select/map_node.gd" id="2_or7yq"]
 
 [node name="MapNode" type="Sprite2D"]
 scale = Vector2(4, 4)
-texture = ExtResource("1_da6oc")
+texture = ExtResource("1_gfwho")
 script = ExtResource("2_or7yq")

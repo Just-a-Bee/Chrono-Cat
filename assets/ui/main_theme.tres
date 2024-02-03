@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://d0mdmnx1jp3v2"]
 
-[ext_resource type="FontFile" uid="uid://dmh1qic7ceojs" path="res://assets/VersatyloRoundedPersonalUseOnly.ttf" id="1_fb6f7"]
+[ext_resource type="FontFile" uid="uid://dmh1qic7ceojs" path="res://assets/ui/VersatyloRoundedPersonalUseOnly.ttf" id="1_fb6f7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eg5ps"]
 

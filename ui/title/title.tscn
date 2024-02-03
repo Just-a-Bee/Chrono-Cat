@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://devr7s6qosxot"]
 
 [ext_resource type="Script" path="res://ui/title/title.gd" id="1_ksjlk"]
-[ext_resource type="Texture2D" uid="uid://jybi5wxyuluo" path="res://assets/actor_pattern.png" id="2_48j4w"]
-[ext_resource type="Texture2D" uid="uid://fayvt4rlkfqu" path="res://assets/Title.png" id="2_g6b56"]
+[ext_resource type="Texture2D" uid="uid://jybi5wxyuluo" path="res://assets/ui/actor_pattern.png" id="2_48j4w"]
+[ext_resource type="Texture2D" uid="uid://fayvt4rlkfqu" path="res://assets/ui/Title.png" id="2_g6b56"]
 [ext_resource type="PackedScene" uid="uid://b18s0kfnnp2ch" path="res://ui/transition/transitioner.tscn" id="3_k2605"]
-[ext_resource type="Theme" uid="uid://d0mdmnx1jp3v2" path="res://assets/main_theme.tres" id="3_qocws"]
+[ext_resource type="Theme" uid="uid://d0mdmnx1jp3v2" path="res://assets/ui/main_theme.tres" id="3_qocws"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="4_lqysx"]
 
 [sub_resource type="Animation" id="Animation_arwbk"]

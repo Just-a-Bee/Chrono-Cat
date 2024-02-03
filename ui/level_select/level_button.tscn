@@ -1,12 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://doyd0aa2nqgl2"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_button.gd" id="1_g5ee8"]
-[ext_resource type="Texture2D" uid="uid://dajnmwp7bv3dm" path="res://assets/paw.png" id="3_aty71"]
-[ext_resource type="Texture2D" uid="uid://dgp50clvvm3gx" path="res://assets/level_icon.png" id="3_nmnny"]
+[ext_resource type="Texture2D" uid="uid://dgp50clvvm3gx" path="res://assets/ui/level_icon.png" id="1_xne3i"]
+[ext_resource type="Texture2D" uid="uid://dajnmwp7bv3dm" path="res://assets/ui/paw.png" id="3_6ym0h"]
+[ext_resource type="AudioStream" uid="uid://dhdcex7sqee7d" path="res://assets/sound/level_complete.wav" id="4_vrdh1"]
 
 [sub_resource type="Animation" id="Animation_pk7iu"]
 resource_name = "clear"
-length = 1.7
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,7 +54,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1, 1.7),
 "transitions": PackedFloat32Array(4, 3.86375),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(0.917, 1)]
+"values": [Vector2(4, 4), Vector2(1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -67,17 +68,56 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/5/type = "value"
+tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer:playing")
+tracks/5/path = NodePath("AudioStreamPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_vrdh1")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PawRipple:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PawRipple:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.7, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.5, 2.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PawRipple:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.7, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.631373), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r68ph"]
@@ -85,20 +125,17 @@ _data = {
 "clear": SubResource("Animation_pk7iu")
 }
 
-[sub_resource type="AudioStream" id="AudioStream_vsfwp"]
-
 [node name="LevelSprite" type="Sprite2D"]
 position = Vector2(8.58307e-06, 8.58307e-06)
 scale = Vector2(8, 8)
-texture = ExtResource("3_nmnny")
+texture = ExtResource("1_xne3i")
 hframes = 2
 script = ExtResource("1_g5ee8")
 
 [node name="CompleteSprite" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1.90735e-06, 1.90735e-06)
-scale = Vector2(0.917, 1)
-texture = ExtResource("3_aty71")
+texture = ExtResource("3_6ym0h")
 
 [node name="LevelNumber" type="Label" parent="."]
 offset_left = -9.0
@@ -118,5 +155,8 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStream_vsfwp")
-bus = &"Sfx"
+
+[node name="PawRipple" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.631373)
+texture = ExtResource("3_6ym0h")
