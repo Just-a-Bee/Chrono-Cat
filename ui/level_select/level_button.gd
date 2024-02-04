@@ -8,10 +8,15 @@ class_name MapLevel
 func _ready():
 	$LevelNumber.text = str(level_number)
 	if cleared:
-		$LevelNumber.hide()
-		$CompleteSprite.show()
-		frame_coords = Vector2(1,0)
+		fast_clear()
+
 
 func clear():
 	$AnimationPlayer.play("clear")
 	cleared = true
+
+# function to clear instantly, no anim
+func fast_clear():
+	$LevelNumber.hide()
+	$CompleteSprite.show()
+	frame_coords = Vector2(1,0)

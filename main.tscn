@@ -263,6 +263,7 @@ _data = {
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_ntcjf")
+do_input = true
 
 [node name="LevelSelect" parent="." instance=ExtResource("2_p70cs")]
 
@@ -313,20 +314,23 @@ size_flags_horizontal = 3
 text = "Return to Title"
 
 [node name="RewindBar" type="TextureProgressBar" parent="."]
+visible = false
 z_index = 5
-offset_left = 704.0
-offset_top = 1200.0
-offset_right = 730.0
-offset_bottom = 1226.0
-scale = Vector2(32, 32)
+offset_left = 1664.0
+offset_top = 896.0
+offset_right = 1690.0
+offset_bottom = 922.0
+scale = Vector2(8, 8)
 max_value = 3.0
 step = 0.1
+value = 3.0
 fill_mode = 4
 texture_under = ExtResource("6_mr47i")
 texture_progress = ExtResource("7_8wg3w")
 
 [node name="ParticleParent" type="Node2D" parent="RewindBar"]
 position = Vector2(8, 8)
+rotation = 6.28319
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="RewindBar/ParticleParent"]
 position = Vector2(0, -4)
@@ -382,7 +386,8 @@ horizontal_alignment = 1
 
 [node name="RewindTutorial" type="Polygon2D" parent="AnimationPlayer"]
 z_index = 3
-position = Vector2(512, 1152)
+position = Vector2(512, 128)
+scale = Vector2(1, 1e-05)
 color = Color(0.584314, 0.584314, 0.584314, 1)
 polygon = PackedVector2Array(0, 0, 896, 0, 896, 768, 0, 768)
 

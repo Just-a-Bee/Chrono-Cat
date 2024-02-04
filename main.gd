@@ -17,6 +17,8 @@ var level_node
 
 # fade from black onready
 func _ready():
+	save_game()
+	load_game()
 	$AnimationPlayer.play("fade_from_black")
 	await $AnimationPlayer.animation_finished
 	do_input = true
@@ -134,3 +136,37 @@ func show_settings():
 func hide_settings():
 	$SettingsMenu.hide()
 	is_settings = false
+
+# saves the game to file
+func save_game():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	
+	var clear_arr = level_select.get_clears()
+	var clear_str = ""
+	for i in clear_arr:
+		if i == true:
+			clear_str += "1"
+		else:
+			clear_str += "0"
+	save_game.store_line(clear_str)
+	
+	var rewind_string = ""
+	if Globals.rewind_unlocked:
+		rewind_string = "1"
+	else:
+		rewind_string = "0"
+	save_game.store_line(rewind_string)
+
+func load_game():
+	if not FileAccess.file_exists("user://savegame.save"):
+		return
+	var load_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	
+	var clear_str = load_game.get_line()
+	var clear_arr = []
+	for i in clear_str.length():
+		clear_arr.append(clear_str[i] == '1')
+	level_select.set_clears(clear_arr)
+	
+	var rewind_string = load_game.get_line()
+	Globals.rewind_unlocked = (rewind_string == '1')

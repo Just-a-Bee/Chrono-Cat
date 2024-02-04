@@ -81,3 +81,26 @@ func select_level(new_select, move_dir, instant = false):
 func clear_level():
 	if not current_node.cleared:
 		current_node.clear()
+		main.save_game()
+
+# function to return array of all level buttons
+func get_levels():
+	var level_arr = []
+	for node in get_children():
+		if node is MapLevel:
+			level_arr.append(node)
+	return level_arr
+# function to return array of cleared levels
+func get_clears():
+	var clear_arr = []
+	for level in get_levels():
+		clear_arr.append(level.cleared)
+	return clear_arr
+# function to set levels to be cleared or uncleared
+func set_clears(cleared_array):
+	var level_arr = get_levels()
+	for i in cleared_array.size():
+		if cleared_array[i]:
+			level_arr[i].cleared = true
+			level_arr[i].fast_clear()
+		

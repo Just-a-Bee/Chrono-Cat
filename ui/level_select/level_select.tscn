@@ -106,14 +106,12 @@ animation = &"walk"
 [node name="Having a Nap" parent="." node_paths=PackedStringArray("right_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(320, 576)
 level = ExtResource("3_mtalg")
-cleared = true
 right_node = NodePath("../Node1")
 
 [node name="Chronology" parent="." node_paths=PackedStringArray("up_node", "left_node", "down_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(832, 576)
 level = ExtResource("3_5fvae")
 level_number = 1
-cleared = true
 up_node = NodePath("../Node2")
 left_node = NodePath("../Node1")
 down_node = NodePath("../Node3")
