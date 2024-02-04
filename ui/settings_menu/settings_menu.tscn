@@ -34,9 +34,9 @@ text = "Master Volume"
 
 [node name="Master" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-max_value = 10.0
-value = 5.0
-tick_count = 11
+max_value = 8.0
+value = 4.0
+tick_count = 9
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -52,9 +52,9 @@ text = "Music Volume"
 
 [node name="Music" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-max_value = 10.0
-value = 5.0
-tick_count = 11
+max_value = 8.0
+value = 4.0
+tick_count = 9
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -67,9 +67,9 @@ text = "Effects Volume"
 
 [node name="SfX" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-max_value = 10.0
-value = 5.0
-tick_count = 11
+max_value = 8.0
+value = 4.0
+tick_count = 9
 
 [node name="ResetButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
