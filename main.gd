@@ -17,7 +17,6 @@ var level_node
 
 # fade from black onready
 func _ready():
-	save_game()
 	load_game()
 	$AnimationPlayer.play("fade_from_black")
 	await $AnimationPlayer.animation_finished
