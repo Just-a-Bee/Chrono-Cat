@@ -19,6 +19,11 @@ var rewind_cursor_packed:PackedScene = preload("res://level_files/rewind_cursor.
 var rewind_cursor:Node2D = null
 var rewinding:bool = false
 var cursor_pos:Vector2i = Vector2i.ZERO
+const CURSOR_MIN_X = 1
+const CURSOR_MIN_Y = 1
+const CURSOR_MAX_X = 13
+const CURSOR_MAX_Y = 6
+
 # dictionary that stores each actor and a list of its rewind positions
 # keys = actor, values = array of rewind positions
 var rewind_dictionary:Dictionary
@@ -195,10 +200,12 @@ func start_rewind():
 	cursor_pos = actor_dictionary.find_key(player)
 	rewind_cursor.position = map_to_local(cursor_pos)
 	rewind_cursor.appear()
-# function to move the rewind cursor (NEEDS CHANGING)
+# function to move the rewind cursor
 func move_cursor(direction:Vector2i):
-	cursor_pos += direction
-	rewind_cursor.move(map_to_local(cursor_pos))
+	var new_pos = cursor_pos + direction
+	if in_cursor_bounds(new_pos):
+		cursor_pos = new_pos
+		rewind_cursor.move(map_to_local(cursor_pos))
 # function to rewind current target of rewind cursor
 func activate_rewind():
 	var move_made:bool
@@ -222,7 +229,13 @@ func cancel_rewind():
 func end_rewind(did_rewind:bool = false):
 	rewind_cursor.disappear(did_rewind)
 	rewinding = false
-
+# function to return if a cursor position is in bounds
+func in_cursor_bounds(check_pos)->bool:
+	if check_pos.x < CURSOR_MIN_X or check_pos.x > CURSOR_MAX_X:
+		return false
+	if check_pos.y < CURSOR_MIN_Y or check_pos.y > CURSOR_MAX_Y:
+		return false
+	return true
 
 # other functions
 # function to undo the most recent move
