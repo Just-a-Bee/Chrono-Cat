@@ -20,6 +20,7 @@ func _ready():
 	load_game()
 	$AnimationPlayer.play("fade_from_black")
 	await $AnimationPlayer.animation_finished
+	$SettingsMenu.update_buttons()
 	do_input = true
 
 # function to handle main input like pausing

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6r5hdnc2e5n5"]
+[gd_scene load_steps=3 format=3 uid="uid://c6r5hdnc2e5n5"]
 
 [ext_resource type="Script" path="res://ui/settings_menu/settings_menu.gd" id="1_scrjt"]
+[ext_resource type="AudioStream" uid="uid://dhdcex7sqee7d" path="res://assets/sound/level_complete.wav" id="2_1ga75"]
 
 [node name="SettingsMenu" type="Control"]
 z_index = 7
@@ -33,6 +34,9 @@ text = "Master Volume"
 
 [node name="Master" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+max_value = 10.0
+value = 5.0
+tick_count = 11
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -48,6 +52,9 @@ text = "Music Volume"
 
 [node name="Music" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+max_value = 10.0
+value = 5.0
+tick_count = 11
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -60,7 +67,26 @@ text = "Effects Volume"
 
 [node name="SfX" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+max_value = 10.0
+value = 5.0
+tick_count = 11
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="ResetButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Reset Save Data"
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1332.0
+offset_top = 140.0
+offset_right = 1398.0
+offset_bottom = 206.0
+text = "X"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1ga75")
+
+[connection signal="value_changed" from="VBoxContainer/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/SfX" to="." method="_on_sf_x_value_changed"]
+[connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]
