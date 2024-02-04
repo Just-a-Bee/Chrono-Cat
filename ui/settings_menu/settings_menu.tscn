@@ -86,7 +86,52 @@ text = "X"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_1ga75")
 
+[node name="ResetPrompt" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Polygon2D" type="Polygon2D" parent="ResetPrompt"]
+position = Vector2(0, -160)
+color = Color(0.537255, 0.537255, 0.537255, 1)
+polygon = PackedVector2Array(576, 512, 576, 800, 1344, 800, 1344, 512)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResetPrompt/Polygon2D"]
+offset_left = 608.0
+offset_top = 544.0
+offset_right = 1312.0
+offset_bottom = 768.0
+
+[node name="Label" type="Label" parent="ResetPrompt/Polygon2D/VBoxContainer"]
+layout_mode = 2
+text = "Reset all Progress?"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ResetPrompt/Polygon2D/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "(This cannot be undone)"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResetPrompt/Polygon2D/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ResetYes" type="Button" parent="ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Yes"
+
+[node name="ResetNo" type="Button" parent="ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No"
+
 [connection signal="value_changed" from="VBoxContainer/Master" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/SfX" to="." method="_on_sf_x_value_changed"]
+[connection signal="button_up" from="VBoxContainer/ResetButton" to="." method="_on_reset_button_button_up"]
 [connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]
+[connection signal="button_up" from="ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer/ResetYes" to="." method="_on_reset_yes_button_up"]
+[connection signal="button_up" from="ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer/ResetNo" to="." method="_on_reset_no_button_up"]

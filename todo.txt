@@ -1,16 +1,14 @@
-UI:
-	Make settings work
-
 Assets:
 	settings menu bg
-	pause menu bg
 	story intro animation
 
 Content:
 	Little hats????
+	Cat skins??
 	Tutorial
 	Story intro:
 			Chrono cat wants to sleep in every bed in the world
+	Make settings save!!
 
 Making the game pretty:
 	Many more animations, including smoother collects and destroys, win animation, player animation, etc

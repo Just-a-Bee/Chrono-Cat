@@ -81,7 +81,6 @@ texture = ExtResource("1_eqxxq")
 script = ExtResource("2_4wdjy")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-emitting = false
 process_material = SubResource("ParticleProcessMaterial_j2jx1")
 texture = ExtResource("3_028y1")
 explosiveness = 0.95

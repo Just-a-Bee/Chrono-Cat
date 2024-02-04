@@ -34,8 +34,27 @@ func set_bus_volume(bus, value):
 	$AudioStreamPlayer.bus = AudioServer.get_bus_name(bus)
 	$AudioStreamPlayer.play()
 
+func set_enabled(value):
+	$VBoxContainer/Master.editable = value
+	$VBoxContainer/HBoxContainer/VBoxContainer/Music.editable = value
+	$VBoxContainer/HBoxContainer/VBoxContainer2/SfX.editable = value
+	$VBoxContainer/ResetButton.disabled = not value
+	$CloseButton.disabled = not value
+
+func _on_reset_button_button_up():
+	$ResetPrompt.show()
+	set_enabled(false)
 
 
+func _on_reset_yes_button_up():
+	reset_save()
+	$ResetPrompt.hide()
+	set_enabled(true)
+func _on_reset_no_button_up():
+	$ResetPrompt.hide()
+	set_enabled(true)
 
-
-
+func reset_save():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	save_game.store_line('0')
+	save_game.store_line('0')
