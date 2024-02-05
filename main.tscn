@@ -315,6 +315,7 @@ size_flags_horizontal = 3
 text = "Return to Title"
 
 [node name="RewindBar" type="TextureProgressBar" parent="."]
+visible = false
 z_index = 5
 offset_left = 1664.0
 offset_top = 896.0
