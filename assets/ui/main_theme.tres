@@ -60,4 +60,6 @@ HBoxContainer/constants/separation = 16
 HSlider/styles/slider = SubResource("StyleBoxFlat_iw012")
 Label/font_sizes/font_size = 50
 Label/fonts/font = ExtResource("1_kus0a")
+RichTextLabel/font_sizes/normal_font_size = 30
+RichTextLabel/fonts/normal_font = ExtResource("1_kus0a")
 VBoxContainer/constants/separation = 16
