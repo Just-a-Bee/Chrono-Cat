@@ -27,7 +27,7 @@ func set_bus_volume(bus, value):
 	
 	var volume_db = VOLUME_VALUES[value]
 	volume_setting_arr[bus] = value
-	AudioServer.set_bus_volume_db(bus,value)
+	AudioServer.set_bus_volume_db(bus,volume_db)
 
 
 func reset_save():
@@ -40,7 +40,6 @@ func save_settings():
 	var volume_str = ""
 	for i in volume_setting_arr:
 		volume_str += str(i)
-		print(volume_str)
 	save_settings.store_line(volume_str)
 	
 func load_settings():

@@ -126,7 +126,7 @@ func _on_rewind_uses_changed(new_rewinds):
 func unlock_rewind():
 	$AnimationPlayer.play("unlock_rewind")
 	Globals.rewind_unlocked = true
-	await $AnimationPlayer/RewindTutorial/VBoxContainer/Button.button_up
+	await $AnimationPlayer/RewindTutorial/Button.button_up
 	$AnimationPlayer.play("close_rewind_tutorial")
 
 

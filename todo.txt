@@ -8,7 +8,7 @@ Content:
 	Tutorial
 	Story intro:
 			Chrono cat wants to sleep in every bed in the world
-	Make settings save!!
+	skip end level
 
 Making the game pretty:
 	Many more animations, including smoother collects and destroys, win animation, player animation, etc

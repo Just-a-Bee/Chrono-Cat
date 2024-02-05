@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://rcyuh3knxvqr"]
+
+[ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_inhdq"]
+[ext_resource type="Script" path="res://level_files/level.gd" id="1_qvjpt"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="1_sb681"]
+[ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/scenes/box.tscn" id="2_05i65"]
+[ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/scenes/clock.tscn" id="3_fwt58"]
+
+[node name="TestLevel" type="TileMap"]
+tile_set = ExtResource("1_inhdq")
+format = 2
+script = ExtResource("1_qvjpt")
+
+[node name="Player" parent="." instance=ExtResource("1_sb681")]
+position = Vector2(256, 576)
+
+[node name="Box" parent="." instance=ExtResource("2_05i65")]
+position = Vector2(1088, 576)
+
+[node name="Clock" parent="." instance=ExtResource("3_fwt58")]
+position = Vector2(832, 576)
