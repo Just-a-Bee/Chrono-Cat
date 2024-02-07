@@ -19,8 +19,9 @@ var level_node
 func _ready():
 	load_game()
 	$AnimationPlayer.play("fade_from_black")
-	await $AnimationPlayer.animation_finished
 	$SettingsMenu.update_buttons()
+	await $AnimationPlayer.animation_finished
+	Music.play_track(Music.TRACKS.SELECT)
 	do_input = true
 
 # function to handle main input like pausing
@@ -55,6 +56,7 @@ func unpause():
 # function to return to title screen
 func return_to_title():
 	do_input = false
+	Music.stop()
 	$AnimationPlayer.play("fade_to_black")
 	await $AnimationPlayer.animation_finished
 	Globals.state = Globals.STATES.TITLE
@@ -65,6 +67,7 @@ func return_to_title():
 func open_level(level:PackedScene, level_num, level_name)->void:
 	# fade to black
 	do_input = false
+	Music.stop()
 	$AnimationPlayer.play("fade_to_black")
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer/LevelNum.text = "Level " + str(level_num)
@@ -113,6 +116,7 @@ func exit_level():
 	$AnimationPlayer.play("fade_from_black")
 	await $AnimationPlayer.animation_finished
 	do_input = true
+	Music.play_track(Music.TRACKS.SELECT)
 
 # function to update the value displayed on the rewind bar, if initial unlock, play animation
 func _on_rewind_uses_changed(new_rewinds):

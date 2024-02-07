@@ -23,6 +23,7 @@ buses/default_bus_layout="res://assets/sound/default_bus_layout.tres"
 
 Globals="*res://autoloads/globals.gd"
 InputRepeat="*res://autoloads/input_repeat.gd"
+Music="*res://autoloads/music.gd"
 
 [display]
 

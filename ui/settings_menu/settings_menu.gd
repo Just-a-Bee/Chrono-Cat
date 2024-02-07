@@ -37,7 +37,7 @@ func _on_sf_x_value_changed(value):
 func change_volume(bus,value):
 	Globals.set_bus_volume(bus,value)
 	if do_test_sound:
-		$AudioStreamPlayer.bus = AudioServer.get_bus_name(2)
+		$AudioStreamPlayer.bus = AudioServer.get_bus_name(bus)
 		$AudioStreamPlayer.play()
 
 func set_enabled(value):

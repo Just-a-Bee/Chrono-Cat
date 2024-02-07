@@ -10,13 +10,18 @@ var volume_setting_arr = [4,4,4]
 var rewind_unlocked:bool = false
 
 # state vars
-var state:int = STATES.TITLE
+var state:int = STATES.TITLE : set = _set_state
 enum STATES
 {
 	TITLE = 0,
 	SELECT = 1,
 	LEVEL = 2
 }
+signal state_changed
+
+func _set_state(new_state):
+	state = new_state
+	state_changed.emit()
 
 func _ready():
 	load_settings()

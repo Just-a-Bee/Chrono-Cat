@@ -10,10 +10,10 @@ Content:
 	skip end level
 
 Making the game pretty:
-	Many more animations, including smoother collects and destroys, win animation, player animation, etc
+	Key animation
 	Two frame per step tail swoosh?
 
-Bugs:
+Issues:
 	Weird double opening of level? (rare)
 	Scrungly text (just leave it?)
 	low tutorial frame rate
