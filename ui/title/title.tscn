@@ -33,7 +33,7 @@ _data = {
 script = ExtResource("1_ksjlk")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.572549)
+modulate = Color(1, 1, 1, 0.380392)
 texture_filter = 2
 offset_left = -256.0
 offset_top = -64.0

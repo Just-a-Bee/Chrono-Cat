@@ -5,7 +5,6 @@ Assets:
 Content:
 	Little hats????
 	Cat skins??
-	Tutorial
 	Story intro:
 			Chrono cat wants to sleep in every bed in the world
 	skip end level
@@ -17,6 +16,7 @@ Making the game pretty:
 Bugs:
 	Weird double opening of level? (rare)
 	Scrungly text (just leave it?)
+	low tutorial frame rate
 
 Cleanup:
 	Level script cleanups:
