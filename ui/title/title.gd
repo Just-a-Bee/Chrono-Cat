@@ -7,8 +7,11 @@ const MAIN_PATH = "res://main.tscn"
 func _ready():
 	$Transitioner.fade_from_black()
 	$TextureRect/AnimationPlayer.play("scroll")
+	await $Transitioner.animation_finished
+	Music.play_track(Music.TRACKS.TITLE)
 
 func _on_play_button_up():
+	Music.stop()
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
 	Globals.state = Globals.STATES.SELECT
