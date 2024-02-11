@@ -14,6 +14,9 @@ var tracklist = [
 	null
 ]
 
+func _ready():
+	bus = AudioServer.get_bus_name(Globals.BUSSES.MUSIC)
+
 func play_track(track):
 	stream = tracklist[track]
 	play()

@@ -1,5 +1,6 @@
 Assets:
 	settings menu bg
+	credits bg
 	story intro animation
 
 Content:
@@ -10,13 +11,13 @@ Content:
 	skip end level
 
 Making the game pretty:
-	Key animation
-	Two frame per step tail swoosh?
+	Door and key animations
+	Intro Cutscene
+	
 
 Issues:
-	Weird double opening of level? (rare)
-	Scrungly text (just leave it?)
 	low tutorial frame rate
+	people dont understand the tutorial
 
 Cleanup:
 	Level script cleanups:
@@ -50,19 +51,20 @@ Sounds:
 		Title
 		Select
 		Level
-		Level 2
+		Level 2 (add to Music.gd tracklist, then change a level's track (export var) to track index)
 	Rewind:
-		Unlock chime song
-		Open Sound
-		Close sound
-		Use sound
+		Unlock chime song (add to main.tscn unlock rewind anim)
+		Add to rewind_cursor.tscn animations:
+			Open Sound
+			Close sound
+			Use sound
 		Collect sound
 	Level:
-		Restart sound
-		Undo sound
-		Win Sounds (sleepy cat)
-		Move Sound
+		Add to level_sounds.tscn:
+			Restart sound
+			Undo sound
+			Win Sounds (sleepy cat)
+			Move Sound
 		Open Door Sound
 	Select:
-		Level cleared sound
-		Level opening sound
+		Level opening sound (add to level open animation in main)
