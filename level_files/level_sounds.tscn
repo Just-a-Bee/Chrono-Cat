@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://4n8e5s074gio"]
+[gd_scene load_steps=4 format=3 uid="uid://0vw0pcl3ifr6"]
 
 [ext_resource type="Script" path="res://level_files/level_sounds.gd" id="1_gl2oe"]
-[ext_resource type="AudioStream" uid="uid://dr8yt0b4sjmxc" path="res://assets/sound/door_open.wav" id="2_unq4q"]
-[ext_resource type="AudioStream" uid="uid://dhdcex7sqee7d" path="res://assets/sound/level_complete.wav" id="3_08qpw"]
+[ext_resource type="AudioStream" uid="uid://j5vjbqaj255w" path="res://assets/sound/reset.wav" id="2_dd6dw"]
+[ext_resource type="AudioStream" uid="uid://daer3hisv0e4h" path="res://assets/sound/undo.wav" id="3_kfs4e"]
 
 [node name="LevelSounds" type="Node"]
 script = ExtResource("1_gl2oe")
 
 [node name="RestartSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_unq4q")
+stream = ExtResource("2_dd6dw")
 bus = &"Sfx"
 
 [node name="UndoSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_08qpw")
+stream = ExtResource("3_kfs4e")
 bus = &"Sfx"
