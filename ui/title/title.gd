@@ -27,4 +27,8 @@ func _on_quit_button_up():
 
 
 func _on_credits_button_up():
-	pass
+	$Credits/AnimationPlayer.play("show")
+
+
+func _on_credits_x_button_up():
+	$Credits/AnimationPlayer.play("hide")

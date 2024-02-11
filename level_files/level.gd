@@ -1,6 +1,8 @@
 extends TileMap
 class_name Level
 
+@export var track = Music.TRACKS.LEVEL_1
+
 signal win
 signal rewind_uses_changed
 @onready var main = get_parent()

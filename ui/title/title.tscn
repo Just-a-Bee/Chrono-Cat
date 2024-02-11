@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://devr7s6qosxot"]
+[gd_scene load_steps=12 format=3 uid="uid://devr7s6qosxot"]
 
 [ext_resource type="Script" path="res://ui/title/title.gd" id="1_ksjlk"]
 [ext_resource type="Texture2D" uid="uid://jybi5wxyuluo" path="res://assets/ui/actor_pattern.png" id="2_48j4w"]
@@ -27,6 +27,66 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ymrk"]
 _data = {
 "scroll": SubResource("Animation_arwbk")
+}
+
+[sub_resource type="Animation" id="Animation_0m0iy"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_h6vlo"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ic6dh"]
+_data = {
+"hide": SubResource("Animation_h6vlo"),
+"show": SubResource("Animation_0m0iy")
 }
 
 [node name="Title" type="Node2D"]
@@ -93,7 +153,43 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Quit"
 
+[node name="Credits" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Credits"]
+color = Color(0.145098, 0.145098, 0.145098, 0.745098)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1152, 0, 1152)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Credits"]
+color = Color(0.898039, 0.843137, 0.411765, 1)
+polygon = PackedVector2Array(448, 192, 448, 896, 1472, 896, 1472, 192)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Polygon2D2"]
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 1408.0
+offset_bottom = 640.0
+bbcode_enabled = true
+text = "[center][font_size=50]A game by Abby Smith[/font_size]
+[font_size=40]Music and Sounds by Isaiah Sugar[/font_size]
+
+[font_size=40]Made with Godot
+[url]https://godotengine.org/license/[/url]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Credits"]
+libraries = {
+"": SubResource("AnimationLibrary_ic6dh")
+}
+
+[node name="CreditsX" type="Button" parent="Credits"]
+offset_left = 1408.0
+offset_top = 192.0
+offset_right = 1472.0
+offset_bottom = 256.0
+text = "X"
+
 [connection signal="button_up" from="VBoxContainer/Play" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_credits_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Settings" to="." method="_on_settings_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Credits/CreditsX" to="." method="_on_credits_x_button_up"]

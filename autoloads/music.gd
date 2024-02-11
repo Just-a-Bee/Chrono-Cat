@@ -10,7 +10,7 @@ enum TRACKS {
 var tracklist = [
 	preload("res://assets/sound/title.ogg"),
 	preload("res://assets/sound/level_select.ogg"),
-	null,
+	preload("res://assets/sound/level_1.ogg"),
 	null
 ]
 

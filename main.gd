@@ -92,6 +92,7 @@ func open_level(level:PackedScene, level_num, level_name)->void:
 	$AnimationPlayer.play("fade_from_black")
 	await $AnimationPlayer.animation_finished
 	do_input = true
+	Music.play_track(level_node.track)
 
 # when a level is won, show win anim, then free it and go back to level select
 func _on_level_win():
@@ -102,6 +103,7 @@ func _on_level_win():
 	exit_level()
 # function to exit the level and return to level select
 func exit_level():
+	Music.stop()
 	do_input = false
 	$AnimationPlayer.play("fade_to_black")
 	await $AnimationPlayer.animation_finished
