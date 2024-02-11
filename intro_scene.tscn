@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://udumecmheri0"]
+
+[ext_resource type="Texture2D" uid="uid://cmdgsavqe2bcb" path="res://assets/actors/Bed.png" id="1_nmk63"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="2_dlkbk"]
+[ext_resource type="Texture2D" uid="uid://dljbuqncja7vj" path="res://assets/dream.png" id="3_7ycrr"]
+[ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Cat.png" id="4_sotr3"]
+
+[sub_resource type="Animation" id="Animation_p7v73"]
+resource_name = "Intro"
+length = 100.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7idet"]
+_data = {
+"Intro": SubResource("Animation_p7v73")
+}
+
+[node name="IntroScene" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7idet")
+}
+
+[node name="Bubbles" type="Node2D" parent="."]
+
+[node name="SleepyCat" type="Node2D" parent="."]
+position = Vector2(960, 950)
+scale = Vector2(12, 12)
+
+[node name="Bed" type="Sprite2D" parent="SleepyCat"]
+texture = ExtResource("1_nmk63")
+
+[node name="Player" parent="SleepyCat" instance=ExtResource("2_dlkbk")]
+scale = Vector2(1, 1)
+frame = 7
+script = null
+
+[node name="Dream" type="Sprite2D" parent="."]
+scale = Vector2(16, 16)
+texture = ExtResource("3_7ycrr")
+centered = false
+
+[node name="DreamContents" type="Node2D" parent="Dream"]
+modulate = Color(1, 1, 1, 0.572549)
+
+[node name="Cat" type="Sprite2D" parent="Dream/DreamContents"]
+position = Vector2(-13, 17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_sotr3")
+hframes = 6
+vframes = 2
+
+[node name="Bed" type="Sprite2D" parent="Dream/DreamContents"]
+position = Vector2(26, 17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_nmk63")
+
+[node name="Bed2" type="Sprite2D" parent="Dream/DreamContents"]
+position = Vector2(52, 17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_nmk63")
+
+[node name="Bed3" type="Sprite2D" parent="Dream/DreamContents"]
+position = Vector2(78, 17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_nmk63")
+
+[node name="Bed4" type="Sprite2D" parent="Dream/DreamContents"]
+position = Vector2(104, 17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_nmk63")

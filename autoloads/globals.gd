@@ -19,6 +19,14 @@ enum STATES
 }
 signal state_changed
 
+enum BUSSES
+{
+	MASTER = 0,
+	MUSIC = 1,
+	SFX = 2
+}
+
+
 func _set_state(new_state):
 	state = new_state
 	state_changed.emit()

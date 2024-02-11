@@ -7,6 +7,9 @@ signal win
 signal rewind_uses_changed
 @onready var main = get_parent()
 
+var sfx_packed = preload("res://level_files/level_sounds.tscn")
+@onready var sfx = sfx_packed.instantiate()
+
 # level item vars
 # dictionary that contains all actors and their level positions
 # floor dictionary contains all floor tiles and their level positions
@@ -54,6 +57,8 @@ func _ready():
 	index_floor()
 	win.connect(main._on_level_win)
 	rewind_uses_changed.connect(main._on_rewind_uses_changed)
+	add_child(sfx)
+	
 
 # function to index every actor into actor dictionary
 func index_actors():
@@ -245,10 +250,13 @@ func undo():
 	if undo_array.size() > 0:
 		restore_state(undo_array[-1])
 		undo_array.pop_back()
+		sfx.play_undo()
 #function to restart the level
 func restart():
-	restore_state(undo_array[0])
-	undo_array.clear()
+	if undo_array.size() > 0:
+		restore_state(undo_array[0])
+		undo_array.clear()
+		sfx.play_restart()
 # function to revert to a previous state
 func restore_state(state:Array):
 	if rewinding:
