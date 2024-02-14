@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://unywfgkfgxtk"]
+[gd_scene load_steps=7 format=3 uid="uid://unywfgkfgxtk"]
 
 [ext_resource type="Script" path="res://level_files/level.gd" id="1_7yps3"]
 [ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_sdmuw"]
 [ext_resource type="PackedScene" uid="uid://c3gfm82yv611i" path="res://actors/scenes/wall.tscn" id="1_v5871"]
 [ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="2_kxgch"]
 [ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="3_3dfr0"]
+[ext_resource type="PackedScene" uid="uid://udumecmheri0" path="res://intro_scene.tscn" id="6_nr82j"]
 
 [node name="Having a Nap" type="TileMap"]
 tile_set = ExtResource("1_sdmuw")
 format = 2
 script = ExtResource("1_7yps3")
+has_cutscene = true
 
 [node name="Wall" parent="." instance=ExtResource("1_v5871")]
 position = Vector2(576, 320)
@@ -84,3 +86,7 @@ offset_right = 1920.0
 offset_bottom = 1408.0
 theme_override_font_sizes/normal_font_size = 92
 text = "Use arrow keys to move"
+
+[node name="CutScene" parent="." instance=ExtResource("6_nr82j")]
+visible = false
+z_index = 6

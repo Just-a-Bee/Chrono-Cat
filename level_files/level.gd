@@ -3,6 +3,10 @@ class_name Level
 
 @export var track = Music.TRACKS.LEVEL_1
 
+@export var has_cutscene:bool = false
+signal cutscene_finished
+
+
 signal win
 signal rewind_uses_changed
 @onready var main = get_parent()
@@ -284,6 +288,12 @@ func restore_state(state:Array):
 
 func win_level():
 	win.emit()
+func play_cutscene():
+	if has_cutscene:
+		$CutScene.show()
+		$CutScene.play()
+		await $CutScene.finished
+		cutscene_finished.emit()
 
 # set functions
 # function to set rewind_uses, emits a signal

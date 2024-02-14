@@ -1,5 +1,10 @@
 extends Node2D
 
-func _ready():
-	$SleepyCat/Player/SleepParticles.emitting = true
+signal finished
+
+func play():
+	#$SleepyCat/Player/SleepParticles.emitting = true
 	$AnimationPlayer.play("Intro")
+	$Bubbles/AnimationPlayer.play("float")
+	await $AnimationPlayer.animation_finished
+	finished.emit()

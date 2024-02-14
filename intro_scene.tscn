@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://udumecmheri0"]
+[gd_scene load_steps=15 format=3 uid="uid://udumecmheri0"]
 
 [ext_resource type="Texture2D" uid="uid://cmdgsavqe2bcb" path="res://assets/actors/Bed.png" id="1_nmk63"]
 [ext_resource type="Script" path="res://intro_scene.gd" id="1_t7wr1"]
+[ext_resource type="Texture2D" uid="uid://dvysf1de0w15y" path="res://assets/ui/circle.png" id="2_470xf"]
 [ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="2_dlkbk"]
 [ext_resource type="Texture2D" uid="uid://dljbuqncja7vj" path="res://assets/dream.png" id="3_7ycrr"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="4_0kd5c"]
@@ -9,7 +10,7 @@
 
 [sub_resource type="Animation" id="Animation_p7v73"]
 resource_name = "Intro"
-length = 12.0
+length = 13.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,6 +40,88 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7idet"]
 _data = {
 "Intro": SubResource("Animation_p7v73")
+}
+
+[sub_resource type="Animation" id="Animation_70rm3"]
+resource_name = "float"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.698039)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.698039)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.698039), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Circle:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1142, 839), Vector2(1152, 839)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Circle2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1188, 777), Vector2(1178, 777)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Circle3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1162, 710), Vector2(1172, 710)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spqti"]
+_data = {
+"float": SubResource("Animation_70rm3")
 }
 
 [sub_resource type="Gradient" id="Gradient_csm13"]
@@ -77,14 +160,37 @@ libraries = {
 
 [node name="Bubbles" type="Node2D" parent="."]
 
+[node name="Circle" type="Sprite2D" parent="Bubbles"]
+position = Vector2(1142, 839)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_470xf")
+
+[node name="Circle2" type="Sprite2D" parent="Bubbles"]
+modulate = Color(1, 1, 1, 0.798693)
+position = Vector2(1181.33, 777)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_470xf")
+
+[node name="Circle3" type="Sprite2D" parent="Bubbles"]
+modulate = Color(1, 1, 1, 0.798693)
+position = Vector2(1165.33, 710)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_470xf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bubbles"]
+libraries = {
+"": SubResource("AnimationLibrary_spqti")
+}
+
 [node name="SleepyCat" type="Node2D" parent="."]
-position = Vector2(960, 830)
+position = Vector2(960, 890)
 scale = Vector2(18, 18)
 
 [node name="Bed" type="Sprite2D" parent="SleepyCat"]
 texture = ExtResource("1_nmk63")
 
 [node name="Player" parent="SleepyCat" instance=ExtResource("2_dlkbk")]
+z_index = 0
 scale = Vector2(1, 1)
 frame = 7
 script = null
@@ -124,7 +230,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_nmk63")
 
 [node name="Cat" type="Sprite2D" parent="Dream/DreamContents"]
-position = Vector2(130, 17)
+position = Vector2(-13, 17)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_sotr3")
 hframes = 6
