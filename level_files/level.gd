@@ -138,6 +138,8 @@ func make_move(actor:Actor, direction:Vector2i)->bool:
 		actor_moved = true
 	# if a move was made, append the previous state to the undo array
 	if actor_moved:
+		if not rewinding: # if in a rewind, rewind sound should play instead
+			sfx.play_move()
 		undo_array.append(state) 
 		return true
 	return false
@@ -180,6 +182,7 @@ func collect_actor(actor:Actor):
 	if actor is Clock:
 		rewind_uses += CLOCK_REWINDS
 		player.do_rewind_particles()
+		sfx.play_clock()
 	destroy_actor(actor)
 # function to move an actor, pass in actor to move and direction to move it
 func move_actor(actor:Actor, direction:Vector2i, is_reverse:bool = false):
@@ -228,6 +231,7 @@ func activate_rewind():
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
 			move_made = make_move(rewind_actor, rewind_direction)
 			if move_made:
+				
 				rewind_dictionary[rewind_actor].pop_back()
 				rewind_dictionary[rewind_actor].pop_back()
 				rewind_uses -= 1
@@ -287,6 +291,7 @@ func restore_state(state:Array):
 	rewind_uses = restore_rewind_uses
 
 func win_level():
+	sfx.play_win()
 	win.emit()
 func play_cutscene():
 	if has_cutscene:

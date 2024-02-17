@@ -14,3 +14,15 @@ bus = &"Sfx"
 [node name="UndoSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kfs4e")
 bus = &"Sfx"
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kfs4e")
+bus = &"Sfx"
+
+[node name="ClockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kfs4e")
+bus = &"Sfx"
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kfs4e")
+bus = &"Sfx"
