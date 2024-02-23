@@ -187,4 +187,7 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
 [connection signal="timeout" from="ArrowTimer" to="." method="_on_arrow_timer_timeout"]

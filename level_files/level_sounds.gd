@@ -7,6 +7,6 @@ func play_restart():
 func play_move():
 	$MoveSound.play()
 func play_clock():
-	$ClockSound.play()
+	$ClockSound.play() # played when you collect a clock
 func play_win():
 	$WinSound.play()

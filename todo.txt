@@ -58,13 +58,14 @@ Sounds:
 			Open Sound
 			Close sound
 			Use sound
-		Collect sound
+		
 	Level:
 		Add to level_sounds.tscn:
 			Restart sound
 			Undo sound
 			Win Sounds (sleepy cat)
 			Move Sound
+			Clock collect sound
 		Open Door Sound
 	Select:
 		Level opening sound (add to level open animation in main)
