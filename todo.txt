@@ -1,28 +1,24 @@
 Assets:
-	settings menu bg
 	credits bg
-	story intro animation
 
 Content:
 	Little hats????
 	Cat skins??
-	Story intro:
-			Chrono cat wants to sleep in every bed in the world
+
+Cleanup:
 	skip end level
+	fix up rewind tutorial
+		Give it its own scene and stuff
 
 Making the game pretty:
 	Door and key animations
-	Intro Cutscene
-	
+
 
 Issues:
 	low tutorial frame rate
 	people dont understand the tutorial
 
-Cleanup:
-	Level script cleanups:
-		Clean up collision and floor functions
-		Collectables use their own script
+
 	Standardize Z indexing
 		Level: 0-4
 			Water: 0
@@ -61,10 +57,7 @@ Sounds:
 		
 	Level:
 		Add to level_sounds.tscn:
-			Restart sound
-			Undo sound
 			Win Sounds (sleepy cat)
-			Move Sound
 			Clock collect sound
 		Open Door Sound
 	Select:
