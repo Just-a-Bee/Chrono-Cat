@@ -3,10 +3,10 @@ class_name Level
 
 @export var track = Music.TRACKS.LEVEL_1
 
-@export var has_cutscene:bool = false
-signal cutscene_finished
 
+var level_won:bool = false
 
+signal exit
 signal win
 signal rewind_uses_changed
 @onready var main = get_parent()
@@ -78,6 +78,9 @@ func index_floor():
 
 # function to handle all gameplay input
 func _input(event):
+	if level_won:
+		if event.is_action_pressed("ui_accept"):
+			exit.emit()
 	if not main.do_input:
 		return
 	
@@ -293,12 +296,10 @@ func restore_state(state:Array):
 func win_level():
 	sfx.play_win()
 	win.emit()
-func play_cutscene():
-	if has_cutscene:
-		$CutScene.show()
-		$CutScene.play()
-		await $CutScene.finished
-		cutscene_finished.emit()
+	await get_tree().create_timer(1).timeout
+	level_won = true
+	await get_tree().create_timer(9).timeout
+	exit.emit()
 
 # set functions
 # function to set rewind_uses, emits a signal

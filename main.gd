@@ -98,17 +98,10 @@ func open_level(level:PackedScene, level_num, level_name)->void:
 func _on_level_win():
 	# do animations
 	do_input = false
-	if level_node.has_cutscene:
-		await get_tree().create_timer(6).timeout
-		$AnimationPlayer.play("fade_to_black")
-		await $AnimationPlayer.animation_finished
-		level_node.play_cutscene()
-		$AnimationPlayer.play("fade_from_black")
-		await level_node.cutscene_finished
-	else:
-		await get_tree().create_timer(10).timeout
+	await level_node.exit
 	level_select.clear_level()
 	exit_level()
+
 # function to exit the level and return to level select
 func exit_level():
 	Music.stop()

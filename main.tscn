@@ -453,6 +453,10 @@ text = "[center]Chrono cat has the power to rewind objects through time!
 Press X to open the cursor, then select an object and press X again to send it back!
 This will move the object back to its previous position."
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.6, 0.6)
+
 [connection signal="button_up" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_button_up"]
 [connection signal="button_up" from="PauseMenu/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_button_up"]
 [connection signal="button_up" from="PauseMenu/VBoxContainer/HBoxContainer/ReturnToMap" to="PauseMenu" method="_on_return_to_map_button_up"]
