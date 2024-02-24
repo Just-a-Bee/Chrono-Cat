@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvfrvcc5yq3pj"
-path="res://.godot/imported/Cat.png-bdd32a73d09e34e711a4173d897a5bfe.ctex"
+path="res://.godot/imported/Calico.png-8b73f51b008b02c32206a4b23e8f703c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/actors/Cat.png"
-dest_files=["res://.godot/imported/Cat.png-bdd32a73d09e34e711a4173d897a5bfe.ctex"]
+source_file="res://assets/actors/Calico.png"
+dest_files=["res://.godot/imported/Calico.png-8b73f51b008b02c32206a4b23e8f703c.ctex"]
 
 [params]
 

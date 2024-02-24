@@ -6,17 +6,17 @@ Content:
 	Cat skins??
 
 Cleanup:
-	skip end level
 	fix up rewind tutorial
 		Give it its own scene and stuff
+	change fade back to slide
 
 Making the game pretty:
 	Door and key animations
 
-
 Issues:
 	low tutorial frame rate
 	people dont understand the tutorial
+	weird thing when changing scenes from title idk
 
 
 	Standardize Z indexing

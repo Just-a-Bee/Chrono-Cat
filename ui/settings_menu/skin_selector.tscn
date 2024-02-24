@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqam30xtomfox"]
+
+[ext_resource type="Script" path="res://ui/settings_menu/skin_selector.gd" id="1_q8hbi"]
+
+[node name="HBoxContainer2" type="HBoxContainer"]
+offset_right = 448.0
+offset_bottom = 66.0
+script = ExtResource("1_q8hbi")
+
+[node name="SkinLeft" type="Button" parent="."]
+layout_mode = 2
+text = " < "
+
+[node name="SkinLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chrono Cat"
+horizontal_alignment = 1
+
+[node name="SkinRight" type="Button" parent="."]
+layout_mode = 2
+text = " > "
+
+[connection signal="button_up" from="SkinLeft" to="." method="_on_skin_left_button_up"]
+[connection signal="button_up" from="SkinRight" to="." method="_on_skin_right_button_up"]

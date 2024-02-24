@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dqt6w8pjasqik"]
 
-[ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Cat.png" id="1_jjmpu"]
+[ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="1_t7wiq"]
 [ext_resource type="Script" path="res://actors/scripts/player.gd" id="2_7ud5v"]
 [ext_resource type="Texture2D" uid="uid://c4gbf358ak51s" path="res://assets/particles/z.png" id="3_onrt2"]
 [ext_resource type="Material" uid="uid://be6m3q0y056cl" path="res://assets/particles/rewind_particle.tres" id="4_onk5i"]
@@ -75,11 +75,11 @@ turbulence_enabled = true
 turbulence_influence_min = 0.05
 turbulence_influence_max = 0.05
 
-[node name="Player" type="Sprite2D"]
+[node name="Player" type="Sprite2D" groups=["cat"]]
 z_index = 2
 position = Vector2(-9.53674e-07, -9.53674e-07)
 scale = Vector2(8, 8)
-texture = ExtResource("1_jjmpu")
+texture = ExtResource("1_t7wiq")
 hframes = 6
 vframes = 2
 script = ExtResource("2_7ud5v")

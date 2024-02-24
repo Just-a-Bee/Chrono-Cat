@@ -1,10 +1,23 @@
 extends Node
 
 # settings vars
-var ARR = .3
-var DAS = .4
-const VOLUME_VALUES = [0,-50,-5,-1,0,1,3,4,5]
-var volume_setting_arr = [4,4,4]
+var ARR:float = .3
+var DAS:float = .4
+const VOLUME_VALUES:Array = [0,-50,-5,-1,0,1,3,4,5]
+var volume_setting_arr:Array = [4,4,4]
+var skin_index = 2
+const skin_count = 3
+const skin_textures = [
+	preload("res://assets/actors/Calico.png"),
+	preload("res://assets/actors/Tabby.png"),
+	preload("res://assets/actors/Orange.png")
+]
+const skin_names = [
+	"Chrono Cat",
+	"Time Tabby",
+	"Orange"
+]
+
 
 # progress related vars
 var rewind_unlocked:bool = false
@@ -64,3 +77,17 @@ func load_settings():
 		return
 	for i in volume_str.length():
 		set_bus_volume(i, int(volume_str[i]))
+
+# function to change the skin for the cat
+func change_skin(value):
+	skin_index += value
+	if skin_index >= skin_count:
+		skin_index = 0
+	for node in get_tree().get_nodes_in_group("cat"):
+		node.texture = get_skin_texture()
+	
+	
+func get_skin_texture():
+	return skin_textures[skin_index]
+func get_skin_name():
+	return skin_names[skin_index]
