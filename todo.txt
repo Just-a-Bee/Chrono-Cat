@@ -1,5 +1,6 @@
 Assets:
 	credits bg
+	water sprite
 
 Content:
 	Little hats????

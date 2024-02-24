@@ -151,9 +151,10 @@ size_flags_horizontal = 3
 text = "Quit"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_lqysx")]
-visible = false
-offset_top = 128.0
-offset_bottom = 128.0
+offset_left = 512.0
+offset_top = 192.0
+offset_right = 512.0
+offset_bottom = 192.0
 
 [node name="Credits" type="Node2D" parent="."]
 visible = false

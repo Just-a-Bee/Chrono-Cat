@@ -5,7 +5,7 @@ var ARR:float = .3
 var DAS:float = .4
 const VOLUME_VALUES:Array = [0,-50,-5,-1,0,1,3,4,5]
 var volume_setting_arr:Array = [4,4,4]
-var skin_index = 2
+var skin_index = 0
 const skin_count = 3
 const skin_textures = [
 	preload("res://assets/actors/Calico.png"),

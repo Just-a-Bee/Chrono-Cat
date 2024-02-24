@@ -368,6 +368,10 @@ lifetime = 0.4
 
 [node name="SettingsMenu" parent="." instance=ExtResource("8_or1rc")]
 visible = false
+offset_left = 512.0
+offset_top = 192.0
+offset_right = 512.0
+offset_bottom = 192.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
