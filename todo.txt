@@ -3,12 +3,12 @@ Assets:
 
 Content:
 	Little hats????
-	Cat skins??
 
 Cleanup:
 	fix up rewind tutorial
 		Give it its own scene and stuff
 	change fade back to slide
+	Settings bg needs to be bigger
 
 Making the game pretty:
 	Door and key animations

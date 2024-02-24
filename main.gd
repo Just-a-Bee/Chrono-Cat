@@ -33,9 +33,7 @@ func _input(event):
 # function to handle pause button input
 func pause_input():
 	if is_paused:
-		if is_settings:
-			hide_settings()
-		else:
+		if not is_settings:
 			unpause()
 	else:
 		pause()
@@ -52,6 +50,12 @@ func unpause():
 	$PauseMenu.hide()
 	do_input = true
 	is_paused = false
+
+func _on_settings_menu_closed():
+	$PauseMenu.set_enabled(true)
+	await get_tree().process_frame
+	is_settings = false
+
 
 # function to return to title screen
 func return_to_title():
@@ -178,3 +182,6 @@ func load_game():
 	
 	var rewind_string = load_game.get_line()
 	Globals.rewind_unlocked = (rewind_string == '1')
+
+
+

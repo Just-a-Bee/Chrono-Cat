@@ -83,6 +83,8 @@ func change_skin(value):
 	skin_index += value
 	if skin_index >= skin_count:
 		skin_index = 0
+	if skin_index < 0:
+		skin_index = skin_count-1
 	for node in get_tree().get_nodes_in_group("cat"):
 		node.texture = get_skin_texture()
 	

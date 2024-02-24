@@ -25,3 +25,10 @@ func _on_return_to_title_button_up():
 
 func _on_settings_button_up():
 	main.show_settings()
+	set_enabled(false)
+
+func set_enabled(value):
+	$VBoxContainer/Resume.disabled = not value
+	$VBoxContainer/Settings.disabled = not value
+	$VBoxContainer/HBoxContainer/ReturnToMap.disabled = not value
+	$VBoxContainer/HBoxContainer/ReturnToTitle.disabled = not value

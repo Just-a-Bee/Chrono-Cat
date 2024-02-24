@@ -1,4 +1,7 @@
 extends Control
+class_name SettingsMenu
+
+signal closed
 
 var do_test_sound = false
 
@@ -24,6 +27,8 @@ func _on_close_button_button_up():
 func close():
 	Globals.save_settings()
 	hide()
+	closed.emit()
+	
 
 
 
@@ -58,7 +63,6 @@ func _on_reset_yes_button_up():
 func _on_reset_no_button_up():
 	$ResetPrompt.hide()
 	set_enabled(true)
-
 
 
 
