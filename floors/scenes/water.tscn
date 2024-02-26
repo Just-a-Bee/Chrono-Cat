@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpujfv8b66i2i"]
+[gd_scene load_steps=3 format=3 uid="uid://bpujfv8b66i2i"]
 
 [ext_resource type="Script" path="res://floors/scripts/water.gd" id="1_b36f0"]
+[ext_resource type="Texture2D" uid="uid://detj6sab82rmm" path="res://assets/actors/Water.png" id="1_wrl6l"]
 
-[node name="Water" type="Polygon2D"]
-color = Color(0.313726, 0.309804, 1, 1)
-polygon = PackedVector2Array(0, 0, 0, 128, 128, 128, 128, 0)
+[node name="Water" type="Sprite2D"]
+scale = Vector2(8, 8)
+texture = ExtResource("1_wrl6l")
+centered = false
 script = ExtResource("1_b36f0")

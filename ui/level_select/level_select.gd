@@ -9,6 +9,7 @@ var current_node:Node = null
 # connect open level signal to main
 func _ready():
 	select_level(get_node("Having a Nap"), null, true)
+	$Player.texture = Globals.get_skin_texture()
 
 # handle level select inputs
 func _input(event):
@@ -63,7 +64,7 @@ func select_level(new_select, move_dir, instant = false):
 		$Player.position = current_node.position
 	else:
 		# player moving animation
-		$Player.play("walk")
+		$Player/AnimationPlayer.play("walk")
 		if move_dir == Vector2.RIGHT:
 			$Player.flip_h = false
 		elif move_dir == Vector2.LEFT:
@@ -71,7 +72,7 @@ func select_level(new_select, move_dir, instant = false):
 		var tween = get_tree().create_tween()
 		tween.tween_property($Player, "position", current_node.position, .6)
 		await tween.finished
-		$Player.play("stand")
+		$Player/AnimationPlayer.play("stand")
 	
 	if current_node is MapLevel:
 		$LevelTitle.text = current_node.name

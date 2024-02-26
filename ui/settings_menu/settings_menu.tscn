@@ -40,6 +40,7 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Master Volume"
 
 [node name="Master" type="HSlider" parent="VBoxContainer"]
@@ -83,6 +84,7 @@ tick_count = 9
 
 [node name="SkinSelector" parent="VBoxContainer" instance=ExtResource("3_rdj6i")]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="ResetButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -102,11 +104,8 @@ stream = ExtResource("2_1ga75")
 [node name="ResetPrompt" type="Control" parent="."]
 visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Polygon2D" type="Polygon2D" parent="ResetPrompt"]
-position = Vector2(0, -160)
 color = Color(0.537255, 0.537255, 0.537255, 1)
 polygon = PackedVector2Array(576, 512, 576, 800, 1344, 800, 1344, 512)
 

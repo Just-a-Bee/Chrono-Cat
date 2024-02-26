@@ -1,25 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqam30xtomfox"]
+[gd_scene load_steps=3 format=3 uid="uid://dqam30xtomfox"]
 
 [ext_resource type="Script" path="res://ui/settings_menu/skin_selector.gd" id="1_q8hbi"]
+[ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="2_pirtl"]
 
-[node name="HBoxContainer2" type="HBoxContainer"]
-offset_right = 448.0
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 395.0
 offset_bottom = 66.0
+theme_override_constants/separation = -3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Character:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
 script = ExtResource("1_q8hbi")
 
-[node name="SkinLeft" type="Button" parent="."]
+[node name="SkinLeft" type="Button" parent="HBoxContainer2"]
 layout_mode = 2
 text = " < "
 
-[node name="SkinLabel" type="Label" parent="."]
+[node name="SkinLabel" type="Label" parent="HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Chrono Cat"
 horizontal_alignment = 1
 
-[node name="SkinRight" type="Button" parent="."]
+[node name="Control" type="Control" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(66, 66)
+layout_direction = 2
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer2/Control"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_pirtl")
+centered = false
+hframes = 6
+vframes = 2
+
+[node name="SkinRight" type="Button" parent="HBoxContainer2"]
 layout_mode = 2
 text = " > "
 
-[connection signal="button_up" from="SkinLeft" to="." method="_on_skin_left_button_up"]
-[connection signal="button_up" from="SkinRight" to="." method="_on_skin_right_button_up"]
+[connection signal="button_up" from="HBoxContainer2/SkinLeft" to="HBoxContainer2" method="_on_skin_left_button_up"]
+[connection signal="button_up" from="HBoxContainer2/SkinRight" to="HBoxContainer2" method="_on_skin_right_button_up"]

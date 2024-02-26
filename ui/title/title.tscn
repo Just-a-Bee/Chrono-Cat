@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://devr7s6qosxot"]
+[gd_scene load_steps=13 format=3 uid="uid://devr7s6qosxot"]
 
 [ext_resource type="Script" path="res://ui/title/title.gd" id="1_ksjlk"]
 [ext_resource type="Texture2D" uid="uid://jybi5wxyuluo" path="res://assets/ui/actor_pattern.png" id="2_48j4w"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b18s0kfnnp2ch" path="res://ui/transition/transitioner.tscn" id="3_k2605"]
 [ext_resource type="Theme" uid="uid://d0mdmnx1jp3v2" path="res://assets/ui/main_theme.tres" id="3_qocws"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="4_lqysx"]
+[ext_resource type="Texture2D" uid="uid://ggx50nwajfdn" path="res://assets/ui/Credits.png" id="7_u88e5"]
 
 [sub_resource type="Animation" id="Animation_arwbk"]
 resource_name = "scroll"
@@ -151,34 +152,36 @@ size_flags_horizontal = 3
 text = "Quit"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_lqysx")]
+visible = false
 offset_left = 512.0
 offset_top = 192.0
 offset_right = 512.0
 offset_bottom = 192.0
 
 [node name="Credits" type="Node2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="Credits"]
 color = Color(0.145098, 0.145098, 0.145098, 0.745098)
 polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1152, 0, 1152)
 
-[node name="Polygon2D2" type="Polygon2D" parent="Credits"]
-color = Color(0.898039, 0.843137, 0.411765, 1)
-polygon = PackedVector2Array(448, 192, 448, 896, 1472, 896, 1472, 192)
+[node name="Sprite2D" type="Sprite2D" parent="Credits"]
+position = Vector2(448, 192)
+scale = Vector2(8, 7.68)
+texture = ExtResource("7_u88e5")
+centered = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Polygon2D2"]
-offset_left = 512.0
-offset_top = 256.0
-offset_right = 1408.0
-offset_bottom = 640.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+offset_left = 472.0
+offset_top = 240.0
+offset_right = 1448.0
+offset_bottom = 848.0
 bbcode_enabled = true
 text = "[center][font_size=50]A game by Abby Smith[/font_size]
 [font_size=40]Music and Sounds by Isaiah Sugar[/font_size]
 
 [font_size=40]Made with Godot
-[url]https://godotengine.org/license/[/url]"
+[url]https://godotengine.org/license/[/url]
+"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Credits"]
 libraries = {
@@ -186,10 +189,10 @@ libraries = {
 }
 
 [node name="CreditsX" type="Button" parent="Credits"]
-offset_left = 1408.0
-offset_top = 192.0
-offset_right = 1472.0
-offset_bottom = 256.0
+offset_left = 1376.0
+offset_top = 224.0
+offset_right = 1440.0
+offset_bottom = 290.0
 text = "X"
 
 [node name="Camera2D" type="Camera2D" parent="."]

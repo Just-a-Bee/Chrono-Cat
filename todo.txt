@@ -1,6 +1,3 @@
-Assets:
-	credits bg
-	water sprite
 
 Content:
 	Little hats????
@@ -9,7 +6,7 @@ Cleanup:
 	fix up rewind tutorial
 		Give it its own scene and stuff
 	change fade back to slide
-	Settings bg needs to be bigger
+	Figure out what all to put in credits
 
 Making the game pretty:
 	Door and key animations
@@ -45,9 +42,6 @@ Issues:
 
 Sounds:
 	Music:
-		Title
-		Select
-		Level
 		Level 2 (add to Music.gd tracklist, then change a level's track (export var) to track index)
 	Rewind:
 		Unlock chime song (add to main.tscn unlock rewind anim)
