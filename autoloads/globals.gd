@@ -67,6 +67,7 @@ func save_settings():
 	for i in volume_setting_arr:
 		volume_str += str(i)
 	save_settings.store_line(volume_str)
+	save_settings.store_line(str(skin_index))
 	
 func load_settings():
 	if not FileAccess.file_exists("user://savesettings.save"):
@@ -77,6 +78,9 @@ func load_settings():
 		return
 	for i in volume_str.length():
 		set_bus_volume(i, int(volume_str[i]))
+	
+	var skin_str = load_settings.get_line()
+	skin_index = int(skin_str)
 
 # function to change the skin for the cat
 func change_skin(value):
