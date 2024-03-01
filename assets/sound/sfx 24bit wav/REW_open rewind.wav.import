@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cotcwc6jl5n2x"
+path="res://.godot/imported/REW_open rewind.wav-048557d5776a3d101aecf2f6b1e37ea9.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx 24bit wav/REW_open rewind.wav"
+dest_files=["res://.godot/imported/REW_open rewind.wav-048557d5776a3d101aecf2f6b1e37ea9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

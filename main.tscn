@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctd8xi6wdx1h"]
+[gd_scene load_steps=20 format=3 uid="uid://ctd8xi6wdx1h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ntcjf"]
 [ext_resource type="PackedScene" uid="uid://dseb7xqjms3u6" path="res://ui/level_select/level_select.tscn" id="2_p70cs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d12eu17xjnlxf" path="res://assets/level_stuff/RewindBarEmpty.png" id="6_mr47i"]
 [ext_resource type="Texture2D" uid="uid://cmkwnxyfnp7xa" path="res://assets/level_stuff/RewindBarFull.png" id="7_8wg3w"]
 [ext_resource type="VideoStream" path="res://assets/ui/Rewind Tutorial.ogv" id="8_jh7mb"]
+[ext_resource type="AudioStream" uid="uid://ct42s3pi1ossu" path="res://assets/sound/sfx 24bit wav/LOAD_open level.wav" id="8_knp5s"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="8_r1bar"]
 
@@ -166,6 +167,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.454837,
+"stream": ExtResource("8_knp5s")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_e7qc6"]
 resource_name = "unlock_rewind"
@@ -384,7 +400,6 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 1088, 0, 0, 1920, 0, 1920, 1088)
 
 [node name="TitleBar" type="Polygon2D" parent="AnimationPlayer"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 9
 color = Color(0.996078, 0.964706, 0.356863, 1)
@@ -455,6 +470,9 @@ bbcode_enabled = true
 text = "[center]Chrono cat has the power to rewind objects through time!
 Press X to open the cursor, then select an object and press X again to send it back!
 This will move the object back to its previous position."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
