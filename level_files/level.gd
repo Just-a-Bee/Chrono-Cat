@@ -225,12 +225,12 @@ func move_cursor(direction:Vector2i):
 		rewind_cursor.move(map_to_local(cursor_pos))
 # function to rewind current target of rewind cursor
 func activate_rewind():
-	var move_made:bool
+	var move_made:bool = false
 	if actor_dictionary.has(cursor_pos):
 		var rewind_actor = actor_dictionary[cursor_pos]
 		if rewind_actor is Player:
-			return
-		if rewind_dictionary[rewind_actor].size() > 0:
+			pass
+		elif rewind_dictionary[rewind_actor].size() > 0:
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
 			move_made = make_move(rewind_actor, rewind_direction)
 			if move_made:
