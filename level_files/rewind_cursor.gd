@@ -16,7 +16,7 @@ func disappear(did_rewind:bool):
 		var particle_time = $GPUParticles2D.lifetime
 		await get_tree().create_timer(particle_time).timeout
 	else:
-		$AnimationPlayer.play_backwards("appear")
+		$AnimationPlayer.play("disappear")
 		await $AnimationPlayer.animation_finished
 	get_parent().remove_child(self)
 	queue_free()

@@ -1,7 +1,4 @@
 
-Content:
-	Little hats????
-
 Cleanup:
 	fix up rewind tutorial
 		Give it its own scene and stuff
@@ -54,6 +51,6 @@ Sounds:
 		Add to level_sounds.tscn:
 			Win Sounds (sleepy cat)
 			Clock collect sound
-		Open Door Sound
+			
 	Select:
 		Level opening sound (add to level open animation in main)
