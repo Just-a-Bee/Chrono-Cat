@@ -5,10 +5,10 @@
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="5_6dq5v"]
 [ext_resource type="Texture2D" uid="uid://d12eu17xjnlxf" path="res://assets/level_stuff/RewindBarEmpty.png" id="6_mr47i"]
 [ext_resource type="Texture2D" uid="uid://cmkwnxyfnp7xa" path="res://assets/level_stuff/RewindBarFull.png" id="7_8wg3w"]
-[ext_resource type="VideoStream" path="res://assets/ui/Rewind Tutorial.ogv" id="8_jh7mb"]
 [ext_resource type="AudioStream" uid="uid://ct42s3pi1ossu" path="res://assets/sound/sfx 24bit wav/LOAD_open level.wav" id="8_knp5s"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="8_r1bar"]
+[ext_resource type="PackedScene" uid="uid://cmaieui7lrmx8" path="res://ui/rewind_tutorial.tscn" id="9_y7ndv"]
 
 [sub_resource type="Gradient" id="Gradient_ds136"]
 offsets = PackedFloat32Array(0, 0.190476, 1)
@@ -29,6 +29,105 @@ gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_ilkbd")
+
+[sub_resource type="Animation" id="Animation_glk5x"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RewindBar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RewindBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RewindBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1664, 896)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RewindBar:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/LevelNum:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/TitleBar:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/RewindTutorial:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/Fader:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_cuox6"]
 resource_name = "close_rewind_tutorial"
@@ -307,105 +406,6 @@ tracks/9/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_glk5x"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RewindBar:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RewindBar:value")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RewindBar:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1664, 896)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RewindBar:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(8, 8)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/LevelNum:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPlayer/TitleBar:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AnimationPlayer/RewindTutorial:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AnimationPlayer/Fader:color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqw8y"]
 _data = {
 "RESET": SubResource("Animation_glk5x"),
@@ -542,48 +542,12 @@ theme_override_font_sizes/font_size = 70
 text = "Level "
 horizontal_alignment = 1
 
-[node name="RewindTutorial" type="Polygon2D" parent="AnimationPlayer"]
+[node name="RewindTutorial" parent="AnimationPlayer" instance=ExtResource("9_y7ndv")]
 visible = false
-z_index = 3
-position = Vector2(512, 1152)
-color = Color(0.584314, 0.584314, 0.584314, 1)
-polygon = PackedVector2Array(0, 0, 896, 0, 896, 768, 0, 768)
-
-[node name="Label" type="Label" parent="AnimationPlayer/RewindTutorial"]
-offset_right = 896.0
-offset_bottom = 85.0
-theme_override_font_sizes/font_size = 70
-text = "Rewind"
-horizontal_alignment = 1
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AnimationPlayer/RewindTutorial"]
-offset_left = 128.0
-offset_top = 90.0
-offset_right = 1408.0
-offset_bottom = 810.0
-scale = Vector2(0.5, 0.5)
-stream = ExtResource("8_jh7mb")
-loop = true
-
-[node name="Button" type="Button" parent="AnimationPlayer/RewindTutorial"]
-offset_left = 64.0
-offset_top = 656.0
-offset_right = 832.0
-offset_bottom = 722.0
-theme_override_font_sizes/font_size = 50
-text = "Okay!!"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="AnimationPlayer/RewindTutorial"]
-offset_left = 64.0
-offset_top = 464.0
-offset_right = 832.0
-offset_bottom = 656.0
-theme_override_constants/line_separation = 10
-theme_override_font_sizes/normal_font_size = 29
-bbcode_enabled = true
-text = "[center]Chrono cat has the power to rewind objects through time!
-Press X to open the cursor, then select an object and press X again to send it back!
-This will move the object back to its previous position."
+offset_left = 512.0
+offset_top = 1152.0
+offset_right = 1424.0
+offset_bottom = 1904.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Sfx"

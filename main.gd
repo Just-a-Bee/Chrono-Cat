@@ -136,9 +136,8 @@ func _on_rewind_uses_changed(new_rewinds):
 # function to show unlocking animation for rewind ability
 func unlock_rewind():
 	$AnimationPlayer.play("unlock_rewind")
-	$AnimationPlayer/RewindTutorial/VideoStreamPlayer.play()
 	Globals.rewind_unlocked = true
-	await $AnimationPlayer/RewindTutorial/Button.button_up
+	await $AnimationPlayer/RewindTutorial.close
 	$AnimationPlayer.play("close_rewind_tutorial")
 
 

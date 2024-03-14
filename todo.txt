@@ -52,6 +52,3 @@ Sounds:
 		Add to level_sounds.tscn:
 			Win Sounds (sleepy cat)
 			Clock collect sound
-			
-	Select:
-		Level opening sound (add to level open animation in main)
