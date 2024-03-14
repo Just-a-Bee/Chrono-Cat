@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level_files/level_sounds.gd" id="1_gl2oe"]
 [ext_resource type="AudioStream" uid="uid://j5vjbqaj255w" path="res://assets/sound/reset.wav" id="2_dd6dw"]
-[ext_resource type="AudioStream" uid="uid://daer3hisv0e4h" path="res://assets/sound/undo.wav" id="3_kfs4e"]
+[ext_resource type="AudioStream" uid="uid://daer3hisv0e4h" path="res://assets/sound/move.wav" id="3_6qynr"]
 
 [node name="LevelSounds" type="Node"]
 script = ExtResource("1_gl2oe")
@@ -12,17 +12,17 @@ stream = ExtResource("2_dd6dw")
 bus = &"Sfx"
 
 [node name="UndoSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kfs4e")
+stream = ExtResource("3_6qynr")
 bus = &"Sfx"
 
 [node name="MoveSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kfs4e")
+stream = ExtResource("3_6qynr")
 bus = &"Sfx"
 
 [node name="ClockSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kfs4e")
+stream = ExtResource("3_6qynr")
 bus = &"Sfx"
 
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kfs4e")
+stream = ExtResource("3_6qynr")
 bus = &"Sfx"

@@ -4,6 +4,7 @@ Cleanup:
 		Give it its own scene and stuff
 	change fade back to slide
 	Figure out what all to put in credits
+	RESET animations for all animationplayers
 
 Making the game pretty:
 	Door and key animations

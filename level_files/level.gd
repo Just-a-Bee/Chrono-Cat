@@ -92,7 +92,8 @@ func _input(event):
 	elif event.is_action_pressed("cancel"):
 		cancel_rewind()
 	elif event.is_action_pressed("undo"):
-		undo()
+		pass
+		#undo() disabling undo, its confusing and not needed
 	elif event.is_action_pressed("restart"):
 		restart()
 	
