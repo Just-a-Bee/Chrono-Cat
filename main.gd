@@ -138,7 +138,7 @@ func _on_rewind_uses_changed(new_rewinds):
 func unlock_rewind():
 	$AnimationPlayer.play("unlock_rewind")
 	Globals.rewind_unlocked = true
-	await get_tree().process_frame
+	await get_tree().process_frame #wait for it to be visible to make it grab focus
 	$AnimationPlayer/RewindTutorial.get_focus()
 	await $AnimationPlayer/RewindTutorial.close
 	$AnimationPlayer.play("close_rewind_tutorial")

@@ -57,15 +57,19 @@ func set_enabled(value):
 
 func _on_reset_button_button_up():
 	$ResetPrompt.show()
+	$ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer/ResetNo.grab_focus()
 	set_enabled(false)
 
 func _on_reset_yes_button_up():
 	Globals.reset_save()
 	$ResetPrompt.hide()
 	set_enabled(true)
+	get_focus()
+
 func _on_reset_no_button_up():
 	$ResetPrompt.hide()
 	set_enabled(true)
+	get_focus()
 
 
 

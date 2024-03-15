@@ -1,12 +1,9 @@
 
-Cleanup:
-	change fade back to slide
-	Figure out what all to put in credits
+
+Figure out what all to put in credits
 
 Control prompts when opening rewind
 Restart control prompt somewhere
-Grab Ui focus with menus
-Make buttons look focused on
 
 Issues:
 	weird thing when changing scenes from title idk

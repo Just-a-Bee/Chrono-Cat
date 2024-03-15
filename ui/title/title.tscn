@@ -128,6 +128,9 @@ theme = ExtResource("3_qocws")
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../HBoxContainer/Credits")
+focus_neighbor_right = NodePath("../HBoxContainer/Quit")
+focus_neighbor_bottom = NodePath("../HBoxContainer/Settings")
 theme = ExtResource("3_qocws")
 text = "Play"
 
@@ -159,7 +162,6 @@ offset_right = 512.0
 offset_bottom = 192.0
 
 [node name="Credits" type="Node2D" parent="."]
-visible = false
 
 [node name="Polygon2D" type="Polygon2D" parent="Credits"]
 color = Color(0.145098, 0.145098, 0.145098, 0.745098)
@@ -173,14 +175,17 @@ centered = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
 offset_left = 472.0
-offset_top = 240.0
+offset_top = 280.0
 offset_right = 1448.0
 offset_bottom = 848.0
 bbcode_enabled = true
 text = "[center][font_size=50]A game by Abby Smith[/font_size]
-[font_size=40]Music and Sounds by Isaiah Sugar[/font_size]
 
-[font_size=40]Made with Godot
+[font_size=45]Music and Sounds by Isaiah Sugar[/font_size]
+[font_size=45][url]https://isaiahsugar.com[/url][/font_size]
+
+
+[font_size=45]Made with Godot
 [url]https://godotengine.org/license/[/url]
 "
 
@@ -205,4 +210,5 @@ zoom = Vector2(0.6, 0.6)
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Settings" to="." method="_on_settings_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_button_up"]
 [connection signal="closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]
+[connection signal="meta_clicked" from="Credits/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="button_up" from="Credits/CreditsX" to="." method="_on_credits_x_button_up"]

@@ -3,6 +3,8 @@ extends Node2D
 signal open_level
 
 var current_node:Node = null
+var cleared_levels:int = 0
+
 
 @onready var main = get_parent()
 
@@ -55,8 +57,8 @@ func select_level(new_select, move_dir, instant = false):
 	main.do_input = false
 	
 	
-	
-	$LevelTitle.text = ""
+	if current_node is MapLevel:
+		$LevelTitle.disappear()
 	current_node = new_select
 	
 	# move player to level
@@ -75,7 +77,8 @@ func select_level(new_select, move_dir, instant = false):
 		$Player/AnimationPlayer.play("stand")
 	
 	if current_node is MapLevel:
-		$LevelTitle.text = current_node.name
+		$LevelTitle.update_text(current_node.name)
+		$LevelTitle.appear()
 	main.do_input = true
 
 # when main tells us a level was cleared, give that level a checkmark
@@ -83,6 +86,13 @@ func clear_level():
 	if not current_node.cleared:
 		current_node.clear()
 		main.save_game()
+		cleared_levels += 1
+		update_clear_count()
+
+# function to update the cleared level counter
+func update_clear_count():
+	$ClearCount.text = str(cleared_levels) + "/5"
+
 
 # function to return array of all level buttons
 func get_levels():
@@ -104,4 +114,5 @@ func set_clears(cleared_array):
 		if cleared_array[i]:
 			level_arr[i].cleared = true
 			level_arr[i].fast_clear()
-		
+			cleared_levels += 1
+	update_clear_count()

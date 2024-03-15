@@ -106,12 +106,12 @@ text = "X"
 stream = ExtResource("2_1ga75")
 
 [node name="ResetPrompt" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="ResetPrompt"]
-color = Color(0.537255, 0.537255, 0.537255, 1)
-polygon = PackedVector2Array(576, 512, 576, 800, 1344, 800, 1344, 512)
+position = Vector2(-512, -376)
+color = Color(0.756863, 0.603922, 0.443137, 1)
+polygon = PackedVector2Array(576, 512, 576, 666.585, 576, 800, 1344, 800, 1344, 512)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ResetPrompt/Polygon2D"]
 offset_left = 608.0
@@ -137,11 +137,23 @@ size_flags_vertical = 10
 [node name="ResetYes" type="Button" parent="ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ResetNo")
+focus_neighbor_top = NodePath("../ResetNo")
+focus_neighbor_right = NodePath("../ResetNo")
+focus_neighbor_bottom = NodePath("../ResetNo")
+focus_next = NodePath("../ResetNo")
+focus_previous = NodePath("../ResetNo")
 text = "Yes"
 
 [node name="ResetNo" type="Button" parent="ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ResetYes")
+focus_neighbor_top = NodePath("../ResetYes")
+focus_neighbor_right = NodePath("../ResetYes")
+focus_neighbor_bottom = NodePath("../ResetYes")
+focus_next = NodePath("../ResetYes")
+focus_previous = NodePath("../ResetYes")
 text = "No"
 
 [connection signal="value_changed" from="VBoxContainer/Master" to="." method="_on_master_value_changed"]
