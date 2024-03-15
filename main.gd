@@ -53,6 +53,7 @@ func unpause():
 
 func _on_settings_menu_closed():
 	$PauseMenu.set_enabled(true)
+	$PauseMenu.get_focus()
 	await get_tree().process_frame
 	is_settings = false
 
@@ -137,11 +138,14 @@ func _on_rewind_uses_changed(new_rewinds):
 func unlock_rewind():
 	$AnimationPlayer.play("unlock_rewind")
 	Globals.rewind_unlocked = true
+	await get_tree().process_frame
+	$AnimationPlayer/RewindTutorial.get_focus()
 	await $AnimationPlayer/RewindTutorial.close
 	$AnimationPlayer.play("close_rewind_tutorial")
 
 
 func show_settings():
+	$SettingsMenu.get_focus()
 	$SettingsMenu.show()
 	is_settings = true
 func hide_settings():

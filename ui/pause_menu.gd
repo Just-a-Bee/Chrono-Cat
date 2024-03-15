@@ -9,6 +9,9 @@ func update_buttons():
 	else:
 		$VBoxContainer/HBoxContainer/ReturnToMap.show()
 
+func get_focus():
+	$VBoxContainer/Resume.grab_focus()
+
 func _on_resume_button_up():
 	main.unpause()
 

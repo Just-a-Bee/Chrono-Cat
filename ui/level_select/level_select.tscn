@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dseb7xqjms3u6"]
+[gd_scene load_steps=16 format=3 uid="uid://dseb7xqjms3u6"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_ppnx8"]
 [ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_select/level_button.tscn" id="2_6b2g3"]
 [ext_resource type="PackedScene" uid="uid://dtb1o8ogbu8dx" path="res://levels/chronology.tscn" id="3_5fvae"]
 [ext_resource type="PackedScene" uid="uid://bi3qwfkkihawt" path="res://ui/level_select/map_position.tscn" id="3_5otd6"]
-[ext_resource type="PackedScene" uid="uid://unywfgkfgxtk" path="res://levels/having_a_nap.tscn" id="3_mtalg"]
 [ext_resource type="PackedScene" uid="uid://lfyr65vh2gv1" path="res://levels/lock_and_key.tscn" id="4_5d44g"]
 [ext_resource type="PackedScene" uid="uid://ujejc8syiu43" path="res://levels/locks_and_keys.tscn" id="5_b8vvg"]
 [ext_resource type="PackedScene" uid="uid://dp5opa0eowbv1" path="res://levels/water_wall.tscn" id="6_egfgn"]
@@ -82,12 +81,18 @@ offset_bottom = 1947.0
 rotation = 1.5708
 texture = SubResource("GradientTexture1D_swa16")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(64, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-64, 128, 576, 128, 704, 0, -64, 0)
+
 [node name="LevelTitle" type="Label" parent="."]
 offset_left = 64.0
+offset_top = 10.0
 offset_right = 1920.0
-offset_bottom = 144.0
+offset_bottom = 154.0
 theme_override_font_sizes/font_size = 80
-text = "Title"
+text = "Locks and Keys"
 
 [node name="Player" type="Sprite2D" parent="." groups=["cat"]]
 z_index = 1
@@ -101,9 +106,8 @@ libraries = {
 "": SubResource("AnimationLibrary_vs5ns")
 }
 
-[node name="Having a Nap" parent="." node_paths=PackedStringArray("right_node") instance=ExtResource("2_6b2g3")]
+[node name="Start" parent="." node_paths=PackedStringArray("right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(320, 576)
-level = ExtResource("3_mtalg")
 right_node = NodePath("../Node1")
 
 [node name="Chronology" parent="." node_paths=PackedStringArray("up_node", "left_node", "down_node") instance=ExtResource("2_6b2g3")]
@@ -142,7 +146,7 @@ left_node = NodePath("../Node4")
 
 [node name="Node1" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(576, 576)
-left_node = NodePath("../Having a Nap")
+left_node = NodePath("../Start")
 right_node = NodePath("../Chronology")
 
 [node name="Node2" parent="." node_paths=PackedStringArray("down_node", "right_node") instance=ExtResource("3_5otd6")]

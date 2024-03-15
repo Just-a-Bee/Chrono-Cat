@@ -8,7 +8,7 @@ var current_node:Node = null
 
 # connect open level signal to main
 func _ready():
-	select_level(get_node("Having a Nap"), null, true)
+	select_level(get_node("Start"), null, true)
 	$Player.texture = Globals.get_skin_texture()
 
 # handle level select inputs

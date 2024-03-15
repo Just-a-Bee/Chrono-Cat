@@ -5,6 +5,7 @@ extends Node2D
 const MAIN_PATH = "res://main.tscn"
 
 func _ready():
+	$VBoxContainer/Play.grab_focus()
 	$Transitioner.fade_from_black()
 	$TextureRect/AnimationPlayer.play("scroll")
 	await $Transitioner.animation_finished
@@ -20,6 +21,7 @@ func _on_play_button_up():
 
 func _on_settings_button_up():
 	$SettingsMenu.show()
+	$SettingsMenu.get_focus()
 
 
 func _on_quit_button_up():
@@ -32,3 +34,7 @@ func _on_credits_button_up():
 
 func _on_credits_x_button_up():
 	$Credits/AnimationPlayer.play("hide")
+
+
+func _on_settings_menu_closed():
+	$VBoxContainer/Play.grab_focus()

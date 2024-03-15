@@ -1,17 +1,14 @@
 
 Cleanup:
-	fix up rewind tutorial
-		Give it its own scene and stuff
 	change fade back to slide
 	Figure out what all to put in credits
-	RESET animations for all animationplayers
 
-Making the game pretty:
-	Door and key animations
+Control prompts when opening rewind
+Restart control prompt somewhere
+Grab Ui focus with menus
+Make buttons look focused on
 
 Issues:
-	low tutorial frame rate
-	people dont understand the tutorial
 	weird thing when changing scenes from title idk
 
 

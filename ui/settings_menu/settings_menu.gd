@@ -12,6 +12,9 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		close()
 
+func get_focus():
+	$CloseButton.grab_focus()
+
 func update_buttons():
 	if Globals.state == Globals.STATES.TITLE:
 		$VBoxContainer/ResetButton.show()

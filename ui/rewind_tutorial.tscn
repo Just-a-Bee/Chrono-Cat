@@ -12,6 +12,7 @@ texture = ExtResource("1_6rvmq")
 script = ExtResource("1_uopld")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 48.0
 offset_top = 24.0
 offset_right = 864.0
@@ -23,7 +24,7 @@ theme_override_font_sizes/font_size = 70
 text = "Rewind"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="Image" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -57,6 +58,7 @@ text = ">"
 [node name="Close" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "Okay!!"
 
 [connection signal="button_up" from="VBoxContainer/TextBox/Left" to="." method="_on_left_button_up"]

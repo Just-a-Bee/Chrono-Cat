@@ -45,6 +45,10 @@ text = "Master Volume"
 
 [node name="Master" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../HBoxContainer/VBoxContainer/Music")
+focus_neighbor_top = NodePath("../../CloseButton")
+focus_neighbor_right = NodePath("../HBoxContainer/VBoxContainer2/SfX")
+focus_neighbor_bottom = NodePath("../HBoxContainer/VBoxContainer/Music")
 max_value = 8.0
 value = 4.0
 tick_count = 9

@@ -204,4 +204,5 @@ zoom = Vector2(0.6, 0.6)
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_credits_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Settings" to="." method="_on_settings_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]
 [connection signal="button_up" from="Credits/CreditsX" to="." method="_on_credits_x_button_up"]

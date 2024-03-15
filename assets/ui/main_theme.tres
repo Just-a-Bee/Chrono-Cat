@@ -2,7 +2,21 @@
 
 [ext_resource type="FontFile" uid="uid://dmh1qic7ceojs" path="res://assets/ui/VersatyloRoundedPersonalUseOnly.ttf" id="1_kus0a"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eg5ps"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvdo3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue7y8"]
 bg_color = Color(0.898039, 0.843137, 0.411765, 1)
@@ -52,7 +66,7 @@ corner_radius_bottom_left = 6
 Button/colors/font_color = Color(0.917647, 0.917647, 0.917647, 1)
 Button/font_sizes/font_size = 50
 Button/fonts/font = ExtResource("1_kus0a")
-Button/styles/focus = SubResource("StyleBoxEmpty_eg5ps")
+Button/styles/focus = SubResource("StyleBoxFlat_pvdo3")
 Button/styles/hover = SubResource("StyleBoxFlat_ue7y8")
 Button/styles/normal = SubResource("StyleBoxFlat_2cjb1")
 Button/styles/pressed = SubResource("StyleBoxFlat_n8hui")

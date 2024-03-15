@@ -15,7 +15,7 @@ const skin_textures = [
 const skin_names = [
 	"Chrono Cat",
 	"Time Tabby",
-	"   Orange   "
+	"Orange"
 ]
 
 
