@@ -9,6 +9,8 @@ var level_won:bool = false
 signal exit
 signal win
 signal rewind_uses_changed
+signal rewind_opened
+signal rewind_closed
 @onready var main = get_parent()
 
 var sfx_packed = preload("res://level_files/level_sounds.tscn")
@@ -61,6 +63,8 @@ func _ready():
 	index_floor()
 	win.connect(main._on_level_win)
 	rewind_uses_changed.connect(main._on_rewind_uses_changed)
+	rewind_opened.connect(main._on_rewind_opened)
+	rewind_closed.connect(main._on_rewind_closed)
 	add_child(sfx)
 	
 
@@ -218,6 +222,7 @@ func start_rewind():
 	cursor_pos = actor_dictionary.find_key(player)
 	rewind_cursor.position = map_to_local(cursor_pos)
 	rewind_cursor.appear()
+	rewind_opened.emit()
 # function to move the rewind cursor
 func move_cursor(direction:Vector2i):
 	var new_pos = cursor_pos + direction
@@ -248,6 +253,7 @@ func cancel_rewind():
 func end_rewind(did_rewind:bool = false):
 	rewind_cursor.disappear(did_rewind)
 	rewinding = false
+	rewind_closed.emit()
 # function to return if a cursor position is in bounds
 func in_cursor_bounds(check_pos)->bool:
 	if check_pos.x < CURSOR_MIN_X or check_pos.x > CURSOR_MAX_X:

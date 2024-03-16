@@ -1,7 +1,4 @@
 
-
-Figure out what all to put in credits
-
 Control prompts when opening rewind
 Restart control prompt somewhere
 

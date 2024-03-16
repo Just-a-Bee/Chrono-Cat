@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctd8xi6wdx1h"]
+[gd_scene load_steps=22 format=3 uid="uid://ctd8xi6wdx1h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ntcjf"]
 [ext_resource type="PackedScene" uid="uid://dseb7xqjms3u6" path="res://ui/level_select/level_select.tscn" id="2_p70cs"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="8_r1bar"]
 [ext_resource type="PackedScene" uid="uid://cmaieui7lrmx8" path="res://ui/rewind_tutorial.tscn" id="9_y7ndv"]
+[ext_resource type="PackedScene" uid="uid://dw61ljhy2guci" path="res://ui/rewind_controls.tscn" id="10_c3wvx"]
 
 [sub_resource type="Gradient" id="Gradient_ds136"]
 offsets = PackedFloat32Array(0, 0.190476, 1)
@@ -555,6 +556,12 @@ bus = &"Sfx"
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(0.6, 0.6)
+
+[node name="RewindControls" parent="." instance=ExtResource("10_c3wvx")]
+offset_top = 960.0
+offset_right = 1536.0
+offset_bottom = 1011.0
+scale = Vector2(1.25, 1.25)
 
 [connection signal="button_up" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_button_up"]
 [connection signal="button_up" from="PauseMenu/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_button_up"]

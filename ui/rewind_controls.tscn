@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw61ljhy2guci"]
+
+[ext_resource type="Script" path="res://ui/rewind_controls.gd" id="1_ab62x"]
+[ext_resource type="Texture2D" uid="uid://b15ohmind5m2u" path="res://assets/ui/button_icon.png" id="1_suoyr"]
+
+[sub_resource type="Animation" id="Animation_ymk1y"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o1nvr"]
+resource_name = "Appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qweqv"]
+resource_name = "Disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2erb"]
+_data = {
+"Appear": SubResource("Animation_o1nvr"),
+"Disappear": SubResource("Animation_qweqv"),
+"RESET": SubResource("Animation_ymk1y")
+}
+
+[node name="RewindControls" type="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 187.0
+offset_bottom = 51.0
+theme_override_constants/separation = 10
+alignment = 1
+script = ExtResource("1_ab62x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_suoyr")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 51.0
+text = "X"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Confirm         "
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_suoyr")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect2"]
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 51.0
+text = "C"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "Cancel"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c2erb")
+}

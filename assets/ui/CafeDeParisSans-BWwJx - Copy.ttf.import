@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dmh1qic7ceojs"
-path="res://.godot/imported/VersatyloRoundedPersonalUseOnly.ttf-16bdab66f75b020d08da0dcb55aee727.fontdata"
+uid="uid://thq566wci7ts"
+path="res://.godot/imported/CafeDeParisSans-BWwJx - Copy.ttf-9a2eb2648b0b842a58ea09ac66b450bf.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/VersatyloRoundedPersonalUseOnly.ttf"
-dest_files=["res://.godot/imported/VersatyloRoundedPersonalUseOnly.ttf-16bdab66f75b020d08da0dcb55aee727.fontdata"]
+source_file="res://assets/ui/CafeDeParisSans-BWwJx - Copy.ttf"
+dest_files=["res://.godot/imported/CafeDeParisSans-BWwJx - Copy.ttf-9a2eb2648b0b842a58ea09ac66b450bf.fontdata"]
 
 [params]
 

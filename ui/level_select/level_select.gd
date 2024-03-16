@@ -73,12 +73,13 @@ func select_level(new_select, move_dir, instant = false):
 			$Player.flip_h = true
 		var tween = get_tree().create_tween()
 		tween.tween_property($Player, "position", current_node.position, .6)
+		if current_node is MapLevel:
+			$LevelTitle.update_text(current_node.name)
+			$LevelTitle.appear()
 		await tween.finished
 		$Player/AnimationPlayer.play("stand")
 	
-	if current_node is MapLevel:
-		$LevelTitle.update_text(current_node.name)
-		$LevelTitle.appear()
+
 	main.do_input = true
 
 # when main tells us a level was cleared, give that level a checkmark

@@ -162,6 +162,7 @@ offset_right = 512.0
 offset_bottom = 192.0
 
 [node name="Credits" type="Node2D" parent="."]
+visible = false
 
 [node name="Polygon2D" type="Polygon2D" parent="Credits"]
 color = Color(0.145098, 0.145098, 0.145098, 0.745098)

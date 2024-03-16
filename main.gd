@@ -133,6 +133,11 @@ func _on_rewind_uses_changed(new_rewinds):
 	else:
 		var tween = get_tree().create_tween()
 		tween.tween_property($RewindBar, "value", new_rewinds, .3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+func _on_rewind_opened():
+	$RewindControls.appear()
+func _on_rewind_closed():
+	$RewindControls.disappear()
+
 
 # function to show unlocking animation for rewind ability
 func unlock_rewind():

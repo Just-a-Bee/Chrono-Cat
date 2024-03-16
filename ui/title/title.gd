@@ -39,6 +39,6 @@ func _on_credits_x_button_up():
 func _on_settings_menu_closed():
 	$VBoxContainer/Play.grab_focus()
 
-
+# function to open a link when one is clicked in credits
 func _on_rich_text_label_meta_clicked(meta):
 	OS.shell_open(str(meta))

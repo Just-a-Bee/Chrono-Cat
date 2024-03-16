@@ -28,19 +28,20 @@ centered = false
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 48.0
+offset_top = 40.0
 offset_right = 840.0
 offset_bottom = 728.0
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 55
 text = "Master Volume"
 
 [node name="Master" type="HSlider" parent="VBoxContainer"]
@@ -62,7 +63,7 @@ size_flags_horizontal = 3
 
 [node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 55
 text = "Music Volume"
 
 [node name="Music" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -77,7 +78,7 @@ size_flags_horizontal = 3
 
 [node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 55
 text = "Effects Volume"
 
 [node name="SfX" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
@@ -106,6 +107,7 @@ text = "X"
 stream = ExtResource("2_1ga75")
 
 [node name="ResetPrompt" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="ResetPrompt"]
