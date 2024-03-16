@@ -65,10 +65,10 @@ script = ExtResource("1_4uc6o")
 [node name="Label" type="Label" parent="."]
 offset_left = 24.0
 offset_top = 8.0
-offset_right = 1904.0
-offset_bottom = 152.0
-theme_override_font_sizes/font_size = 80
-text = "Locks and Keys"
+offset_right = 760.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 110
+text = "Text"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

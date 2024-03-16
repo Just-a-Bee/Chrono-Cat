@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn3g6nsgtk4t4"]
+
+[ext_resource type="Texture2D" uid="uid://b15ohmind5m2u" path="res://assets/ui/button_icon.png" id="1_4dej0"]
+[ext_resource type="Script" path="res://ui/button_prompt.gd" id="1_oneqm"]
+
+[node name="ButtonPrompt" type="HBoxContainer"]
+script = ExtResource("1_oneqm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_4dej0")
+expand_mode = 2
+
+[node name="Key" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 51.0
+text = "_"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 2
+text = "Text"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp5opa0eowbv1"]
+[gd_scene load_steps=11 format=3 uid="uid://dp5opa0eowbv1"]
 
 [ext_resource type="PackedScene" uid="uid://dpvl0veqbs2re" path="res://actors/scenes/box.tscn" id="1_3taor"]
 [ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_7i8wu"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cl0enbrrqmd7b" path="res://actors/scenes/key.tscn" id="5_77687"]
 [ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="6_exvka"]
 [ext_resource type="PackedScene" uid="uid://bpujfv8b66i2i" path="res://floors/scenes/water.tscn" id="7_ygmot"]
+[ext_resource type="PackedScene" uid="uid://cn3g6nsgtk4t4" path="res://ui/button_prompt.tscn" id="10_j2elr"]
 
 [node name="Water Wall" type="TileMap"]
 tile_set = ExtResource("1_7i8wu")
@@ -158,3 +159,12 @@ position = Vector2(1024, 384)
 
 [node name="Water3" parent="." instance=ExtResource("7_ygmot")]
 position = Vector2(1152, 384)
+
+[node name="ButtonPrompt" parent="." instance=ExtResource("10_j2elr")]
+offset_left = 1536.0
+offset_top = 448.0
+offset_right = 1621.0
+offset_bottom = 499.0
+scale = Vector2(1.25, 1.25)
+key = "R"
+text = "Restart"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtb1o8ogbu8dx"]
+[gd_scene load_steps=9 format=3 uid="uid://dtb1o8ogbu8dx"]
 
 [ext_resource type="TileSet" uid="uid://b87jfkg30f1xk" path="res://level_files/tile_set.tres" id="1_72uaw"]
 [ext_resource type="Script" path="res://level_files/level.gd" id="2_vpe4l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="5_m4wmq"]
 [ext_resource type="PackedScene" uid="uid://cbvynqy0clri2" path="res://actors/scenes/bed.tscn" id="6_1ahsa"]
 [ext_resource type="PackedScene" uid="uid://djb7nyf3eguui" path="res://actors/scenes/clock.tscn" id="7_hg0u3"]
+[ext_resource type="PackedScene" uid="uid://cn3g6nsgtk4t4" path="res://ui/button_prompt.tscn" id="8_t2pcd"]
 
 [node name="Chronology" type="TileMap"]
 tile_set = ExtResource("1_72uaw")
@@ -114,3 +115,12 @@ position = Vector2(1344, 320)
 
 [node name="Clock" parent="." instance=ExtResource("7_hg0u3")]
 position = Vector2(1216, 704)
+
+[node name="ButtonPrompt" parent="." instance=ExtResource("8_t2pcd")]
+offset_left = 576.0
+offset_top = 128.0
+offset_right = 712.0
+offset_bottom = 179.0
+scale = Vector2(1.25, 1.25)
+key = "R"
+text = "Restart"

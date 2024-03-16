@@ -514,7 +514,6 @@ polygon = PackedVector2Array(0, 1088, 0, 0, 1920, 0, 1920, 1088)
 
 [node name="TitleBar" type="Polygon2D" parent="AnimationPlayer"]
 visible = false
-modulate = Color(1, 1, 1, 0)
 z_index = 9
 color = Color(0.996078, 0.964706, 0.356863, 1)
 polygon = PackedVector2Array(1920, 384, 1920, 640, 0, 640, 0, 640, 0, 384)
@@ -526,7 +525,7 @@ offset_top = 384.0
 offset_right = 1920.0
 offset_bottom = 640.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 190
 text = "LEVEL NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -537,9 +536,8 @@ z_index = 9
 offset_top = 256.0
 offset_right = 1920.0
 offset_bottom = 384.0
-scale = Vector2(1, 1e-05)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 100
 text = "Level "
 horizontal_alignment = 1
 

@@ -1,6 +1,8 @@
 
-Control prompts when opening rewind
-Restart control prompt somewhere
+Thing happens when you beat 5/5 levels
+	Little congrats screen?
+FIX ISSUE
+
 
 Issues:
 	weird thing when changing scenes from title idk
@@ -38,7 +40,7 @@ Sounds:
 			Open Sound
 			Close sound
 			Use sound
-		
+	
 	Level:
 		Add to level_sounds.tscn:
 			Win Sounds (sleepy cat)

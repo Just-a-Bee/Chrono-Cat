@@ -123,12 +123,13 @@ offset_bottom = 768.0
 
 [node name="Label" type="Label" parent="ResetPrompt/Polygon2D/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 60
 text = "Reset all Progress?"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ResetPrompt/Polygon2D/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 45
 text = "(This cannot be undone)"
 horizontal_alignment = 1
 
