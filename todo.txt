@@ -1,5 +1,8 @@
 
 Finish sounds
+Adjust volume settings values
+
+Arrow keys and enter prompts in select
 
 	Standardize Z indexing
 		Level: 0-4

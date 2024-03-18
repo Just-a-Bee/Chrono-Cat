@@ -74,6 +74,7 @@ func return_to_title():
 # when a level is selected, open it
 func open_level(level:PackedScene, level_num, level_name)->void:
 	# fade to black
+	Globals.state = Globals.STATES.LEVEL
 	do_input = false
 	Music.stop()
 	$AnimationPlayer.play("fade_to_black")
@@ -91,7 +92,7 @@ func open_level(level:PackedScene, level_num, level_name)->void:
 	level_select.hide()
 	level_node = level.instantiate()
 	add_child(level_node)
-	Globals.state = Globals.STATES.LEVEL
+	
 	
 	# show level title
 	$AnimationPlayer.play("show_title")
