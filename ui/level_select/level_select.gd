@@ -2,6 +2,8 @@ extends Node2D
 
 signal open_level
 
+const NUM_LEVELS = 1
+
 var current_node:Node = null
 var cleared_levels:int = 0
 
@@ -88,11 +90,17 @@ func clear_level():
 		current_node.clear()
 		main.save_game()
 		cleared_levels += 1
-		update_clear_count()
+		update_clear_count(true)
 
 # function to update the cleared level counter
-func update_clear_count():
-	$ClearCount.text = str(cleared_levels) + "/5"
+func update_clear_count(justCleared:bool):
+	$ClearCount.text = str(cleared_levels) + "/" + str(NUM_LEVELS)
+	if (cleared_levels == NUM_LEVELS) and justCleared:
+		main.do_input = false
+		await get_tree().create_timer(3).timeout
+		$Congrats.appear()
+		await $Congrats.close
+		main.do_input = true
 
 
 # function to return array of all level buttons
@@ -116,4 +124,4 @@ func set_clears(cleared_array):
 			level_arr[i].cleared = true
 			level_arr[i].fast_clear()
 			cleared_levels += 1
-	update_clear_count()
+	update_clear_count(false)

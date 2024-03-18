@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://8rumrp8lwx4"]
+[gd_scene load_steps=7 format=3 uid="uid://8rumrp8lwx4"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_title.gd" id="1_4uc6o"]
+[ext_resource type="Texture2D" uid="uid://bntgdp6bnic7f" path="res://assets/ui/LevelTitle.png" id="2_ixwe2"]
 
 [sub_resource type="Animation" id="Animation_kx082"]
 resource_name = "RESET"
@@ -56,11 +57,14 @@ _data = {
 "hide": SubResource("Animation_w7pfo")
 }
 
-[node name="LevelTitle" type="Polygon2D"]
+[node name="LevelTitle" type="Node2D"]
 position = Vector2(-768, 0)
-color = Color(0.898039, 0.843137, 0.411765, 1)
-polygon = PackedVector2Array(0, 128, 640, 128, 768, 0, 0, 0)
 script = ExtResource("1_4uc6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("2_ixwe2")
+centered = false
 
 [node name="Label" type="Label" parent="."]
 offset_left = 24.0

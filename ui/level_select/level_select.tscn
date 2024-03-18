@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dseb7xqjms3u6"]
+[gd_scene load_steps=19 format=3 uid="uid://dseb7xqjms3u6"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_ppnx8"]
 [ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_select/level_button.tscn" id="2_6b2g3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bj8ps4cnlvo7t" path="res://levels/bulky_boxes.tscn" id="7_nj5eh"]
 [ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="8_828dk"]
 [ext_resource type="Texture2D" uid="uid://dajnmwp7bv3dm" path="res://assets/ui/paw.png" id="11_72p0u"]
+[ext_resource type="PackedScene" uid="uid://c6n0tf8yuvakt" path="res://ui/level_select/congrats.tscn" id="12_qcor7"]
 
 [sub_resource type="Gradient" id="Gradient_eqv0h"]
 offsets = PackedFloat32Array(0.498008, 1)
@@ -172,3 +173,9 @@ horizontal_alignment = 2
 position = Vector2(1635, 65)
 scale = Vector2(10, 10)
 texture = ExtResource("11_72p0u")
+
+[node name="Congrats" parent="." instance=ExtResource("12_qcor7")]
+offset_left = 448.0
+offset_top = 128.0
+offset_right = 448.0
+offset_bottom = 128.0

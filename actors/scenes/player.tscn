@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqt6w8pjasqik"]
+[gd_scene load_steps=8 format=3 uid="uid://dqt6w8pjasqik"]
 
 [ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="1_t7wiq"]
 [ext_resource type="Script" path="res://actors/scripts/player.gd" id="2_7ud5v"]
-[ext_resource type="Texture2D" uid="uid://c4gbf358ak51s" path="res://assets/particles/z.png" id="3_onrt2"]
+[ext_resource type="PackedScene" uid="uid://c20c7pm2g8vh2" path="res://actors/scenes/sleep_particles.tscn" id="3_m2nqh"]
 [ext_resource type="Material" uid="uid://be6m3q0y056cl" path="res://assets/particles/rewind_particle.tres" id="4_onk5i"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="5_ck6ye"]
 
@@ -51,30 +51,6 @@ _data = {
 "sleep": SubResource("Animation_0uuvm")
 }
 
-[sub_resource type="Gradient" id="Gradient_7jpbm"]
-offsets = PackedFloat32Array(0, 0.0952381, 0.495238, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_11gtb"]
-gradient = SubResource("Gradient_7jpbm")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k2gte"]
-particle_flag_disable_z = true
-direction = Vector3(2, -1, 0)
-spread = 0.0
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-angular_velocity_min = -5.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 30.0
-linear_accel_max = 35.0
-scale_min = 1.5
-scale_max = 1.55
-color_ramp = SubResource("GradientTexture1D_11gtb")
-turbulence_enabled = true
-turbulence_influence_min = 0.05
-turbulence_influence_max = 0.05
-
 [node name="Player" type="Sprite2D" groups=["cat"]]
 z_index = 2
 position = Vector2(-9.53674e-07, -9.53674e-07)
@@ -89,14 +65,7 @@ libraries = {
 "": SubResource("AnimationLibrary_0d86h")
 }
 
-[node name="SleepParticles" type="GPUParticles2D" parent="."]
-position = Vector2(7.44, -1.74)
-emitting = false
-amount = 3
-process_material = SubResource("ParticleProcessMaterial_k2gte")
-texture = ExtResource("3_onrt2")
-lifetime = 2.0
-explosiveness = 0.35
+[node name="SleepParticles" parent="." instance=ExtResource("3_m2nqh")]
 
 [node name="RewindParticles" type="GPUParticles2D" parent="."]
 emitting = false

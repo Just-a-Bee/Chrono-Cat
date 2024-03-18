@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6n0tf8yuvakt"]
+
+[ext_resource type="Script" path="res://ui/level_select/congrats.gd" id="1_ly1ai"]
+[ext_resource type="Texture2D" uid="uid://ggx50nwajfdn" path="res://assets/ui/Credits.png" id="1_yyiel"]
+[ext_resource type="Texture2D" uid="uid://cmdgsavqe2bcb" path="res://assets/actors/Bed.png" id="2_8emjd"]
+[ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="3_p757f"]
+[ext_resource type="PackedScene" uid="uid://c20c7pm2g8vh2" path="res://actors/scenes/sleep_particles.tscn" id="4_4d4le"]
+
+[sub_resource type="Animation" id="Animation_mw6cb"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cat/SleepParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v04al"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cat/SleepParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2p350"]
+_data = {
+"RESET": SubResource("Animation_mw6cb"),
+"appear": SubResource("Animation_v04al")
+}
+
+[node name="Congrats" type="Control"]
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ly1ai")
+
+[node name="Credits" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_yyiel")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 48.0
+offset_right = 944.0
+offset_bottom = 552.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][font_size=80]Congratulations!
+[font_size=60]Chrono Cat has slept in every bed
+
+
+
+"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Bed" type="Sprite2D" parent="."]
+position = Vector2(512, 280)
+scale = Vector2(16, 16)
+texture = ExtResource("2_8emjd")
+
+[node name="Cat" type="Sprite2D" parent="."]
+position = Vector2(512, 280)
+scale = Vector2(16, 16)
+texture = ExtResource("3_p757f")
+hframes = 6
+vframes = 2
+frame = 7
+
+[node name="SleepParticles" parent="Cat" instance=ExtResource("4_4d4le")]
+position = Vector2(8.5, -2.5)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2p350")
+}
+
+[connection signal="button_up" from="VBoxContainer/Button" to="." method="_on_button_button_up"]
