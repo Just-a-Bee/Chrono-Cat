@@ -7,6 +7,7 @@ const post_name:String = " has slept in every bed"
 
 func appear():
 	update_character()
+	$VBoxContainer/Button.grab_focus()
 	$AnimationPlayer.play("appear")
 
 # Function to update the character displayed on congrats screen

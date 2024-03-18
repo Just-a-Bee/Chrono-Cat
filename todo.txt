@@ -17,6 +17,7 @@ Finish sounds
 			Level buttons = 1
 			Player = 2
 			Title-Shower = 3
+			Congrats Screen = 4
 		GUI: 5-9
 			Rewind Bar = 5
 			Pause = 6

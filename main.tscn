@@ -556,6 +556,7 @@ anchor_mode = 0
 zoom = Vector2(0.6, 0.6)
 
 [node name="RewindControls" parent="." instance=ExtResource("10_c3wvx")]
+z_index = 5
 offset_top = 960.0
 offset_right = 1536.0
 offset_bottom = 1011.0
