@@ -3,14 +3,18 @@ class_name SettingsMenu
 
 signal closed
 
-var do_test_sound = false
+var do_test_sound:bool = false
+var is_reset:bool = false
 
 func _ready():
 	update_buttons()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		close()
+		if is_reset:
+			close_reset()
+		else:
+			close()
 
 func get_focus():
 	$CloseButton.grab_focus()
@@ -58,15 +62,18 @@ func set_enabled(value):
 func _on_reset_button_button_up():
 	$ResetPrompt.show()
 	$ResetPrompt/Polygon2D/VBoxContainer/HBoxContainer/ResetNo.grab_focus()
+	is_reset = true
 	set_enabled(false)
 
 func _on_reset_yes_button_up():
 	Globals.reset_save()
-	$ResetPrompt.hide()
-	set_enabled(true)
-	get_focus()
+	close_reset()
 
 func _on_reset_no_button_up():
+	close_reset()
+
+func close_reset():
+	is_reset = false
 	$ResetPrompt.hide()
 	set_enabled(true)
 	get_focus()

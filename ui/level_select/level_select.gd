@@ -2,7 +2,7 @@ extends Node2D
 
 signal open_level
 
-const NUM_LEVELS = 1
+const NUM_LEVELS = 5
 
 var current_node:Node = null
 var cleared_levels:int = 0
