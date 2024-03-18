@@ -6,7 +6,7 @@ const NUM_LEVELS = 5
 
 var current_node:Node = null
 var cleared_levels:int = 0
-
+var congrats_shown:bool = false
 
 @onready var main = get_parent()
 
@@ -96,10 +96,11 @@ func clear_level():
 func update_clear_count(justCleared:bool):
 	$ClearCount.text = str(cleared_levels) + "/" + str(NUM_LEVELS)
 	if (cleared_levels == NUM_LEVELS) and justCleared:
-		main.do_input = false
+		congrats_shown = true
 		await get_tree().create_timer(3).timeout
 		$Congrats.appear()
 		await $Congrats.close
+		congrats_shown = false
 		main.do_input = true
 
 

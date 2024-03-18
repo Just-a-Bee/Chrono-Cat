@@ -1,13 +1,5 @@
 
-
-FIX ISSUES
-
-
-Issues:
-	weird thing when changing scenes from title idk
-	congrats screen doesn't disable input properly
-	Settings menu doesnt close reset prompt if esc is pressed
-
+Finish sounds
 
 	Standardize Z indexing
 		Level: 0-4

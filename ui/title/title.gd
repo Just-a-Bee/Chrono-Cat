@@ -2,7 +2,7 @@ extends Node2D
 
 # script for the title menu
 
-const MAIN_PATH = "res://main.tscn"
+const MAIN = preload("res://main.tscn")
 
 func _ready():
 	$VBoxContainer/Play.grab_focus()
@@ -16,7 +16,11 @@ func _on_play_button_up():
 	$Transitioner.fade_to_black()
 	await $Transitioner.animation_finished
 	Globals.state = Globals.STATES.SELECT
-	get_tree().change_scene_to_file(MAIN_PATH)
+	get_tree().root.add_child(MAIN.instantiate())
+	await get_tree().process_frame
+	get_tree().root.remove_child(self)
+	queue_free()
+	
 
 
 func _on_settings_button_up():

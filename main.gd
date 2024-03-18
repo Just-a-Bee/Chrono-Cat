@@ -18,8 +18,9 @@ var level_node
 # fade from black onready
 func _ready():
 	load_game()
-	$AnimationPlayer.play("fade_from_black")
 	$SettingsMenu.update_buttons()
+	$AnimationPlayer.play("fade_from_black")
+	
 	await $AnimationPlayer.animation_finished
 	Music.play_track(Music.TRACKS.SELECT)
 	do_input = true
@@ -66,6 +67,8 @@ func return_to_title():
 	await $AnimationPlayer.animation_finished
 	Globals.state = Globals.STATES.TITLE
 	get_tree().change_scene_to_file(TITLE_PATH)
+	get_tree().root.remove_child(self)
+	queue_free()
 
 
 # when a level is selected, open it
@@ -123,7 +126,8 @@ func exit_level():
 	# fade from black
 	$AnimationPlayer.play("fade_from_black")
 	await $AnimationPlayer.animation_finished
-	do_input = true
+	if not level_select.congrats_shown: # do not enable input if the congrats sceen is shown
+		do_input = true
 	Music.play_track(Music.TRACKS.SELECT)
 
 # function to update the value displayed on the rewind bar, if initial unlock, play animation
