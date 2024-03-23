@@ -183,7 +183,7 @@ bbcode_enabled = true
 text = "[center][font_size=90]A game by Abby Smith[/font_size]
 
 [font_size=70]Music and Sounds by Isaiah Sugar[/font_size]
-[font_size=70][url]https://isaiahsugar.com[/url][/font_size]
+[font_size=70][url]http://isaiahsugar.com[/url][/font_size]
 
 [font_size=60]Made with Godot
 [url]https://godotengine.org/license/[/url]

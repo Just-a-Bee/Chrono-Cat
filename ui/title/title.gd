@@ -5,8 +5,10 @@ extends Node2D
 const MAIN = preload("res://main.tscn")
 
 func _ready():
+	# remove quit button if running on web
 	if OS.has_feature("wasm"):
 		$VBoxContainer/HBoxContainer/Quit.hide()
+	
 	$VBoxContainer/Play.grab_focus()
 	$Transitioner.fade_from_black()
 	$TextureRect/AnimationPlayer.play("scroll")
