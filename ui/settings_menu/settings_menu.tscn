@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6r5hdnc2e5n5"]
 
 [ext_resource type="Script" path="res://ui/settings_menu/settings_menu.gd" id="1_scrjt"]
-[ext_resource type="AudioStream" uid="uid://dhdcex7sqee7d" path="res://assets/sound/level_complete.wav" id="2_1ga75"]
 [ext_resource type="Texture2D" uid="uid://b4p0vsrsydm3s" path="res://assets/ui/Settings.png" id="2_8hxm0"]
 [ext_resource type="PackedScene" uid="uid://dqam30xtomfox" path="res://ui/settings_menu/skin_selector.tscn" id="3_rdj6i"]
+[ext_resource type="AudioStream" uid="uid://daer3hisv0e4h" path="res://assets/sound/move.wav" id="4_8yxs8"]
 
 [node name="SettingsMenu" type="Control"]
 z_index = 7
@@ -104,7 +104,7 @@ offset_bottom = 106.0
 text = "X"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_1ga75")
+stream = ExtResource("4_8yxs8")
 
 [node name="ResetPrompt" type="Control" parent="."]
 visible = false

@@ -38,14 +38,16 @@ func _on_quit_button_up():
 
 func _on_credits_button_up():
 	$Credits/AnimationPlayer.play("show")
+	$Credits/CreditsX.grab_focus()
 
 
 func _on_credits_x_button_up():
 	$Credits/AnimationPlayer.play("hide")
+	$VBoxContainer/HBoxContainer/Credits.grab_focus()
 
 
 func _on_settings_menu_closed():
-	$VBoxContainer/Play.grab_focus()
+	$VBoxContainer/HBoxContainer/Settings.grab_focus()
 
 # function to open a link when one is clicked in credits
 func _on_rich_text_label_meta_clicked(meta):
