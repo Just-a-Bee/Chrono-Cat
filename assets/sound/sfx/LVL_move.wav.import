@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dr8yt0b4sjmxc"
-path="res://.godot/imported/door_open.wav-aae8eaf61ac85df514470ed027fb5a0c.sample"
+uid="uid://x1np82xxur0t"
+path="res://.godot/imported/LVL_move.wav-b68ca0ac00b06c4244177bce6207102b.sample"
 
 [deps]
 
-source_file="res://assets/sound/door_open.wav"
-dest_files=["res://.godot/imported/door_open.wav-aae8eaf61ac85df514470ed027fb5a0c.sample"]
+source_file="res://assets/sound/sfx/LVL_move.wav"
+dest_files=["res://.godot/imported/LVL_move.wav-b68ca0ac00b06c4244177bce6207102b.sample"]
 
 [params]
 

@@ -1,15 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctd8xi6wdx1h"]
+[gd_scene load_steps=23 format=3 uid="uid://ctd8xi6wdx1h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ntcjf"]
 [ext_resource type="PackedScene" uid="uid://dseb7xqjms3u6" path="res://ui/level_select/level_select.tscn" id="2_p70cs"]
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="5_6dq5v"]
 [ext_resource type="Texture2D" uid="uid://d12eu17xjnlxf" path="res://assets/level_stuff/RewindBarEmpty.png" id="6_mr47i"]
 [ext_resource type="Texture2D" uid="uid://cmkwnxyfnp7xa" path="res://assets/level_stuff/RewindBarFull.png" id="7_8wg3w"]
-[ext_resource type="AudioStream" uid="uid://ct42s3pi1ossu" path="res://assets/sound/sfx 24bit wav/LOAD_open level.wav" id="8_knp5s"]
+[ext_resource type="AudioStream" uid="uid://dlq40catvrk22" path="res://assets/sound/sfx/LOAD_open level.wav" id="8_fplpi"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="8_r1bar"]
-[ext_resource type="PackedScene" uid="uid://cmaieui7lrmx8" path="res://ui/rewind_tutorial.tscn" id="9_y7ndv"]
-[ext_resource type="PackedScene" uid="uid://dw61ljhy2guci" path="res://ui/rewind_controls.tscn" id="10_c3wvx"]
+[ext_resource type="AudioStream" uid="uid://b7a1gln6ccy8j" path="res://assets/sound/sfx/REW_rewind unlock.wav" id="9_v3g5c"]
+[ext_resource type="PackedScene" path="res://ui/rewind_tutorial.tscn" id="9_y7ndv"]
+[ext_resource type="PackedScene" path="res://ui/rewind_controls.tscn" id="10_c3wvx"]
 
 [sub_resource type="Gradient" id="Gradient_ds136"]
 offsets = PackedFloat32Array(0, 0.190476, 1)
@@ -277,7 +278,7 @@ tracks/4/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.454837,
-"stream": ExtResource("8_knp5s")
+"stream": ExtResource("8_fplpi")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -406,6 +407,21 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_v3g5c")
+}],
+"times": PackedFloat32Array(0.7)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqw8y"]
 _data = {
@@ -514,6 +530,7 @@ polygon = PackedVector2Array(0, 1088, 0, 0, 1920, 0, 1920, 1088)
 
 [node name="TitleBar" type="Polygon2D" parent="AnimationPlayer"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 z_index = 9
 color = Color(0.996078, 0.964706, 0.356863, 1)
 polygon = PackedVector2Array(1920, 384, 1920, 640, 0, 640, 0, 640, 0, 384)
@@ -536,6 +553,7 @@ z_index = 9
 offset_top = 256.0
 offset_right = 1920.0
 offset_bottom = 384.0
+scale = Vector2(1, 1e-05)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "Level "

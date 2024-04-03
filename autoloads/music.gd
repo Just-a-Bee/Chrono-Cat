@@ -8,10 +8,10 @@ enum TRACKS {
 }
 
 var tracklist = [
-	preload("res://assets/sound/title.ogg"),
-	preload("res://assets/sound/level_select.ogg"),
-	preload("res://assets/sound/level_1.ogg"),
-	null
+	preload("res://assets/sound/music/title.ogg"),
+	preload("res://assets/sound/music/level_select.ogg"),
+	preload("res://assets/sound/music/level_1.ogg"),
+	preload("res://assets/sound/music/level_2.ogg")
 ]
 
 func _ready():

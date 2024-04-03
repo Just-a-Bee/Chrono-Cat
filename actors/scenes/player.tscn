@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="1_t7wiq"]
 [ext_resource type="Script" path="res://actors/scripts/player.gd" id="2_7ud5v"]
-[ext_resource type="PackedScene" uid="uid://c20c7pm2g8vh2" path="res://actors/scenes/sleep_particles.tscn" id="3_m2nqh"]
+[ext_resource type="PackedScene" path="res://actors/scenes/sleep_particles.tscn" id="3_m2nqh"]
 [ext_resource type="Material" uid="uid://be6m3q0y056cl" path="res://assets/particles/rewind_particle.tres" id="4_onk5i"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="5_ck6ye"]
 
