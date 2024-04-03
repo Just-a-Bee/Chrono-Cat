@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_ppnx8"]
 [ext_resource type="PackedScene" uid="uid://doyd0aa2nqgl2" path="res://ui/level_select/level_button.tscn" id="2_6b2g3"]
-[ext_resource type="PackedScene" uid="uid://8rumrp8lwx4" path="res://ui/level_select/level_title.tscn" id="2_06xd8"]
+[ext_resource type="PackedScene" path="res://ui/level_select/level_title.tscn" id="2_06xd8"]
 [ext_resource type="PackedScene" uid="uid://dtb1o8ogbu8dx" path="res://levels/chronology.tscn" id="3_5fvae"]
 [ext_resource type="PackedScene" uid="uid://bi3qwfkkihawt" path="res://ui/level_select/map_position.tscn" id="3_5otd6"]
 [ext_resource type="PackedScene" uid="uid://lfyr65vh2gv1" path="res://levels/lock_and_key.tscn" id="4_5d44g"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bj8ps4cnlvo7t" path="res://levels/bulky_boxes.tscn" id="7_nj5eh"]
 [ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="8_828dk"]
 [ext_resource type="Texture2D" uid="uid://dajnmwp7bv3dm" path="res://assets/ui/paw.png" id="11_72p0u"]
-[ext_resource type="PackedScene" uid="uid://c6n0tf8yuvakt" path="res://ui/level_select/congrats.tscn" id="12_qcor7"]
+[ext_resource type="PackedScene" path="res://ui/level_select/congrats.tscn" id="12_qcor7"]
 
 [sub_resource type="Gradient" id="Gradient_eqv0h"]
 offsets = PackedFloat32Array(0.498008, 1)

@@ -189,7 +189,7 @@ func collect_actor(actor:Actor):
 		
 	if actor is Clock:
 		rewind_uses += CLOCK_REWINDS
-		player.do_rewind_particles()
+		#player.do_rewind_particles()
 		sfx.play_clock()
 	destroy_actor(actor)
 # function to move an actor, pass in actor to move and direction to move it

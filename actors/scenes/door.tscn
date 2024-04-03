@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c20268hhfnrhf" path="res://assets/actors/Door.png" id="1_eqxxq"]
 [ext_resource type="Script" path="res://actors/scripts/door.gd" id="2_4wdjy"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="3_028y1"]
-[ext_resource type="AudioStream" uid="uid://dr8yt0b4sjmxc" path="res://assets/sound/door_open.wav" id="4_jeyni"]
+[ext_resource type="AudioStream" uid="uid://c78ymgee27i30" path="res://assets/sound/sfx/LVL_open door.wav" id="4_juhst"]
 
 [sub_resource type="Gradient" id="Gradient_ukvkl"]
 offsets = PackedFloat32Array(0, 0.522988, 1)
@@ -78,7 +78,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_jeyni")
+"stream": ExtResource("4_juhst")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -108,6 +108,7 @@ _data = {
 }
 
 [node name="Door" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
 scale = Vector2(8, 8)
 texture = ExtResource("1_eqxxq")
 script = ExtResource("2_4wdjy")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/level_select/level_button.gd" id="1_g5ee8"]
 [ext_resource type="Texture2D" uid="uid://dgp50clvvm3gx" path="res://assets/ui/level_icon.png" id="1_xne3i"]
 [ext_resource type="Texture2D" uid="uid://dajnmwp7bv3dm" path="res://assets/ui/paw.png" id="3_6ym0h"]
-[ext_resource type="AudioStream" uid="uid://dhdcex7sqee7d" path="res://assets/sound/level_complete.wav" id="4_vrdh1"]
+[ext_resource type="AudioStream" uid="uid://bqm4wi64gq3f5" path="res://assets/sound/sfx/SEL_level complete.wav" id="4_15245"]
 
 [sub_resource type="Animation" id="Animation_pk7iu"]
 resource_name = "clear"
@@ -78,7 +78,7 @@ tracks/5/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_vrdh1")
+"stream": ExtResource("4_15245")
 }],
 "times": PackedFloat32Array(0.4)
 }
@@ -217,6 +217,7 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_r68ph")
 }
+autoplay = "reset"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
