@@ -32,6 +32,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_v04al"]
 resource_name = "appear"
@@ -42,7 +54,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.1, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -59,6 +71,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2p350"]
 _data = {
@@ -67,6 +91,7 @@ _data = {
 }
 
 [node name="Congrats" type="Control"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 4
 layout_mode = 3

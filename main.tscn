@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="8_r1bar"]
 [ext_resource type="AudioStream" uid="uid://b7a1gln6ccy8j" path="res://assets/sound/sfx/REW_rewind unlock.wav" id="9_v3g5c"]
-[ext_resource type="PackedScene" path="res://ui/rewind_tutorial.tscn" id="9_y7ndv"]
-[ext_resource type="PackedScene" path="res://ui/rewind_controls.tscn" id="10_c3wvx"]
+[ext_resource type="PackedScene" uid="uid://cmaieui7lrmx8" path="res://ui/rewind_tutorial.tscn" id="9_y7ndv"]
+[ext_resource type="PackedScene" uid="uid://dw61ljhy2guci" path="res://ui/rewind_controls.tscn" id="10_c3wvx"]
 
 [sub_resource type="Gradient" id="Gradient_ds136"]
 offsets = PackedFloat32Array(0, 0.190476, 1)

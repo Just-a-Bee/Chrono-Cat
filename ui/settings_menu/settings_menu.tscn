@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/settings_menu/settings_menu.gd" id="1_scrjt"]
 [ext_resource type="Texture2D" uid="uid://b4p0vsrsydm3s" path="res://assets/ui/Settings.png" id="2_8hxm0"]
-[ext_resource type="PackedScene" path="res://ui/settings_menu/skin_selector.tscn" id="3_rdj6i"]
+[ext_resource type="PackedScene" uid="uid://dqam30xtomfox" path="res://ui/settings_menu/skin_selector.tscn" id="3_rdj6i"]
 [ext_resource type="AudioStream" uid="uid://x1np82xxur0t" path="res://assets/sound/sfx/LVL_move.wav" id="4_4y0tl"]
 
 [node name="SettingsMenu" type="Control"]

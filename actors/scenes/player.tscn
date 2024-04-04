@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqt6w8pjasqik"]
+[gd_scene load_steps=9 format=3 uid="uid://dqt6w8pjasqik"]
 
 [ext_resource type="Texture2D" uid="uid://cvfrvcc5yq3pj" path="res://assets/actors/Calico.png" id="1_t7wiq"]
 [ext_resource type="Script" path="res://actors/scripts/player.gd" id="2_7ud5v"]
-[ext_resource type="PackedScene" path="res://actors/scenes/sleep_particles.tscn" id="3_m2nqh"]
+[ext_resource type="PackedScene" uid="uid://c20c7pm2g8vh2" path="res://actors/scenes/sleep_particles.tscn" id="3_m2nqh"]
+[ext_resource type="AudioStream" uid="uid://c8v1npbrd25h6" path="res://assets/sound/sfx/LVL_sleep.wav" id="3_ousoq"]
 [ext_resource type="Material" uid="uid://be6m3q0y056cl" path="res://assets/particles/rewind_particle.tres" id="4_onk5i"]
 [ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="5_ck6ye"]
 
 [sub_resource type="Animation" id="Animation_0uuvm"]
 resource_name = "sleep"
-length = 3.0
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,6 +46,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ousoq")
+}],
+"times": PackedFloat32Array(3)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0d86h"]
 _data = {
@@ -64,6 +80,8 @@ script = ExtResource("2_7ud5v")
 libraries = {
 "": SubResource("AnimationLibrary_0d86h")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="SleepParticles" parent="." instance=ExtResource("3_m2nqh")]
 
