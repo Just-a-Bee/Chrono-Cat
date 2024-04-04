@@ -21,3 +21,9 @@ func play_track(track):
 	stream = tracklist[track]
 	play()
 
+func fade_down():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "volume_db", -10, .4)
+func fade_up():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "volume_db", 0, .4)

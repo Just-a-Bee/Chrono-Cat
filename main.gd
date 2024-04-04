@@ -107,7 +107,9 @@ func open_level(level:PackedScene, level_num, level_name)->void:
 func _on_level_win():
 	# do animations
 	do_input = false
+	Music.fade_down()
 	await level_node.exit
+	Music.fade_up()
 	level_select.clear_level()
 	exit_level()
 
