@@ -1,8 +1,9 @@
 
-Finish sounds
-Adjust volume settings values
+Fix weird aliasing?? redering issues (apparent in settings)
+Get playtested !!
 
-Arrow keys and enter prompts in select
+Release game!!! !!!!!!
+
 
 	Standardize Z indexing
 		Level: 0-4

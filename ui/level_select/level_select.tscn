@@ -123,7 +123,7 @@ level = ExtResource("5_b8vvg")
 level_number = 4
 left_node = NodePath("../Node5")
 
-[node name="Water wall" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("2_6b2g3")]
+[node name="Water Wall" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("2_6b2g3")]
 position = Vector2(1088, 320)
 level = ExtResource("6_egfgn")
 level_number = 3
@@ -144,7 +144,7 @@ right_node = NodePath("../Chronology")
 [node name="Node2" parent="." node_paths=PackedStringArray("down_node", "right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(832, 320)
 down_node = NodePath("../Chronology")
-right_node = NodePath("../Water wall")
+right_node = NodePath("../Water Wall")
 
 [node name="Node3" parent="." node_paths=PackedStringArray("up_node", "right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(832, 832)
@@ -153,7 +153,7 @@ right_node = NodePath("../Lock and Key")
 
 [node name="Node4" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("3_5otd6")]
 position = Vector2(1344, 320)
-left_node = NodePath("../Water wall")
+left_node = NodePath("../Water Wall")
 right_node = NodePath("../Bulky Boxes")
 
 [node name="Node5" parent="." node_paths=PackedStringArray("left_node", "right_node") instance=ExtResource("3_5otd6")]
@@ -175,7 +175,6 @@ scale = Vector2(10, 10)
 texture = ExtResource("11_72p0u")
 
 [node name="Congrats" parent="." instance=ExtResource("12_qcor7")]
-visible = false
 offset_left = 448.0
 offset_top = 128.0
 offset_right = 448.0

@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://devr7s6qosxot"]
+[gd_scene load_steps=15 format=3 uid="uid://devr7s6qosxot"]
 
 [ext_resource type="Script" path="res://ui/title/title.gd" id="1_ksjlk"]
 [ext_resource type="Texture2D" uid="uid://jybi5wxyuluo" path="res://assets/ui/actor_pattern.png" id="2_48j4w"]
 [ext_resource type="Texture2D" uid="uid://fayvt4rlkfqu" path="res://assets/ui/Title.png" id="2_g6b56"]
+[ext_resource type="PackedScene" uid="uid://dfkkr7ny2bnma" path="res://ui/rewind_bar_particles.tscn" id="3_386ky"]
 [ext_resource type="PackedScene" uid="uid://b18s0kfnnp2ch" path="res://ui/transition/transitioner.tscn" id="3_k2605"]
 [ext_resource type="Theme" uid="uid://d0mdmnx1jp3v2" path="res://assets/ui/main_theme.tres" id="3_qocws"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="4_lqysx"]
 [ext_resource type="Texture2D" uid="uid://ggx50nwajfdn" path="res://assets/ui/Credits.png" id="7_u88e5"]
+[ext_resource type="PackedScene" uid="uid://dqt6w8pjasqik" path="res://actors/scenes/player.tscn" id="8_nnlpp"]
 
 [sub_resource type="Animation" id="Animation_arwbk"]
 resource_name = "scroll"
@@ -92,6 +94,21 @@ _data = {
 
 [node name="Title" type="Node2D"]
 script = ExtResource("1_ksjlk")
+
+[node name="Player" parent="." instance=ExtResource("8_nnlpp")]
+z_index = 0
+position = Vector2(392, 352)
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("3_386ky")]
+position = Vector2(136, 852)
+emitting = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-256, -64)
+rotation = -0.0872665
+scale = Vector2(8, 8)
+color = Color(0.807843, 0.690196, 0.564706, 1)
+polygon = PackedVector2Array(31.181, 10.7585, 19.2406, 147.237, 260.32, 168.329, 272.26, 31.8502)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.380392)

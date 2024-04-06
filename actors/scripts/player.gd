@@ -10,7 +10,11 @@ var tween_to_position:Vector2 = position
 func _ready():
 	super._ready()
 	texture = Globals.get_skin_texture()
-	level.win.connect(_on_level_win)
+	if get_parent() is Level:
+		level.win.connect(_on_level_win)
+	else:
+		$SleepParticles.emitting = true
+		$RewindParticles.emitting = true
 
 
 func collide(actor:Actor, floor:Floor)->int:

@@ -1,36 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctd8xi6wdx1h"]
+[gd_scene load_steps=20 format=3 uid="uid://ctd8xi6wdx1h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ntcjf"]
 [ext_resource type="PackedScene" uid="uid://dseb7xqjms3u6" path="res://ui/level_select/level_select.tscn" id="2_p70cs"]
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="5_6dq5v"]
+[ext_resource type="PackedScene" uid="uid://dfkkr7ny2bnma" path="res://ui/rewind_bar_particles.tscn" id="6_djink"]
 [ext_resource type="Texture2D" uid="uid://d12eu17xjnlxf" path="res://assets/level_stuff/RewindBarEmpty.png" id="6_mr47i"]
 [ext_resource type="Texture2D" uid="uid://cmkwnxyfnp7xa" path="res://assets/level_stuff/RewindBarFull.png" id="7_8wg3w"]
 [ext_resource type="AudioStream" uid="uid://dlq40catvrk22" path="res://assets/sound/sfx/LOAD_open level.wav" id="8_fplpi"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
-[ext_resource type="Texture2D" uid="uid://c4imii5p5sbph" path="res://assets/particles/sparkle.png" id="8_r1bar"]
 [ext_resource type="AudioStream" uid="uid://b7a1gln6ccy8j" path="res://assets/sound/sfx/REW_rewind unlock.wav" id="9_v3g5c"]
 [ext_resource type="PackedScene" uid="uid://cmaieui7lrmx8" path="res://ui/rewind_tutorial.tscn" id="9_y7ndv"]
 [ext_resource type="PackedScene" uid="uid://dw61ljhy2guci" path="res://ui/rewind_controls.tscn" id="10_c3wvx"]
-
-[sub_resource type="Gradient" id="Gradient_ds136"]
-offsets = PackedFloat32Array(0, 0.190476, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 0.978, 0.56, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ilkbd"]
-gradient = SubResource("Gradient_ds136")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nr8cl"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(0, 4.5, 0)
-direction = Vector3(-1, 0, 0)
-spread = 10.0
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0, 0)
-scale_min = 4.0
-scale_max = 4.0
-color_ramp = SubResource("GradientTexture1D_ilkbd")
 
 [sub_resource type="Animation" id="Animation_glk5x"]
 resource_name = "RESET"
@@ -503,13 +483,7 @@ texture_progress = ExtResource("7_8wg3w")
 [node name="ParticleParent" type="Node2D" parent="RewindBar"]
 position = Vector2(8, 8)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RewindBar/ParticleParent"]
-position = Vector2(0, -4)
-emitting = false
-amount = 24
-process_material = SubResource("ParticleProcessMaterial_nr8cl")
-texture = ExtResource("8_r1bar")
-lifetime = 0.4
+[node name="GPUParticles2D" parent="RewindBar/ParticleParent" instance=ExtResource("6_djink")]
 
 [node name="SettingsMenu" parent="." instance=ExtResource("8_or1rc")]
 visible = false
