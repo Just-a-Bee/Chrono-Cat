@@ -1,22 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn3g6nsgtk4t4"]
+[gd_scene load_steps=6 format=3 uid="uid://cn3g6nsgtk4t4"]
 
 [ext_resource type="Texture2D" uid="uid://b15ohmind5m2u" path="res://assets/ui/button_icon.png" id="1_4dej0"]
 [ext_resource type="Script" path="res://ui/button_prompt.gd" id="1_oneqm"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4plvo"]
+texture = ExtResource("1_4dej0")
+region_rect = Rect2(0, 0, 3, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hcw8e"]
+texture = ExtResource("1_4dej0")
+region_rect = Rect2(3, 0, 10, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdjcv"]
+texture = ExtResource("1_4dej0")
+region_rect = Rect2(13, 0, 3, 16)
+
 [node name="ButtonPrompt" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+offset_right = 149.0
+offset_bottom = 64.0
 script = ExtResource("1_oneqm")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ButtonIcon" type="HBoxContainer" parent="."]
 layout_mode = 2
-texture = ExtResource("1_4dej0")
-expand_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Key" type="Label" parent="TextureRect"]
-layout_mode = 0
-offset_right = 51.0
-offset_bottom = 51.0
+[node name="LeftBorder" type="Panel" parent="ButtonIcon"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_4plvo")
+
+[node name="PanelContainer" type="PanelContainer" parent="ButtonIcon"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hcw8e")
+
+[node name="Key" type="Label" parent="ButtonIcon/PanelContainer"]
+layout_mode = 2
 text = "_"
 horizontal_alignment = 1
+
+[node name="RightBorder" type="Panel" parent="ButtonIcon"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_wdjcv")
 
 [node name="Text" type="Label" parent="."]
 layout_mode = 2

@@ -96,8 +96,7 @@ func _input(event):
 	elif event.is_action_pressed("cancel"):
 		cancel_rewind()
 	elif event.is_action_pressed("undo"):
-		pass
-		#undo() disabling undo, its confusing and not needed
+		undo()
 	elif event.is_action_pressed("restart"):
 		restart()
 	
@@ -119,6 +118,11 @@ func move_input(direction):
 	else:
 		move_cursor(direction)
 
+# function to process a turn of the game, move direction of player is passed in
+func process_turn(move_dir):
+	pass
+
+
 # actor and movement functions
 #function to try to move an actor, returns true if successfully moved
 func make_move(actor:Actor, direction:Vector2i)->bool:
@@ -128,18 +132,22 @@ func make_move(actor:Actor, direction:Vector2i)->bool:
 	var from_position:Vector2i = actor_dictionary.find_key(actor)
 	var to_position:Vector2i = from_position + direction
 	
-	# if to_position is occupied, try to push
+	#TODO: consider removing this if, all moves go through handle_collision, 
+	#  sometimes there just isn't one
+	# if to_position is occupied, handle collisions
 	if actor_dictionary.has(to_position) or floor_dictionary.has(to_position):
 		
 		var target_position:Vector2i = to_position # position we are checking for actors
-		var push_array:Array[Actor] = [actor]
+		var actors_to_move:Array[Actor] = [actor] # array of actors that will be moved
 		
-		handle_collision(target_position, push_array, direction)
+		# handle collision will populate "push array" with the actors that move,
+		# and do other things like destroying actors that destroy each other
+		handle_collision(target_position, actors_to_move, direction)
 		
 		# iterate through push array in reverse, moving each actor individually
-		push_array.reverse()
-		for push_actor in push_array:
-			move_actor(push_actor, direction)
+		actors_to_move.reverse()
+		for actor_to_move in actors_to_move:
+			move_actor(actor_to_move, direction)
 			actor_moved = true
 	else:
 		move_actor(actor, direction)
@@ -151,9 +159,10 @@ func make_move(actor:Actor, direction:Vector2i)->bool:
 		undo_array.append(state) 
 		return true
 	return false
-# function to handle when player collides with another actor
-func handle_collision(target_position, push_array, direction):
-	# iterate through positions until one is unoccupied, or we hit a wall and cant move
+
+# function to handle when an actor collides with another actor
+func handle_collision(target_position, actors_to_move, direction):
+	# iterate through positions until one is unoccupied, or we hit a wall and can't move
 	while(actor_dictionary.has(target_position) or floor_dictionary.has(target_position)):
 		var to_actor:Actor = null
 		var to_floor:Floor = null
@@ -162,26 +171,26 @@ func handle_collision(target_position, push_array, direction):
 		if floor_dictionary.has(target_position):
 			to_floor = floor_dictionary[target_position]
 		
-		var collision_behavior:int = push_array[-1].collide(to_actor, to_floor)
+		var collision_behavior:int = actors_to_move[-1].collide(to_actor, to_floor)
 		
 		if collision_behavior == COLLISION_BEHAVIORS.NONE:
 			return
 		elif collision_behavior == COLLISION_BEHAVIORS.PUSH: # adds that actor to push array
-			push_array.append(to_actor)
+			actors_to_move.append(to_actor)
 			target_position += direction
 		elif collision_behavior == COLLISION_BEHAVIORS.STOP: # returns because move cannot go through
-			push_array.clear()
+			actors_to_move.clear()
 			return
 		elif collision_behavior == COLLISION_BEHAVIORS.DESTROY: # removes previous actor from push array, both are destroyed
-			move_actor(push_array[-1],direction)
+			move_actor(actors_to_move[-1],direction)
 			destroy_actor(to_actor)
-			destroy_actor(push_array[-1])
-			push_array.pop_at(-1)
+			destroy_actor(actors_to_move[-1])
+			actors_to_move.pop_at(-1)
 		elif collision_behavior == COLLISION_BEHAVIORS.COLLECT: # actor is destroyed, a behavior happens based on actor
 			collect_actor(to_actor)
 		elif collision_behavior == COLLISION_BEHAVIORS.GET_COLLECTED: # moving actor gets collected
-			collect_actor(push_array[-1])
-			push_array.pop_back()
+			collect_actor(actors_to_move[-1])
+			actors_to_move.pop_back()
 			return
 func collect_actor(actor:Actor):
 	if actor is Bed:
@@ -240,7 +249,7 @@ func activate_rewind():
 			var rewind_direction = rewind_dictionary[rewind_actor][-1]
 			move_made = make_move(rewind_actor, rewind_direction)
 			if move_made:
-				
+				# if the move was made, remove the end of actor's rewind array
 				rewind_dictionary[rewind_actor].pop_back()
 				rewind_dictionary[rewind_actor].pop_back()
 				rewind_uses -= 1

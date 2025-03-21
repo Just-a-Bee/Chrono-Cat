@@ -2,29 +2,33 @@ extends Node2D
 
 signal open_level
 
-const NUM_LEVELS = 5
+const NUM_LEVELS = 5 # number of levels in the game
 
-var current_node:Node = null
-var cleared_levels:int = 0
-var congrats_shown:bool = false
+var current_node:Node = null # node player is currently at
+var cleared_levels:int = 0 # number of levels completed
+var congrats_shown:bool = false # stores if the "congrats" screen has been shown
 
 @onready var main = get_parent()
 
 # connect open level signal to main
 func _ready():
-	select_level(get_node("Start"), null, true)
-	$Player.texture = Globals.get_skin_texture()
+	select_level(get_node("Start"), null, true) # put player at start
+	$Player.texture = Globals.get_skin_texture() # update cat texture
 
 # handle level select inputs
 func _input(event):
 	if main.do_input == false or Globals.state != Globals.STATES.SELECT:
 		return
-	direction_input(event)
+	
+	# handle directional input
+	direction_input(event) 
+	
+	# handle entering the level
 	if event.is_action_pressed("ui_accept"):
 		if current_node is MapLevel:
 			main.open_level(current_node.level, current_node.level_number, current_node.name)
 
-# handle directional inputs, move cursor in direction pressed
+# handle directional inputs, move player in direction pressed
 func direction_input(event:InputEvent):
 	var new_select = null
 	var move_dir = null
@@ -44,6 +48,7 @@ func direction_input(event:InputEvent):
 		new_select = current_node.right_node
 		move_dir = Vector2.RIGHT
 	
+	# if there is a node to select in move_dir, go there
 	if new_select != null:
 		select_level(new_select, move_dir)
 
@@ -51,16 +56,17 @@ func direction_input(event:InputEvent):
 # function to select a different level
 func select_level(new_select, move_dir, instant = false):
 	
-	# dont select level if it isnt unlocked
+	# dont select level if it isnt locked
 	if current_node is MapLevel and not current_node.cleared:
 		if move_dir != Vector2.LEFT:
 			return
 
-	main.do_input = false
+	main.do_input = false # disable input during movement
 	
-	
+	# hide the level title
 	if current_node is MapLevel:
 		$LevelTitle.disappear()
+		current_node.hide_prompt()
 	current_node = new_select
 	
 	# move player to level
@@ -75,13 +81,20 @@ func select_level(new_select, move_dir, instant = false):
 			$Player.flip_h = true
 		var tween = get_tree().create_tween()
 		tween.tween_property($Player, "position", current_node.position, .6)
+		
+		# show level title
 		if current_node is MapLevel:
 			$LevelTitle.update_text(current_node.name)
 			$LevelTitle.appear()
+		
+		# stop player animation
 		await tween.finished
 		$Player/AnimationPlayer.play("stand")
-	
-
+		
+		# show "play" prompt
+		if current_node is MapLevel:
+			current_node.show_prompt()
+	# reenable input
 	main.do_input = true
 
 # when main tells us a level was cleared, give that level a checkmark

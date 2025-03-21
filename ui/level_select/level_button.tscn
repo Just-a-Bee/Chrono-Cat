@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://doyd0aa2nqgl2"]
+[gd_scene load_steps=11 format=3 uid="uid://doyd0aa2nqgl2"]
 
 [ext_resource type="Script" path="res://ui/level_select/level_button.gd" id="1_g5ee8"]
 [ext_resource type="Texture2D" uid="uid://dgp50clvvm3gx" path="res://assets/ui/level_icon.png" id="1_xne3i"]
 [ext_resource type="Texture2D" uid="uid://dajnmwp7bv3dm" path="res://assets/ui/paw.png" id="3_6ym0h"]
 [ext_resource type="AudioStream" uid="uid://bqm4wi64gq3f5" path="res://assets/sound/sfx/SEL_level complete.wav" id="4_15245"]
+[ext_resource type="PackedScene" uid="uid://cn3g6nsgtk4t4" path="res://ui/button_prompt.tscn" id="5_schuk"]
 
 [sub_resource type="Animation" id="Animation_pk7iu"]
 resource_name = "clear"
@@ -183,10 +184,43 @@ tracks/4/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_kajf2"]
+resource_name = "show_prompt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(2.37841, 0.594603, 1.1487),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h0ldy"]
+resource_name = "hide_prompt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.258816, 2.14355),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r68ph"]
 _data = {
 "clear": SubResource("Animation_pk7iu"),
-"reset": SubResource("Animation_jpa4n")
+"hide_prompt": SubResource("Animation_h0ldy"),
+"reset": SubResource("Animation_jpa4n"),
+"show_prompt": SubResource("Animation_kajf2")
 }
 
 [node name="LevelSprite" type="Sprite2D"]
@@ -194,14 +228,17 @@ position = Vector2(8.58307e-06, 8.58307e-06)
 scale = Vector2(8, 8)
 texture = ExtResource("1_xne3i")
 hframes = 2
+frame = 1
 script = ExtResource("1_g5ee8")
 
 [node name="CompleteSprite" type="Sprite2D" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(4, 4)
 texture = ExtResource("3_6ym0h")
 
 [node name="LevelNumber" type="Label" parent="."]
+visible = false
 offset_left = -9.0
 offset_top = -9.0
 offset_right = 63.0
@@ -225,3 +262,24 @@ autoplay = "reset"
 visible = false
 modulate = Color(1, 1, 1, 0.631373)
 texture = ExtResource("3_6ym0h")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-1.07288e-06, -6)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="ButtonPrompt" parent="Node2D" instance=ExtResource("5_schuk")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -13.0
+offset_right = 360.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.125, 0.125)
+alignment = 1
+key = "Enter"
+text = "Play"
