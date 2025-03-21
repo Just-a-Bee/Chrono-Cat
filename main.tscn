@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctd8xi6wdx1h"]
+[gd_scene load_steps=21 format=3 uid="uid://ctd8xi6wdx1h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ntcjf"]
 [ext_resource type="PackedScene" uid="uid://dseb7xqjms3u6" path="res://ui/level_select/level_select.tscn" id="2_p70cs"]
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="5_6dq5v"]
 [ext_resource type="PackedScene" uid="uid://dfkkr7ny2bnma" path="res://ui/rewind_bar_particles.tscn" id="6_djink"]
 [ext_resource type="Texture2D" uid="uid://d12eu17xjnlxf" path="res://assets/level_stuff/RewindBarEmpty.png" id="6_mr47i"]
+[ext_resource type="PackedScene" uid="uid://cn3g6nsgtk4t4" path="res://ui/button_prompt.tscn" id="7_2pki7"]
 [ext_resource type="Texture2D" uid="uid://cmkwnxyfnp7xa" path="res://assets/level_stuff/RewindBarFull.png" id="7_8wg3w"]
 [ext_resource type="AudioStream" uid="uid://dlq40catvrk22" path="res://assets/sound/sfx/LOAD_open level.wav" id="8_fplpi"]
 [ext_resource type="PackedScene" uid="uid://c6r5hdnc2e5n5" path="res://ui/settings_menu/settings_menu.tscn" id="8_or1rc"]
@@ -109,6 +110,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("RewindBar/ButtonPrompt:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cuox6"]
@@ -402,6 +415,18 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0.7)
 }
 tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("RewindBar/ButtonPrompt:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4.5, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqw8y"]
 _data = {
@@ -484,6 +509,16 @@ texture_progress = ExtResource("7_8wg3w")
 position = Vector2(8, 8)
 
 [node name="GPUParticles2D" parent="RewindBar/ParticleParent" instance=ExtResource("6_djink")]
+
+[node name="ButtonPrompt" parent="RewindBar" instance=ExtResource("7_2pki7")]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -9.0
+offset_right = 401.0
+offset_bottom = 55.0
+scale = Vector2(0.12, 0.12)
+alignment = 1
+key = "X"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("8_or1rc")]
 visible = false

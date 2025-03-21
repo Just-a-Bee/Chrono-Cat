@@ -118,10 +118,6 @@ func move_input(direction):
 	else:
 		move_cursor(direction)
 
-# function to process a turn of the game, move direction of player is passed in
-func process_turn(move_dir):
-	pass
-
 
 # actor and movement functions
 #function to try to move an actor, returns true if successfully moved

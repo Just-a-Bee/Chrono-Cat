@@ -38,7 +38,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_hcw8e")
 
 [node name="Key" type="Label" parent="ButtonIcon/PanelContainer"]
 layout_mode = 2
-text = "_"
 horizontal_alignment = 1
 
 [node name="RightBorder" type="Panel" parent="ButtonIcon"]
@@ -49,4 +48,3 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wdjcv")
 
 [node name="Text" type="Label" parent="."]
 layout_mode = 2
-text = "Text"
