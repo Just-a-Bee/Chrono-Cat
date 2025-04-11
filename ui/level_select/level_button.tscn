@@ -222,7 +222,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.6),
-"transitions": PackedFloat32Array(2.37841, 0.594603, 1.1487),
+"transitions": PackedFloat32Array(3.605, 0.594603, 1.1487),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
 }
@@ -244,9 +244,7 @@ frame = 1
 script = ExtResource("1_g5ee8")
 
 [node name="CompleteSprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(1.90735e-06, 1.90735e-06)
-scale = Vector2(4, 4)
 texture = ExtResource("3_6ym0h")
 
 [node name="LevelNumber" type="Label" parent="."]
@@ -271,13 +269,12 @@ autoplay = "reset"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="PawRipple" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.631373)
+modulate = Color(1, 1, 1, 0.338949)
+scale = Vector2(1.69473, 1.69473)
 texture = ExtResource("3_6ym0h")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-1.07288e-06, -6)
-scale = Vector2(1e-05, 1e-05)
 
 [node name="ButtonPrompt" parent="Node2D" instance=ExtResource("5_schuk")]
 anchors_preset = 8
